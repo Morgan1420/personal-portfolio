@@ -1,6 +1,6 @@
 <script setup>
 import heroProfileImage from '../assets/images/Persona/iFest_parlant_de_cara_wide.jpeg'
-import cvFile from '../assets/Jan Moran.pdf'
+import cvFile from '../assets/CV_Jan-Moran.pdf'
 </script>
 
 <template>
@@ -19,7 +19,7 @@ import cvFile from '../assets/Jan Moran.pdf'
             </p>
 
 			<div class="hero__actions">
-				<a class="btn btn--primary" :href="cvFile" download="Jan Moran.pdf" aria-label="Download CV">Download CV</a>
+				<a class="btn btn--primary" :href="cvFile" download="CV_Jan-Moran.pdf" aria-label="Download CV">Download CV</a>
 				<a class="btn btn--outline" href="#contact" aria-label="Go to contact section">Contact Me</a>
 			</div>
 		</div>
