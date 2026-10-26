@@ -10,6 +10,9 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--nav-height);
   -webkit-text-size-adjust: 100%;
+  /* On <html>, not <body>: with it on <body>, toggling the pop-up's scroll lock
+     (overflow on <html>) makes Firefox reset the page scroll to the top. */
+  overflow-x: clip;
 }
 
 body {
@@ -21,7 +24,6 @@ body {
   font-size: var(--fs-body);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  overflow-x: clip;
 }
 
 h1,

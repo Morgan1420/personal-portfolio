@@ -6,11 +6,14 @@ let returnFocusTo = null
 
 /**
  * @param {object} entry
- * @param {Element} [returnFocus] where focus goes on close if the trigger is gone
+ * @param {object} [focus]
+ * @param {Element} [focus.trigger]  element that opened the pop-up. Pass it explicitly:
+ *   some browsers (Safari, Firefox on macOS) don't focus a button on click, so
+ *   document.activeElement would be <body> and focus would restart at the top of the page.
+ * @param {Element} [focus.fallback] where focus goes if the trigger is gone by then
  */
-function openDetail({ kind, title, subtitle, id }, returnFocus) {
-  const trigger = document.activeElement
-  returnFocusTo = { trigger, fallback: returnFocus }
+function openDetail({ kind, title, subtitle, id }, { trigger, fallback } = {}) {
+  returnFocusTo = { trigger: trigger ?? document.activeElement, fallback }
   detail.value = { kind, title, subtitle, id }
 }
 
@@ -18,7 +21,8 @@ function closeDetail() {
   detail.value = null
   const { trigger, fallback } = returnFocusTo ?? {}
   returnFocusTo = null
-  const target = trigger?.isConnected ? trigger : fallback
+  const usable = (el) => el?.isConnected && el !== document.body
+  const target = usable(trigger) ? trigger : fallback
   target?.focus?.({ preventScroll: true })
 }
 

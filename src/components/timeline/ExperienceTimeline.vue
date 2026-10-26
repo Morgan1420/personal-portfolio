@@ -102,10 +102,10 @@ function onBoxPointerDown(index, event) {
 // ---- Detail pop-up ----
 const { openDetail } = useDetailModal()
 
-function openLane(lane) {
+function openLane(lane, event) {
   clearTimeout(closeTimer)
   openJob.value = null
-  openDetail(lane.detail)
+  openDetail(lane.detail, { trigger: event.currentTarget })
 }
 
 function openProject(job, project, index, event) {
@@ -115,7 +115,10 @@ function openProject(job, project, index, event) {
   const fallback = keyboard ? track.value?.querySelector(`article[data-job="${index}"]`) : scroller.value
   clearTimeout(closeTimer)
   openJob.value = null
-  openDetail({ kind: 'Project', title: project.title, subtitle: job.orgName, id: project.id }, fallback)
+  openDetail(
+    { kind: 'Project', title: project.title, subtitle: job.orgName, id: project.id },
+    { trigger: event.currentTarget, fallback },
+  )
 }
 
 // ---- Scrolling & sliding labels ----
@@ -184,7 +187,7 @@ onBeforeUnmount(() => {
         :faded="openJob !== null"
         :slide="sliders.bind(`lane-${lane.id}`)"
         :aria-label="lane.ariaLabel"
-        @click="openLane(lane)"
+        @click="openLane(lane, $event)"
       />
 
       <template v-for="(job, i) in layout.jobs" :key="job.id">
