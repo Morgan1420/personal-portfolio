@@ -7,6 +7,7 @@
   --color-tint-2: #D6E2D9;        /* second pale green: alternating fills */
   --color-tint-hover: #F0F3EE;    /* hover on light rows */
   --color-project-hover: #EEF4EF; /* hover on project boxes */
+  --color-nav-bg: rgba(246, 245, 240, 0.92); /* translucent sticky nav */
 
   /* Colour — ink */
   --color-ink: #142019;           /* headings, primary text, outlines */

@@ -31,7 +31,7 @@ Rules:
 
 | Section | Background |
 |---|---|
-| Nav | `rgba(246,245,240,.92)` + `backdrop-filter: blur(8px)`, bottom border |
+| Nav | `--color-nav-bg` (`rgba(246,245,240,.92)`) + `backdrop-filter: blur(8px)`, bottom border |
 | Hero | cream |
 | 01 About | white, top + bottom border |
 | 02 Experience | cream (full-bleed timeline) |
