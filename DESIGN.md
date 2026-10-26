@@ -21,6 +21,8 @@ The visual language of jan-moran.com. Tokens live in `src/styles/tokens.css`; th
 | `--color-muted` | `#4A564E` | Labels, captions, dates |
 | `--color-accent` | `#1E4D3A` | Dark green — CTAs, highlights, green sections |
 | `--color-on-accent` | `#F6F5F0` | Text on green |
+| `--color-on-accent-soft` | `rgba(246,245,240,.16)` | Logo tile on the current (green) work box |
+| `--color-overlay` | `rgba(20,32,25,.45)` | Pop-up backdrop |
 | `--color-line` | `#DEE2DA` | Borders, dividers |
 | `--color-line-dashed` | `#A9B3AA` | Dashed timeline gaps |
 
@@ -55,6 +57,7 @@ Rules:
 | Section label | JetBrains Mono | 13px | 400 | — | — |
 | Meta / dates | JetBrains Mono | 12px | 400 | — | 0.04–0.06em |
 | Eyebrow (uppercase) | JetBrains Mono | 12px | 400 | — | 0.06–0.14em, uppercase |
+| Micro (`--fs-micro`) | JetBrains Mono | 11px | 400 | — | Timeline gap labels, `[Logo]` placeholder |
 
 Mono is the "data voice": section numbers, dates, durations, tags, codes (EN, CA…), placeholders.
 
@@ -142,7 +145,7 @@ Full spec in `docs/TIMELINE.md`. Visual summary:
 
 ### Detail pop-up (placeholder) ⬜
 
-- Fixed overlay: `rgba(20,32,25,.45)` + `blur(4px)`; click to close.
+- Fixed overlay: `--color-overlay` + `blur(4px)`; click to close.
 - Card: `width: min(1100px, 100%)`, `height: min(760px, 100vh - 48px)`, cream, radius 28, padding `clamp(28px, 5vw, 56px)`, `--shadow-modal`. Enters with a 16px rise + scale .97 → 1 (`.28s`).
 - Content now: kind pill (PROJECT / EDUCATION — mono 12 uppercase, accent outline), title (Bricolage, `--fs-modal-title`), subtitle (17px muted), then a dashed "Under construction" panel.
 - Close button: 52px circle, ink outline; hover → accent fill + rotate 90°.

@@ -67,7 +67,7 @@ onBeforeUnmount(() => {
       <span class="picker__code hover-underline" :class="{ 'is-active': open }">
         {{ current.code.toUpperCase() }}
       </span>
-      <IconChevron :up="open" />
+      <IconChevron :direction="open ? 'up' : 'down'" />
     </button>
 
     <ul v-if="open" id="language-menu" class="picker__menu" aria-label="Choose language">

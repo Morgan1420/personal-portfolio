@@ -14,6 +14,7 @@
   --color-ink-2: #3E4A42;         /* body text, nav links */
   --color-muted: #4A564E;         /* labels, captions, meta */
   --color-on-accent: #F6F5F0;     /* text on green */
+  --color-on-accent-soft: rgba(246, 245, 240, 0.16); /* logo tile on green */
 
   /* Colour — accent */
   --color-accent: #1E4D3A;        /* dark green */
@@ -35,6 +36,7 @@
   --shadow-modal: 0 30px 80px rgba(20, 32, 25, 0.30);
   --glow-clickable: drop-shadow(0 6px 14px rgba(30, 77, 58, 0.30));
   --edge-shade: rgba(20, 32, 25, 0.16);
+  --color-overlay: rgba(20, 32, 25, 0.45); /* pop-up backdrop */
 
   /* Typography */
   --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
@@ -53,6 +55,7 @@
   --fs-caption: 14px;
   --fs-label: 13px;
   --fs-label-sm: 12px;
+  --fs-micro: 11px;    /* timeline gap labels, logo placeholder */
 
   /* Layout */
   --container: 1200px;
