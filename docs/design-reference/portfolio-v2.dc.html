@@ -1,0 +1,865 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Jan Moran — Portfolio</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F6F5F0}
+html{scroll-behavior:smooth}
+a{color:#1E4D3A}a:hover{color:#123326}
+.ul{background-image:linear-gradient(var(--accent,#1E4D3A),var(--accent,#1E4D3A));background-repeat:no-repeat;background-position:0 calc(100% - 6px);background-size:0% 2px;transition:background-size .25s ease}
+.ul:hover,.ul:focus-visible,.ul.on,.langbtn:hover .ul,.langbtn:focus-visible .ul{background-size:100% 2px}
+.langbtn .ul{background-position:0 100%;padding-bottom:3px}
+.btn{transition:background-color .2s ease,color .2s ease,box-shadow .2s ease,transform .12s ease}
+.btn:active{transform:scale(.96)}
+.btn-primary:hover,.btn-primary:focus-visible{background:transparent !important;color:var(--accent,#1E4D3A) !important;box-shadow:inset 0 0 0 1.5px var(--accent,#1E4D3A)}
+.btn-outline:hover,.btn-outline:focus-visible{background:#142019 !important;color:#F6F5F0 !important}
+.btn-light:hover,.btn-light:focus-visible{background:transparent !important;color:#F6F5F0 !important;box-shadow:inset 0 0 0 1.5px #F6F5F0}
+.langopt{transition:background-color .15s ease}
+.langopt:not([aria-pressed="true"]):hover{background:#F0F3EE !important}
+.hb{box-sizing:border-box;flex-shrink:0;transition:background-color .22s ease,color .22s ease,border-color .22s ease,padding .22s ease,min-height .22s ease,width .22s ease,height .22s ease,box-shadow .22s ease,transform .12s ease}
+.hb:hover,.hb:focus-visible{background:var(--accent,#1E4D3A) !important;color:#F6F5F0 !important;border-color:var(--accent,#1E4D3A) !important;box-shadow:0 10px 24px rgba(30,77,58,.24)}
+.hb-pill:hover,.hb-pill:focus-visible{padding:0 32px !important;min-height:58px !important}
+.hb-circle:hover,.hb-circle:focus-visible{width:58px !important;height:58px !important}
+.tl-vp{scrollbar-width:none}.tl-vp::-webkit-scrollbar{display:none}
+.tl-btn{transition:background-color .2s ease,color .2s ease,border-color .2s ease,transform .2s ease,opacity .2s ease}
+.tl-btn:hover,.tl-btn:focus-visible,.tl-edge:hover .tl-btn{background:var(--accent,#1E4D3A) !important;color:#F6F5F0 !important;border-color:var(--accent,#1E4D3A) !important;transform:scale(1.1)}
+.tl-edge{z-index:5}
+@keyframes projIn{from{transform:translateY(64px);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes tickIn{from{opacity:0}to{opacity:1}}
+.proj-in{animation:projIn .38s cubic-bezier(.2,.7,.2,1) .3s both}
+.tick-in{animation:tickIn .3s ease .45s both}
+.tl-click{cursor:pointer}
+.tl-click:hover,.tl-click:focus-visible{filter:drop-shadow(0 6px 14px rgba(30,77,58,.30));translate:0 -2px}
+.tl-click:hover .tl-layer,.tl-click:focus-visible .tl-layer{border-color:var(--accent,#1E4D3A) !important;filter:brightness(1.04)}
+.proj-in.tl-click:hover,.proj-in.tl-click:focus-visible{background:#EEF4EF !important}
+.tl-click:focus-visible{outline:2px solid var(--accent,#1E4D3A);outline-offset:3px}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes popIn{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:none}}
+.pop-bg{animation:fadeIn .2s ease both}
+.pop-card{animation:popIn .28s cubic-bezier(.2,.7,.2,1) both}
+.pop-close{transition:background-color .2s ease,color .2s ease,transform .2s ease}
+.pop-close:hover,.pop-close:focus-visible{background:var(--accent,#1E4D3A) !important;color:#F6F5F0 !important;transform:rotate(90deg)}
+@media (prefers-reduced-motion: reduce){.proj-in,.tick-in,.pop-bg,.pop-card{animation:none}.tl-click,.pop-close{transition:none}}
+.tl-edge::before{content:"";position:absolute;inset:0;opacity:0;transition:opacity .25s ease;pointer-events:none;z-index:-1}
+.tl-edge-l::before{background:linear-gradient(to right,rgba(20,32,25,0.16),rgba(20,32,25,0))}
+.tl-edge-r::before{background:linear-gradient(to left,rgba(20,32,25,0.16),rgba(20,32,25,0))}
+.tl-edge:hover::before{opacity:1}
+@media (prefers-reduced-motion: reduce){.btn,.ul,.langopt,.hb,.tl-btn{transition:none}.btn:active{transform:none}}
+</style>
+</helmet>
+
+<div style="--accent: {{accent}}; background: #F6F5F0; color: #142019; font-family: 'Inter', system-ui, sans-serif; font-size: 17px; line-height: 1.6; min-height: 100vh">
+
+  <!-- NAV -->
+  <header style="position: sticky; top: 0; z-index: 10; background: rgba(246,245,240,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid #DEE2DA">
+    <nav aria-label="Main" style="max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+      <a href="#top" style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 22px; text-decoration: none; color: #142019; display: flex; align-items: center; gap: 10px">
+        <span style="display: inline-flex; width: 36px; height: 36px; border-radius: 10px; background: {{accent}}; color: #F6F5F0; align-items: center; justify-content: center; font-size: 16px">JM</span>
+        Jan Moran Ricardo
+      </a>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 22px; font-size: 15px; font-weight: 500">
+        <a href="#about" class="ul" style="color: #3E4A42; text-decoration: none; padding: 10px 0">About</a>
+        <a href="#experience" class="ul" style="color: #3E4A42; text-decoration: none; padding: 10px 0">Experience</a>
+        <a href="#projects" class="ul" style="color: #3E4A42; text-decoration: none; padding: 10px 0">Projects</a>
+        <a href="#achievements" class="ul" style="color: #3E4A42; text-decoration: none; padding: 10px 0">Achievements</a>
+        <a href="#skills" class="ul" style="color: #3E4A42; text-decoration: none; padding: 10px 0">Skills</a>
+        <a href="#gallery" class="ul" style="color: #3E4A42; text-decoration: none; padding: 10px 0">Gallery</a>
+        <a href="#contact" class="btn btn-primary" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 999px; background: {{accent}}; color: #F6F5F0; text-decoration: none; font-weight: 600">Contact</a>
+        <div style="position: relative">
+          <button type="button" class="langbtn" aria-haspopup="true" aria-expanded="{{langOpen}}" aria-label="Language: {{langName}}" onClick="{{toggleLang}}" style="min-height: 44px; min-width: 44px; padding: 0 4px; border: none; background: transparent; color: #142019; font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; cursor: pointer">
+            <span class="ul {{langUl}}">{{langCode}}</span>
+            <sc-if value="{{langOpen}}" hint-placeholder-val="{{ false }}">
+              <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 15 6-6 6 6"></path></svg>
+            </sc-if>
+            <sc-if value="{{langClosed}}" hint-placeholder-val="{{ true }}">
+              <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg>
+            </sc-if>
+          </button>
+          <sc-if value="{{langOpen}}" hint-placeholder-val="{{ false }}">
+            <ul aria-label="Choose language" style="position: absolute; right: 0; top: calc(100% + 10px); z-index: 20; margin: 0; padding: 6px; list-style: none; width: 168px; background: #FFFFFF; border: 1px solid #DEE2DA; border-radius: 14px; box-shadow: 0 14px 36px rgba(20,32,25,0.14)">
+              <sc-for list="{{langs}}" as="l" hint-placeholder-count="5">
+                <li>
+                  <button type="button" class="langopt" aria-pressed="{{l.selected}}" onClick="{{l.pick}}" style="width: 100%; min-height: 44px; display: flex; align-items: center; gap: 12px; padding: 0 12px; border: none; border-radius: 10px; background: {{l.bg}}; color: #142019; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 500; text-align: left; cursor: pointer">
+                    <span style="width: 24px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{accent}}">{{l.code}}</span>
+                    <span style="flex: 1">{{l.name}}</span>
+                  </button>
+                </li>
+              </sc-for>
+            </ul>
+          </sc-if>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section id="top" style="position: relative; box-sizing: border-box; max-width: 1200px; min-height: clamp(620px, calc(100vh - 73px), 960px); margin: 0 auto; padding: 56px 24px 112px; display: flex; flex-wrap: wrap; align-items: center; align-content: center; gap: 64px">
+    <div style="flex: 1 1 520px; min-width: 0">
+      <p style="margin: 0 0 20px; font-family: 'JetBrains Mono', monospace; font-size: 14px; letter-spacing: 0.04em; color: {{accent}}; display: flex; align-items: center; gap: 10px">
+        <span aria-hidden="true" style="display: inline-block; width: 28px; height: 2px; background: {{accent}}"></span>
+        Telecom &amp; Computer Engineer · Entrepreneur
+      </p>
+      <h1 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(52px, 7.6vw, 108px); line-height: 0.95; letter-spacing: -0.03em">Jan Moran<br><span style="color: {{accent}}">Ricardo</span></h1>
+      <p style="margin: 28px 0 0; max-width: 540px; font-size: 20px; line-height: 1.55; color: #3E4A42">I turn high-level engineering concepts into tangible products that solve real-world problems — from satellite-tracking antennas to a startup of my own.</p>
+      <div style="margin-top: 40px; min-height: 64px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px">
+        <a href="mailto:jan.moran.r@gmail.com" class="btn hb hb-pill" style="display: inline-flex; align-items: center; gap: 10px; min-height: 52px; border: 1.5px solid {{accent}}; padding: 0 26px; border-radius: 999px; background: {{accent}}; color: #F6F5F0; font-weight: 600; font-size: 16px; text-decoration: none">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg>
+          Contact me
+        </a>
+        <a href="/_blob/e8e460a9ab660128026d34be3f372de4" download="Jan_Moran_CV.pdf" class="btn hb hb-pill" style="display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 26px; border-radius: 999px; border: 1.5px solid #142019; color: #142019; font-weight: 600; font-size: 16px; text-decoration: none">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"></path><path d="m7 10 5 5 5-5"></path><path d="M5 20h14"></path></svg>
+          Download CV
+        </a>
+        <span aria-hidden="true" style="width: 1px; height: 32px; background: #C9D0C7; margin: 0 6px"></span>
+        <a href="https://github.com/Morgan1420" aria-label="GitHub" class="btn hb hb-circle" style="width: 52px; height: 52px; border-radius: 50%; border: 1.5px solid #142019; background: #FFFFFF; color: #142019; display: inline-flex; align-items: center; justify-content: center">
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 8-4 4 4 4"></path><path d="m16 8 4 4-4 4"></path><path d="m14 4-4 16"></path></svg>
+        </a>
+        <a href="https://linkedin.com/in/jan-moran" aria-label="LinkedIn" class="btn hb hb-circle" style="width: 52px; height: 52px; border-radius: 50%; border: 1.5px solid #142019; background: #FFFFFF; color: #142019; display: inline-flex; align-items: center; justify-content: center">
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+        </a>
+        <a href="#" aria-label="YouTube" class="btn hb hb-circle" style="width: 52px; height: 52px; border-radius: 50%; border: 1.5px solid #142019; background: #FFFFFF; color: #142019; display: inline-flex; align-items: center; justify-content: center">
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="m10 8.5 5 3.5-5 3.5z"></path></svg>
+        </a>
+      </div>
+    </div>
+    <div style="flex: 0 1 400px; min-width: 260px; position: relative; margin: 0 auto">
+      <div aria-hidden="true" style="position: absolute; inset: 24px -24px -24px 24px; border-radius: 28px; background: {{accent}}"></div>
+      <img src="/_blob/75a3dc9404a527939d12519f67da783f" alt="Portrait of Jan Moran" style="position: relative; display: block; width: 100%; aspect-ratio: 519 / 589; object-fit: cover; border-radius: 28px; background: #E6EEE8">
+      <div style="position: absolute; left: -20px; bottom: 36px; background: #FFFFFF; border: 1px solid #DEE2DA; border-radius: 14px; padding: 12px 16px; display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; box-shadow: 0 8px 24px rgba(20,32,25,0.08)">
+        <span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #2F8F5B"></span>
+        Open to opportunities
+      </div>
+    </div>
+    <a href="#about" style="position: absolute; left: 50%; bottom: 24px; transform: translateX(-50%); display: inline-flex; flex-direction: column; align-items: center; gap: 4px; min-height: 44px; color: #4A564E; text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase">Scroll
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"></path><path d="m6 13 6 6 6-6"></path></svg>
+    </a>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" style="background: #FFFFFF; border-top: 1px solid #DEE2DA; border-bottom: 1px solid #DEE2DA">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 72px 24px">
+    <p style="margin: 0 0 20px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{accent}}">01 — About me</p>
+    <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 48px">
+      <div style="flex: 1.5 1 480px; min-width: 0">
+        <h2 style="margin: 0 0 22px; font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(32px, 3.8vw, 46px); line-height: 1.08; letter-spacing: -0.02em">Dual engineer <span style="color: {{accent}}">&amp; entrepreneur</span></h2>
+        <p style="margin: 0 0 14px; max-width: 600px; font-size: 17px; line-height: 1.7; color: #3E4A42">I'm a Telecommunications and Computer Engineer driven by empirical learning and proactive problem-solving. My work spans the whole stack of a telecom system — rotating antennas, embedded systems, software-defined radios and signal processing — up to the web apps that show the data.</p>
+        <p style="margin: 0; max-width: 600px; font-size: 17px; line-height: 1.7; color: #3E4A42">Alongside engineering, I'm co-founding BitSpace, a digital-health startup that has taught me to think like a founder, not just a builder. And you'll usually find me at a hackathon, pitching an idea to anyone who will listen.</p>
+      </div>
+      <div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+        <div style="background: #F6F5F0; border-radius: 20px; padding: 22px 24px 8px">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 6px">
+            <p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #4A564E; text-transform: uppercase; letter-spacing: 0.06em">Education</p>
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; padding: 4px 10px; border-radius: 999px; border: 1px solid {{accent}}; color: {{accent}}">Dual degree</span>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 14px; padding: 16px 0; border-bottom: 1px solid #DEE2DA">
+            <span aria-hidden="true" style="flex: 0 0 auto; width: 40px; height: 40px; border-radius: 12px; background: {{accent}}; color: #F6F5F0; display: inline-flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12v9"></path><circle cx="12" cy="10" r="2"></circle><path d="M8.5 6.5a5 5 0 0 0 0 7"></path><path d="M15.5 6.5a5 5 0 0 1 0 7"></path></svg></span>
+            <div style="min-width: 0">
+              <p style="margin: 0; font-weight: 600; font-size: 17px; line-height: 1.35">Telecommunications Engineering</p>
+              <p style="margin: 3px 0 0; font-size: 14px; color: #4A564E">Universitat Autònoma de Barcelona · 2021 – 2026</p>
+            </div>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 14px; padding: 16px 0">
+            <span aria-hidden="true" style="flex: 0 0 auto; width: 40px; height: 40px; border-radius: 12px; background: {{accent}}; color: #F6F5F0; display: inline-flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"></rect><path d="M8 20h8"></path><path d="M12 16v4"></path></svg></span>
+            <div style="min-width: 0">
+              <p style="margin: 0; font-weight: 600; font-size: 17px; line-height: 1.35">Computer Engineering</p>
+              <p style="margin: 3px 0 0; font-size: 14px; color: #4A564E">Universitat Autònoma de Barcelona · 2021 – 2026</p>
+            </div>
+          </div>
+        </div>
+        <div style="background: #F6F5F0; border-radius: 16px; padding: 18px 20px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 16px">
+          <p style="margin: 0; flex: 0 0 96px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #4A564E; text-transform: uppercase; letter-spacing: 0.06em">Languages</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px 16px; font-family: 'JetBrains Mono', monospace; font-size: 15px">
+            <abbr title="Catalan — native" style="text-decoration: none; font-weight: 700; color: #142019">CA</abbr>
+            <abbr title="Spanish — native" style="text-decoration: none; font-weight: 700; color: #142019">ES</abbr>
+            <abbr title="English — C1" style="text-decoration: none; font-weight: 700; color: #142019">EN</abbr>
+            <abbr title="Lithuanian — A1" style="text-decoration: none; font-weight: 400; color: #4A564E">LT</abbr>
+            <abbr title="German — A1" style="text-decoration: none; font-weight: 400; color: #4A564E">DE</abbr>
+          </div>
+          <p style="margin: 0; flex: 1 1 100%; padding-top: 12px; border-top: 1px solid #DEE2DA; display: flex; align-items: flex-start; gap: 8px; font-size: 12px; line-height: 1.5; color: #4A564E"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto; margin-top: 2px"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg><span>This site is available in every language I speak</span></p>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE SLIDER -->
+  <section id="experience" style="position: relative; padding: 96px 0 0">
+    <!-- The timeline scroller clips anything outside it, so it gets 28px of top room for hover lift and shadows -->
+    <div style="max-width: 1200px; margin: 0 auto 20px; padding: 0 24px">
+      <p style="margin: 0 0 12px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{accent}}">02 — Experience</p>
+      <h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(36px, 4.5vw, 52px); line-height: 1.05; letter-spacing: -0.02em">Where I've worked</h2>
+    </div>
+
+    <div class="tl-vp" ref="{{vpRef}}" onScroll="{{onScroll}}" tabindex="0" role="region" aria-label="Studies and work experience timeline, scrollable" onPointerDown="{{dragStart}}" onPointerMove="{{dragMove}}" onPointerUp="{{dragEnd}}" onPointerCancel="{{dragEnd}}" style="overflow-x: auto; overflow-y: hidden; padding-top: 28px; padding-bottom: 72px; outline-offset: -4px; cursor: {{dragCursor}}; user-select: none; -webkit-user-select: none">
+      <div style="position: relative; width: {{tlW}}px; height: 372px">
+
+        <!-- Upper lanes: studies + BitSpace (fade back while a work box is hovered) -->
+        <sc-for list="{{lanes}}" as="b" hint-placeholder-count="3">
+          <button type="button" class="tl-click" ref="{{b.boxRef}}" onClick="{{b.open}}" aria-label="{{b.aria}}" style="position: absolute; left: {{b.x}}px; top: {{b.y}}px; width: {{b.w}}px; height: 40px; box-sizing: border-box; margin: 0; padding: 0; border: none; background: transparent; font: inherit; text-align: left; color: #142019; overflow: hidden; opacity: {{laneOpacity}}; transition: opacity .25s ease, filter .2s ease, translate .2s ease">
+            <span aria-hidden="true" class="tl-layer" style="position: absolute; inset: 0; transition: border-color .2s ease, filter .2s ease; box-sizing: border-box; border-radius: {{b.radius}}; background: {{b.bg}}; border: 1.5px solid {{b.border}}; border-right-width: {{b.borderR}}; -webkit-mask-image: {{b.mask}}; mask-image: {{b.mask}}"></span>
+            <span ref="{{b.tRef}}" style="position: absolute; left: 16px; top: 0; height: 40px; display: flex; align-items: center; font-size: 14px; font-weight: 600; white-space: nowrap">{{b.left}}</span>
+            <span ref="{{b.lRef}}" style="position: absolute; right: {{b.rightInset}}px; top: 0; height: 40px; display: flex; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: {{accent}}; white-space: nowrap">{{b.right}}</span>
+          </button>
+        </sc-for>
+
+        <!-- Projects of the hovered work box -->
+        <sc-for list="{{projs}}" as="pr" hint-placeholder-count="0">
+          <button type="button" ref="{{pr.boxRef}}" class="proj-in tl-click" onClick="{{pr.open}}" onMouseEnter="{{pr.enter}}" onMouseLeave="{{pr.leave}}" aria-label="{{pr.aria}}" style="margin: 0; padding: 0; font: inherit; text-align: left; transition: background-color .2s ease, filter .2s ease, translate .2s ease; position: absolute; left: {{pr.x}}px; top: 8px; width: {{pr.w}}px; height: 48px; box-sizing: border-box; border-radius: 14px; background: #FFFFFF; border: 1.5px solid {{accent}}; color: #142019; overflow: hidden; box-shadow: 0 8px 20px rgba(20,32,25,0.10); z-index: 2">
+            <span ref="{{pr.tRef}}" style="position: absolute; left: 14px; top: 0; height: 45px; max-width: calc(100% - {{pr.durSpace}}px); display: flex; align-items: center; font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{pr.name}}</span>
+            <span ref="{{pr.lRef}}" style="position: absolute; right: 14px; top: 0; height: 45px; display: flex; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: {{accent}}; white-space: nowrap">{{pr.dur}}</span>
+          </button>
+        </sc-for>
+
+        <!-- Work lane -->
+        <sc-for list="{{boxes}}" as="j" hint-placeholder-count="3">
+          <article ref="{{j.boxRef}}" onMouseEnter="{{j.enter}}" onMouseLeave="{{j.leave}}" style="position: absolute; left: {{j.x}}px; top: {{j.top}}px; width: {{j.w}}px; height: {{j.h}}px; box-sizing: border-box; border-radius: 22px; background: {{j.bg}}; color: {{j.fg}}; border: 1.5px solid {{j.border}}; overflow: hidden; z-index: {{j.z}}; box-shadow: {{j.shadow}}; transition: top .3s ease, height .3s ease, box-shadow .3s ease">
+            <div ref="{{j.tRef}}" style="position: absolute; left: 22px; top: 0; padding-top: 38px; max-width: min(480px, calc(100% - 140px))">
+              <p style="margin: 0 0 6px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.04em; opacity: 0.8">{{j.org}}</p>
+              <h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 26px; line-height: 1.1; letter-spacing: -0.01em">{{j.role}}</h3>
+              <p style="margin: 22px 0 0; font-size: 15px; line-height: 1.55; opacity: {{j.descOpacity}}; transition: opacity .25s ease .05s">{{j.desc}}</p>
+            </div>
+            <div ref="{{j.lRef}}" style="position: absolute; right: 22px; top: 28px; width: 72px; height: 72px; border-radius: 16px; background: {{j.logoBg}}; color: {{j.logoFg}}; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 11px">[Logo]</div>
+          </article>
+        </sc-for>
+
+        <!-- Gap labels -->
+        <sc-for list="{{gaps}}" as="g" hint-placeholder-count="1">
+          <span style="position: absolute; left: {{g.x}}px; top: 218px; transform: translateX(-50%); font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #4A564E; white-space: nowrap">{{g.label}}</span>
+        </sc-for>
+
+        <!-- Future -->
+        <div style="position: absolute; left: {{futureX}}px; top: 160px; height: 132px; padding-left: 20px; display: flex; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: {{accent}}; white-space: nowrap">Future →</div>
+
+        <!-- Axis (moves down while a box is expanded) -->
+        <div style="position: absolute; left: 0; top: 0; width: {{tlW}}px; height: 0; transform: translateY({{axisShift}}px); transition: transform .3s ease">
+          <sc-for list="{{lines}}" as="ln" hint-placeholder-count="5">
+            <span aria-hidden="true" style="position: absolute; left: {{ln.x}}px; top: 306px; width: {{ln.w}}px; height: 0; border-top: 2px {{ln.kind}} {{ln.color}}"></span>
+          </sc-for>
+          <sc-for list="{{ticks}}" as="t" hint-placeholder-count="5">
+            <span class="{{t.cls}}" style="position: absolute; left: {{t.x}}px; top: 299px; width: 0; height: 0">
+              <span aria-hidden="true" style="position: absolute; left: -1px; top: 0; width: 2px; height: 16px; background: {{t.color}}"></span>
+              <span style="position: absolute; left: 0; top: {{t.ly}}px; transform: translateX({{t.tx}}); font-family: 'JetBrains Mono', monospace; font-size: 12px; color: {{t.lc}}; white-space: nowrap">{{t.label}}</span>
+            </span>
+          </sc-for>
+          <sc-for list="{{pills}}" as="p" hint-placeholder-count="3">
+            <span style="position: absolute; left: {{p.x}}px; top: 318px; transform: translateX(-50%); padding: 2px 10px; border-radius: 999px; background: #E6EEE8; color: {{accent}}; font-family: 'JetBrains Mono', monospace; font-size: 12px; white-space: nowrap">{{p.label}}</span>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+      <sc-if value="{{showBack}}" hint-placeholder-val="{{ true }}">
+        <div class="tl-edge tl-edge-l" onMouseEnter="{{hoverBack}}" onMouseLeave="{{stopHover}}" style="position: absolute; left: 0; top: 0; bottom: 0; width: max(112px, 12%)">
+          <button type="button" class="tl-btn" aria-label="Scroll timeline back" onClick="{{stepBack}}" style="position: absolute; left: 24px; bottom: 192px; width: 52px; height: 52px; border-radius: 50%; border: 1.5px solid #142019; background: #FFFFFF; color: #142019; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(20,32,25,0.12)">
+            <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"></path></svg>
+          </button>
+        </div>
+      </sc-if>
+      <sc-if value="{{showFwd}}" hint-placeholder-val="{{ false }}">
+        <div class="tl-edge tl-edge-r" onMouseEnter="{{hoverFwd}}" onMouseLeave="{{stopHover}}" style="position: absolute; right: 0; top: 0; bottom: 0; width: max(112px, 12%)">
+          <button type="button" class="tl-btn" aria-label="Scroll timeline forward" onClick="{{stepFwd}}" style="position: absolute; right: 24px; bottom: 192px; width: 52px; height: 52px; border-radius: 50%; border: 1.5px solid #142019; background: #FFFFFF; color: #142019; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(20,32,25,0.12)">
+            <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg>
+          </button>
+        </div>
+      </sc-if>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" style="background: #FFFFFF; border-top: 1px solid #DEE2DA; border-bottom: 1px solid #DEE2DA">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 96px 24px">
+      <p style="margin: 0 0 12px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{accent}}">03 — Projects</p>
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 40px">
+        <h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(36px, 4.5vw, 52px); line-height: 1.05; letter-spacing: -0.02em">Things I've built</h2>
+        <a href="https://github.com/Morgan1420" style="font-weight: 600; font-size: 16px; display: inline-flex; align-items: center; gap: 8px; min-height: 44px">More on GitHub
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg>
+        </a>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px">
+
+        <article style="border: 1px solid #DEE2DA; border-radius: 22px; overflow: hidden; display: flex; flex-direction: column; background: #F6F5F0">
+          <div style="aspect-ratio: 16 / 10; background: #E6EEE8; display: flex; align-items: center; justify-content: center; color: #4A564E; font-family: 'JetBrains Mono', monospace; font-size: 13px">[Project image]</div>
+          <div style="padding: 26px; display: flex; flex-direction: column; gap: 12px; flex: 1">
+            <p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: {{accent}}; text-transform: uppercase; letter-spacing: 0.06em">Embedded · Satellite tech</p>
+            <h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 26px; line-height: 1.15">Rotatory antenna system</h3>
+            <p style="margin: 0; color: #3E4A42; font-size: 16px; flex: 1">A modular rotating structure, programmed to track LEO satellites with highly directive antennas.</p>
+            <a href="https://github.com/Morgan1420" style="font-weight: 600; font-size: 15px; min-height: 44px; display: inline-flex; align-items: center">View project →</a>
+          </div>
+        </article>
+
+        <article style="border: 1px solid #DEE2DA; border-radius: 22px; overflow: hidden; display: flex; flex-direction: column; background: #F6F5F0">
+          <div style="aspect-ratio: 16 / 10; background: {{accent}}; display: flex; align-items: center; justify-content: center; color: #F6F5F0; font-family: 'JetBrains Mono', monospace; font-size: 13px">[Project image]</div>
+          <div style="padding: 26px; display: flex; flex-direction: column; gap: 12px; flex: 1">
+            <p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: {{accent}}; text-transform: uppercase; letter-spacing: 0.06em">App dev · Entrepreneurship</p>
+            <h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 26px; line-height: 1.15">BitSpace</h3>
+            <p style="margin: 0; color: #3E4A42; font-size: 16px; flex: 1">A startup about to launch: a mobile app that helps young adults build healthier phone-usage habits.</p>
+            <a href="https://github.com/Morgan1420" style="font-weight: 600; font-size: 15px; min-height: 44px; display: inline-flex; align-items: center">View project →</a>
+          </div>
+        </article>
+
+        <article style="border: 1px solid #DEE2DA; border-radius: 22px; overflow: hidden; display: flex; flex-direction: column; background: #F6F5F0">
+          <div style="aspect-ratio: 16 / 10; background: #E6EEE8; display: flex; align-items: center; justify-content: center; color: #4A564E; font-family: 'JetBrains Mono', monospace; font-size: 13px">[Project image]</div>
+          <div style="padding: 26px; display: flex; flex-direction: column; gap: 12px; flex: 1">
+            <p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: {{accent}}; text-transform: uppercase; letter-spacing: 0.06em">Web · SDR · GNSS</p>
+            <h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 26px; line-height: 1.15">GNSS signal dashboard</h3>
+            <p style="margin: 0; color: #3E4A42; font-size: 16px; flex: 1">A Vue web app that receives GNSS signals through software-defined radios and visualises the processed data.</p>
+            <a href="https://github.com/Morgan1420" style="font-weight: 600; font-size: 15px; min-height: 44px; display: inline-flex; align-items: center">View project →</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements" style="background: {{accent}}; color: #F6F5F0">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 96px 24px">
+      <p style="margin: 0 0 12px; font-family: 'JetBrains Mono', monospace; font-size: 13px; opacity: 0.85">04 — Achievements</p>
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 40px">
+        <h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(36px, 4.5vw, 52px); line-height: 1.05; letter-spacing: -0.02em">Awards &amp; hackathons</h2>
+        <p style="margin: 0; max-width: 360px; font-size: 15px; opacity: 0.85">[One line on what competing has taught you]</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px">
+        <article style="background: #F6F5F0; color: #142019; border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+          <p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: {{accent}}; text-transform: uppercase; letter-spacing: 0.06em">Winner · 2025</p>
+          <h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 30px; line-height: 1.1">iFest</h3>
+          <p style="margin: 0; font-size: 15px; color: #4A564E">[What you built and what you won — one line]</p>
+        </article>
+        <article style="background: #F6F5F0; color: #142019; border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+          <p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: {{accent}}; text-transform: uppercase; letter-spacing: 0.06em">Winner · 2025</p>
+          <h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 30px; line-height: 1.1">HackEPS Lleida</h3>
+          <p style="margin: 0; font-size: 15px; color: #4A564E">[What you built and what you won — one line]</p>
+        </article>
+        <article style="background: #F6F5F0; color: #142019; border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+          <p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: {{accent}}; text-transform: uppercase; letter-spacing: 0.06em">Winner · 2024</p>
+          <h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 30px; line-height: 1.1">Innovation Day</h3>
+          <p style="margin: 0; font-size: 15px; color: #4A564E">[What you built and what you won — one line]</p>
+        </article>
+      </div>
+      <div style="margin-top: 40px; padding-top: 28px; border-top: 1px solid rgba(246,245,240,0.25); display: flex; flex-wrap: wrap; align-items: center; gap: 16px 32px">
+        <p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; opacity: 0.85">Also competed in</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px">
+          <span style="padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(246,245,240,0.4); font-size: 15px">HackUPC ’22–’26</span>
+          <span style="padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(246,245,240,0.4); font-size: 15px">UAB the Hack ’24–’25</span>
+          <span style="padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(246,245,240,0.4); font-size: 15px">AESSBot UPC ’26</span>
+          <span style="padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(246,245,240,0.4); font-size: 15px">HP CodeWars ’19</span>
+          <span style="padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(246,245,240,0.4); font-size: 15px">Erasmus for Young Entrepreneurs ’26–’27</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" style="max-width: 1200px; margin: 0 auto; padding: 96px 24px">
+    <p style="margin: 0 0 12px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{accent}}">05 — Skills</p>
+    <h2 style="margin: 0 0 40px; font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(36px, 4.5vw, 52px); line-height: 1.05; letter-spacing: -0.02em">What I work with</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px">
+      <div style="background: {{accent}}; color: #F6F5F0; border-radius: 22px; padding: 32px">
+        <h3 style="margin: 0 0 6px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px">Core strengths</h3>
+        <p style="margin: 0 0 22px; font-size: 15px; opacity: 0.85">What I use day to day.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px">
+          <span style="padding: 8px 14px; border-radius: 999px; background: rgba(246,245,240,0.14); font-size: 15px; font-weight: 500">GNU/Linux</span>
+          <span style="padding: 8px 14px; border-radius: 999px; background: rgba(246,245,240,0.14); font-size: 15px; font-weight: 500">Git &amp; GitHub</span>
+          <span style="padding: 8px 14px; border-radius: 999px; background: rgba(246,245,240,0.14); font-size: 15px; font-weight: 500">C / C++</span>
+          <span style="padding: 8px 14px; border-radius: 999px; background: rgba(246,245,240,0.14); font-size: 15px; font-weight: 500">Python</span>
+          <span style="padding: 8px 14px; border-radius: 999px; background: rgba(246,245,240,0.14); font-size: 15px; font-weight: 500">Web development</span>
+          <span style="padding: 8px 14px; border-radius: 999px; background: rgba(246,245,240,0.14); font-size: 15px; font-weight: 500">React Native</span>
+          <span style="padding: 8px 14px; border-radius: 999px; background: rgba(246,245,240,0.14); font-size: 15px; font-weight: 500">Public pitching</span>
+          <span style="padding: 8px 14px; border-radius: 999px; background: rgba(246,245,240,0.14); font-size: 15px; font-weight: 500">Entrepreneurship</span>
+        </div>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #DEE2DA; border-radius: 22px; padding: 32px">
+        <h3 style="margin: 0 0 6px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px">Also worked with</h3>
+        <p style="margin: 0 0 22px; font-size: 15px; color: #4A564E">Hands-on experience from projects and internships.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px">
+          <span style="padding: 8px 14px; border-radius: 999px; background: #E6EEE8; color: #142019; font-size: 15px; font-weight: 500">MATLAB</span>
+          <span style="padding: 8px 14px; border-radius: 999px; background: #E6EEE8; color: #142019; font-size: 15px; font-weight: 500">Signal processing</span>
+          <span style="padding: 8px 14px; border-radius: 999px; background: #E6EEE8; color: #142019; font-size: 15px; font-weight: 500">TensorFlow</span>
+          <span style="padding: 8px 14px; border-radius: 999px; background: #E6EEE8; color: #142019; font-size: 15px; font-weight: 500">Electronics</span>
+          <span style="padding: 8px 14px; border-radius: 999px; background: #E6EEE8; color: #142019; font-size: 15px; font-weight: 500">PCB fabrication &amp; soldering</span>
+          <span style="padding: 8px 14px; border-radius: 999px; background: #E6EEE8; color: #142019; font-size: 15px; font-weight: 500">Embedded systems</span>
+          <span style="padding: 8px 14px; border-radius: 999px; background: #E6EEE8; color: #142019; font-size: 15px; font-weight: 500">Transmission-line theory</span>
+          <span style="padding: 8px 14px; border-radius: 999px; background: #E6EEE8; color: #142019; font-size: 15px; font-weight: 500">SDRs</span>
+          <span style="padding: 8px 14px; border-radius: 999px; background: #E6EEE8; color: #142019; font-size: 15px; font-weight: 500">Ethical hacking</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" style="background: #FFFFFF; border-top: 1px solid #DEE2DA">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 96px 24px">
+      <p style="margin: 0 0 12px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{accent}}">06 — Gallery</p>
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 40px">
+        <h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(36px, 4.5vw, 52px); line-height: 1.05; letter-spacing: -0.02em">Hackathons, builds &amp; moments</h2>
+        <p style="margin: 0; max-width: 360px; color: #4A564E; font-size: 15px">Winner at iFest 2025, HackEPS Lleida 2025 and Innovation Day 2024 — plus five HackUPC editions.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); grid-auto-rows: 220px; gap: 16px">
+        <figure style="margin: 0; grid-row: span 2; border-radius: 20px; background: {{accent}}; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; color: #F6F5F0; font-family: 'JetBrains Mono', monospace; font-size: 13px">[Photo]
+          <figcaption style="position: absolute; left: 16px; bottom: 16px; background: #FFFFFF; color: #142019; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; padding: 8px 12px; border-radius: 10px">iFest 2025 — winning team</figcaption>
+        </figure>
+        <figure style="margin: 0; border-radius: 20px; background: #E6EEE8; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; color: #4A564E; font-family: 'JetBrains Mono', monospace; font-size: 13px">[Photo]
+          <figcaption style="position: absolute; left: 16px; bottom: 16px; background: #FFFFFF; color: #142019; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; padding: 8px 12px; border-radius: 10px">HackUPC</figcaption>
+        </figure>
+        <figure style="margin: 0; border-radius: 20px; background: #D6E2D9; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; color: #4A564E; font-family: 'JetBrains Mono', monospace; font-size: 13px">[Photo]
+          <figcaption style="position: absolute; left: 16px; bottom: 16px; background: #FFFFFF; color: #142019; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; padding: 8px 12px; border-radius: 10px">Antenna rotator build</figcaption>
+        </figure>
+        <figure style="margin: 0; grid-column: span 2; border-radius: 20px; background: #E6EEE8; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; color: #4A564E; font-family: 'JetBrains Mono', monospace; font-size: 13px">[Photo]
+          <figcaption style="position: absolute; left: 16px; bottom: 16px; background: #FFFFFF; color: #142019; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; padding: 8px 12px; border-radius: 10px">Pitching BitSpace</figcaption>
+        </figure>
+        <figure style="margin: 0; border-radius: 20px; background: #D6E2D9; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; color: #4A564E; font-family: 'JetBrains Mono', monospace; font-size: 13px">[Photo]
+          <figcaption style="position: absolute; left: 16px; bottom: 16px; background: #FFFFFF; color: #142019; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; padding: 8px 12px; border-radius: 10px">HackEPS Lleida 2025</figcaption>
+        </figure>
+        <figure style="margin: 0; border-radius: 20px; background: #E6EEE8; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; color: #4A564E; font-family: 'JetBrains Mono', monospace; font-size: 13px">[Photo]
+          <figcaption style="position: absolute; left: 16px; bottom: 16px; background: #FFFFFF; color: #142019; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; padding: 8px 12px; border-radius: 10px">Lab at IEEC</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT (placeholder) -->
+  <section id="contact" style="background: {{accent}}; color: #F6F5F0">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 96px 24px 40px">
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 32px">
+        <div style="flex: 1 1 480px">
+          <p style="margin: 0 0 12px; font-family: 'JetBrains Mono', monospace; font-size: 13px; opacity: 0.85">07 — Contact</p>
+          <h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(40px, 6vw, 76px); line-height: 1; letter-spacing: -0.02em">Let's build<br>something.</h2>
+          <p style="margin: 20px 0 0; font-size: 18px; opacity: 0.9; max-width: 460px">Internships, collaborations, hackathon teams or just a good idea — my inbox is open.</p>
+        </div>
+        <a href="mailto:jan.moran.r@gmail.com" class="btn btn-light" style="display: inline-flex; align-items: center; gap: 10px; min-height: 56px; padding: 0 28px; border-radius: 999px; background: #F6F5F0; color: #142019; font-weight: 600; font-size: 17px; text-decoration: none">jan.moran.r@gmail.com
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg>
+        </a>
+      </div>
+      <div style="margin-top: 56px; min-height: 280px; border: 1.5px dashed rgba(246,245,240,0.5); border-radius: 22px; padding: 32px; display: flex; align-items: center; justify-content: center; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 14px">[Contact section — form, details and availability, to be designed]</div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background: {{accent}}; color: #F6F5F0">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px 40px">
+      <div style="margin-top: 0; padding-top: 24px; border-top: 1px solid rgba(246,245,240,0.25); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-family: 'JetBrains Mono', monospace; font-size: 13px">
+        <span>© 2026 Jan Moran</span>
+        <div style="display: flex; flex-wrap: wrap; gap: 20px">
+          <a href="https://github.com/Morgan1420" style="color: #F6F5F0">GitHub</a>
+          <a href="https://linkedin.com/in/jan-moran" style="color: #F6F5F0">LinkedIn</a>
+          <a href="https://jan-moran.com" style="color: #F6F5F0">jan-moran.com</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Pop-up (projects / education) -->
+  <sc-if value="{{popOpen}}" hint-placeholder-val="{{ false }}">
+    <div style="position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 24px; box-sizing: border-box">
+      <button type="button" class="pop-bg" tabindex="-1" aria-label="Close pop-up" onClick="{{closePop}}" style="position: absolute; inset: 0; margin: 0; padding: 0; border: none; background: rgba(20,32,25,0.45); backdrop-filter: blur(4px); cursor: pointer"></button>
+      <div class="pop-card" ref="{{popRef}}" role="dialog" aria-modal="true" aria-labelledby="pop-title" tabindex="-1" onKeyDown="{{popKey}}" style="position: relative; width: min(1100px, 100%); height: min(760px, calc(100vh - 48px)); box-sizing: border-box; overflow: auto; background: #F6F5F0; color: #142019; border-radius: 28px; padding: clamp(28px, 5vw, 56px); display: flex; flex-direction: column; gap: 28px; box-shadow: 0 30px 80px rgba(20,32,25,0.30); outline: none">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 24px">
+          <div style="min-width: 0">
+            <span style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{accent}}; padding: 6px 12px; border: 1px solid {{accent}}; border-radius: 999px">{{popKind}}</span>
+            <h2 id="pop-title" style="margin: 20px 0 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(36px, 5vw, 64px); line-height: 1.02; letter-spacing: -0.02em">{{popTitle}}</h2>
+            <p style="margin: 12px 0 0; font-size: 17px; color: #4A564E">{{popSub}}</p>
+          </div>
+          <button type="button" class="pop-close" aria-label="Close" onClick="{{closePop}}" style="flex: 0 0 auto; width: 52px; height: 52px; border-radius: 50%; border: 1.5px solid #142019; background: #FFFFFF; color: #142019; cursor: pointer; display: inline-flex; align-items: center; justify-content: center">
+            <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12"></path><path d="M18 6 6 18"></path></svg>
+          </button>
+        </div>
+        <div style="flex: 1; min-height: 240px; border: 1.5px dashed #A9B3AA; border-radius: 22px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; text-align: center; padding: 32px">
+          <span aria-hidden="true" style="width: 56px; height: 56px; border-radius: 16px; background: #E6EEE8; color: {{accent}}; display: inline-flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"></path><path d="M5 20V9l7-5 7 5v11"></path><path d="M9 20v-6h6v6"></path></svg></span>
+          <p style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 28px; font-weight: 700">Under construction</p>
+          <p style="margin: 0; max-width: 420px; font-size: 15px; color: #4A564E">The full story — images, details and results — is coming soon.</p>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#1E4D3A","options":["#1E4D3A","#14532D","#2D5A3D","#0F3D33"]},"$preview":{"width":1440,"height":4600}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { lang: 'en', langOpen: false, atStart: false, atEnd: true, vpW: 1440, hoverJob: null, pop: null };
+    this.hoverT = null;
+    this.popEl = null;
+    this.lastFocus = null;
+    this.vp = null;
+    this.raf = null;
+    this.sl = {};
+    this.onResize = () => {
+      if (!this.vp) return;
+      const w = this.vp.clientWidth;
+      if (w && Math.abs(w - this.state.vpW) > 1) this.setState({ vpW: w });
+      else this.layoutSliders();
+    };
+  }
+  componentDidMount() {
+    window.addEventListener('resize', this.onResize);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (this.vp) this.forceUpdate(); });
+    this.t = setTimeout(() => {
+      if (!this.vp) return;
+      const w = this.vp.clientWidth || 1440;
+      this.setState({ vpW: w }, () => {
+        if (!this.vp) return;
+        this.vp.scrollLeft = this.vp.scrollWidth;
+        this.updateEdges();
+        this.layoutSliders();
+      });
+    }, 60);
+  }
+  componentDidUpdate(prevProps, prevState) {
+    this.layoutSliders();
+    if (this.state.pop && !(prevState && prevState.pop) && this.popEl) this.popEl.focus();
+    if (!this.state.pop && prevState && prevState.pop && this.lastFocus && this.lastFocus.focus) this.lastFocus.focus();
+  }
+  hoverIn(i) {
+    clearTimeout(this.hoverT);
+    if (this.state.hoverJob !== i) this.setState({ hoverJob: i });
+  }
+  hoverOut() {
+    clearTimeout(this.hoverT);
+    this.hoverT = setTimeout(() => this.setState({ hoverJob: null }), 160);
+  }
+  openPop(kind, title, sub) {
+    this.lastFocus = document.activeElement;
+    clearTimeout(this.hoverT);
+    this.setState({ pop: { kind, title, sub }, hoverJob: null });
+  }
+  // Text width in px, used to make project boxes wide enough for their titles.
+  measure(text, font) {
+    if (this._cv === undefined) {
+      try { this._cv = document.createElement('canvas').getContext('2d'); } catch (e) { this._cv = null; }
+    }
+    if (this._cv) { this._cv.font = font; return this._cv.measureText(text).width; }
+    return text.length * 8.4;
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    clearTimeout(this.t);
+    clearTimeout(this.hoverT);
+    this.stopScroll();
+  }
+  reg(key, part) {
+    return (el) => {
+      if (!this.sl[key]) this.sl[key] = {};
+      this.sl[key][part] = el;
+    };
+  }
+  // Keeps each box's left text and right element on screen while scrolling,
+  // stopping them a small gap apart instead of overlapping.
+  layoutSliders() {
+    const v = this.vp;
+    if (!v) return;
+    const vr = v.getBoundingClientRect();
+    const inset = Math.max(112, vr.width * 0.12) + 12;
+    const viewL = vr.left + inset;
+    const viewR = vr.right - inset;
+    const GAP = 24;
+    Object.keys(this.sl).forEach((k) => {
+      const it = this.sl[k];
+      if (!it.box || !it.t || !it.l || !it.box.isConnected) return;
+      const br = it.box.getBoundingClientRect();
+      const cl = it.box.clientLeft || 0;
+      const tw = it.t.offsetWidth, lw = it.l.offsetWidth;
+      const tNat = br.left + cl + it.t.offsetLeft;
+      const lNat = br.left + cl + it.l.offsetLeft;
+      let tx = Math.min(Math.max(viewL, tNat), lNat - GAP - tw);
+      tx = Math.max(tx, tNat);
+      const lx = Math.min(lNat, Math.max(viewR - lw, tx + tw + GAP));
+      it.t.style.transform = 'translateX(' + (tx - tNat) + 'px)';
+      it.l.style.transform = 'translateX(' + (lx - lNat) + 'px)';
+    });
+  }
+  updateEdges() {
+    const v = this.vp;
+    if (!v) return;
+    const atStart = v.scrollLeft <= 2;
+    const atEnd = v.scrollLeft + v.clientWidth >= v.scrollWidth - 2;
+    if (atStart !== this.state.atStart || atEnd !== this.state.atEnd) this.setState({ atStart, atEnd });
+  }
+  startScroll(dir) {
+    this.stopScroll();
+    const step = () => {
+      if (!this.vp) return;
+      this.vp.scrollLeft += dir * 7;
+      this.raf = requestAnimationFrame(step);
+    };
+    this.raf = requestAnimationFrame(step);
+  }
+  stopScroll() {
+    if (this.raf) cancelAnimationFrame(this.raf);
+    this.raf = null;
+  }
+  renderVals() {
+    // Reference copy for upcoming detail views and the projects lane (from workXP.md, reworded).
+    const xpDetails = {
+      cvc: { desc: 'A four-month internship within the Rosa Sensat programme, learning how computer-vision and AI models work — and how to build them.', projects: [{ name: 'Cloud segmentation', start: '2024-02', end: '2024-06', desc: 'A computer-vision model that segments different cloud types in multispectral Sentinel-1 and Sentinel-2 imagery.' }] },
+      ieec: { desc: 'Alongside my degrees, I worked with a university research team at IEEC, building the tools and systems behind their projects.', projects: [
+        { name: 'Signal Processing UI', start: '2024-09', end: '2025-07', desc: 'A web interface that runs fellow researchers’ processing scripts, making shared code easy to use.' },
+        { name: 'Rotatory Antenna System', start: '2025-09', end: '2026-02', desc: 'End to end: 3D-modelled hardware, part selection and firmware, C code that reads TLE data and propagates orbits with SGP4, and the web interface that controls it all.' },
+        { name: 'USRP X440 Operating Tool', start: '2026-02', end: '2026-07', desc: 'Scripts and interfaces that turn the direct-sampling USRP X440 SDR into a tool researchers can use: they enter the signal parameters, the tool works out the rest.' }
+      ] },
+      eye: { desc: 'I joined Erasmus for Young Entrepreneurs to sharpen my entrepreneurial skills and push BitSpace forward.', projects: [{ name: 'BSProof', start: '2026-07', end: '2027-01', desc: 'An app that grades supplements on scientific evidence, cutting through the noise of buying them.' }] }
+    };
+    // Timeline — oldest first. Dates are 'YYYY-MM'; end: null = ongoing. SAMPLE DATES: replace with real ones.
+    const jobs = [
+      { key: 'cvc', role: 'Computer Vision Intern', org: 'CVC · Computer Vision Center', start: '2024-02', end: '2024-06' },
+      { key: 'ieec', role: 'Engineering Intern', org: 'IEEC · Institut d’Estudis Espacials de Catalunya', start: '2024-09', end: '2026-07' },
+      { key: 'eye', role: 'Young Entrepreneur', org: 'Erasmus for Young Entrepreneurs', start: '2026-07', end: '2027-01' }
+    ];
+    const MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const toIdx = (s) => { const p = s.split('-'); return +p[0] * 12 + (+p[1] - 1); };
+    const now = new Date();
+    const nowIdx = now.getFullYear() * 12 + now.getMonth();
+    const fmt = (i) => MON[i % 12] + ' ' + Math.floor(i / 12);
+    const durTxt = (m) => {
+      const y = Math.floor(m / 12), r = m % 12;
+      const parts = [];
+      if (y) parts.push(y + (y === 1 ? ' yr' : ' yrs'));
+      if (r) parts.push(r + (r === 1 ? ' mo' : ' mos'));
+      return parts.join(' ') || '< 1 mo';
+    };
+    // Studies lanes (shown above the work lane). SAMPLE MONTHS: adjust to the real start/end.
+    const studyData = [
+      { left: 'Engineering Student', right: 'Telecommunications Engineering · UAB', start: '2021-09', end: '2026-07' },
+      { left: 'Engineering Student', right: 'Computer Engineering · UAB', start: '2021-09', end: '2026-07' }
+    ];
+    const accent = this.props.accent ?? '#1E4D3A';
+    const vpW = this.state.vpW || 1440;
+    const P = 96;                                                    // side padding of the track
+    const jobW = (m) => Math.max(340, vpW * (0.14 + 0.032 * m));     // ~6 mos ≈ 1/3 screen, ~2 yrs ≈ 0.9 screen
+    const idleW = (m) => Math.max(44, vpW * 0.016 * m);              // months with no work, compressed
+    const SEAM = 14;                                                 // space between back-to-back boxes
+    const PROJ_GAP = 6;                                              // space between neighbouring project boxes
+    const EDGE = 18;                                                 // inset where a project shares a work box's start/end
+    const projNeed = (p) => {
+      const pm = Math.max(1, toIdx(p.end) - toIdx(p.start));
+      const nameW = this.measure(p.name, "600 14px Inter, system-ui, sans-serif");
+      const durW = this.measure(durTxt(pm), "12px 'JetBrains Mono', monospace");
+      return Math.ceil(14 + nameW + 20 + durW + 14 + 3 + 8);
+    };
+
+    const J = jobs.map((j) => {
+      const s = toIdx(j.start);
+      const e = j.end ? toIdx(j.end) : nowIdx;
+      return { ...j, s, e, months: Math.max(1, e - s), ongoing: !j.end };
+    });
+    // BitSpace lane, below the studies. SAMPLE START: adjust; end: null = ongoing.
+    const ventureData = [
+      { left: 'Co-Founder · Entrepreneur', right: 'Future Startup · BitSpace', start: '2025-05', end: null }
+    ];
+    const S = studyData.concat(ventureData).map((d) => ({ ...d, s: toIdx(d.start), e: d.end ? toIdx(d.end) : nowIdx, venture: ventureData.indexOf(d) >= 0 }));
+    const T0 = Math.min(J[0].s, ...S.map((d) => d.s));
+
+    // Piecewise time → x mapping shared by every lane
+    const pieces = [];
+    let x = P, t = T0;
+    const lines = [], ticks = [], pills = [], gaps = [], boxes = [];
+    J.forEach((j, i) => {
+      if (i === 0) {
+        if (j.s > t) {
+          const w = idleW(j.s - t);
+          pieces.push({ t0: t, t1: j.s, x0: x, x1: x + w });
+          lines.push({ x, w, kind: 'dashed', color: '#A9B3AA' });
+          x += w;
+        }
+      } else {
+        const prev = J[i - 1];
+        const gapMonths = j.s - prev.e - 1;
+        if (gapMonths > 0) {
+          const w = idleW(j.s - prev.e);
+          pieces.push({ t0: prev.e, t1: j.s, x0: x, x1: x + w });
+          lines.push({ x, w, kind: 'dashed', color: '#A9B3AA' });
+          gaps.push({ x: x + w / 2, label: durTxt(gapMonths) });
+          x += w;
+        } else {
+          pieces.push({ t0: prev.e, t1: j.s, x0: x, x1: x + SEAM });
+          lines.push({ x, w: SEAM, kind: 'solid', color: '#142019' });
+          ticks.push({ x: x + SEAM / 2, label: fmt(j.s), tx: '-50%' });
+          x += SEAM;
+        }
+      }
+      // Base width from duration, widened if any of its projects' titles would not fit
+      let w = jobW(j.months);
+      ((xpDetails[j.key] || {}).projects || []).forEach((p) => {
+        const ps = toIdx(p.start), pe = toIdx(p.end), pm = Math.max(1, pe - ps);
+        const inset = PROJ_GAP + (ps === j.s ? EDGE : 0) + (pe === j.e ? EDGE : 0);
+        w = Math.max(w, (projNeed(p) + inset) * j.months / pm);
+      });
+      w = Math.round(w);
+      pieces.push({ t0: j.s, t1: j.e, x0: x, x1: x + w });
+      lines.push({ x, w, kind: 'solid', color: '#142019' });
+      const joinedPrev = i > 0 && j.s - J[i - 1].e - 1 <= 0;
+      const joinedNext = i < J.length - 1 && J[i + 1].s - j.e - 1 <= 0;
+      if (!joinedPrev) ticks.push({ x, label: fmt(j.s), tx: '0' });
+      if (!joinedNext) ticks.push({ x: x + w, label: j.ongoing ? 'Present' : fmt(j.e), tx: '-100%' });
+      pills.push({ x: x + w / 2, label: durTxt(j.months) });
+      const latest = j.s <= nowIdx && j.e >= nowIdx;
+      const key = 'job' + i;
+      const hovered = this.state.hoverJob === i;
+      boxes.push({
+        x, w, role: j.role, org: j.org,
+        desc: (xpDetails[j.key] || {}).desc || '',
+        h: hovered ? 228 : 132,
+        top: hovered ? 64 : 160,
+        z: hovered ? 3 : 1,
+        shadow: hovered ? '0 14px 32px rgba(20,32,25,0.16)' : 'none',
+        descOpacity: hovered ? 1 : 0,
+        enter: () => this.hoverIn(i),
+        leave: () => this.hoverOut(),
+        bg: latest ? accent : '#FFFFFF',
+        fg: latest ? '#F6F5F0' : '#142019',
+        border: latest ? accent : '#DEE2DA',
+        logoBg: latest ? 'rgba(246,245,240,0.16)' : '#E6EEE8',
+        logoFg: latest ? '#F6F5F0' : '#4A564E',
+        boxRef: this.reg(key, 'box'), tRef: this.reg(key, 't'), lRef: this.reg(key, 'l')
+      });
+      x += w;
+    });
+    // Studies that run past the last job
+    const lastE = J[J.length - 1].e;
+    const maxStudyE = Math.max(...S.map((d) => d.e));
+    if (maxStudyE > lastE) {
+      const w = idleW(maxStudyE - lastE);
+      pieces.push({ t0: lastE, t1: maxStudyE, x0: x, x1: x + w });
+      lines.push({ x, w, kind: 'dashed', color: '#A9B3AA' });
+      x += w;
+    }
+    const futureX = x;
+    lines.push({ x, w: 180, kind: 'dashed', color: accent });
+    const tlW = Math.round(x + 180 + P);
+
+    const X = (tm) => {
+      for (const p of pieces) {
+        if (p.t1 > p.t0 && tm >= p.t0 && tm <= p.t1) return p.x0 + (tm - p.t0) / (p.t1 - p.t0) * (p.x1 - p.x0);
+      }
+      return tm <= T0 ? P : futureX;
+    };
+    const tickNear = (px) => ticks.some((tk) => Math.abs(tk.x - px) < 30);
+    const lanes = S.map((d, i) => {
+      const ongoing = d.venture && !ventureData[0].end;
+      const x0 = X(d.s), x1 = ongoing ? futureX + 150 : X(d.e);
+      if (!tickNear(x0)) ticks.push({ x: x0, label: fmt(d.s), tx: '0' });
+      if (!tickNear(x1) && !(d.venture && !ventureData[0].end)) ticks.push({ x: x1, label: fmt(d.e), tx: '-100%' });
+      const key = 'lane' + i;
+      return {
+        x: Math.round(x0), w: Math.round(x1 - x0), y: i * 48,
+        left: d.left, right: d.right,
+        bg: d.venture ? '#FFFFFF' : (i % 2 ? '#D6E2D9' : '#E6EEE8'),
+        border: d.venture ? accent : 'transparent',
+        borderR: ongoing ? '0' : '1.5px',
+        radius: ongoing ? '12px 0 0 12px' : '12px',
+        mask: ongoing ? 'linear-gradient(to right, #000 calc(100% - 220px), transparent)' : 'none',
+        rightInset: ongoing ? 200 : 16,
+        aria: (d.venture ? 'Open project: BitSpace' : 'Open studies: ' + d.right),
+        open: d.venture
+          ? () => this.openPop('Project', 'BitSpace', d.left)
+          : () => this.openPop('Education', d.right.split(' · ')[0], 'Universitat Autònoma de Barcelona'),
+        boxRef: this.reg(key, 'box'), tRef: this.reg(key, 't'), lRef: this.reg(key, 'l')
+      };
+    });
+
+    // Projects + extra time stamps for the hovered work box
+    const hj = this.state.hoverJob;
+    const projs = [];
+    if (hj !== null && J[hj]) {
+      const det = xpDetails[J[hj].key];
+      ((det && det.projects) || []).forEach((p, k) => {
+        const ps = toIdx(p.start), pe = toIdx(p.end);
+        const x0 = X(ps), x1 = X(pe);
+        const key = 'proj' + hj + '_' + k;
+        const insL = PROJ_GAP / 2 + (ps === J[hj].s ? EDGE : 0);
+        const insR = PROJ_GAP / 2 + (pe === J[hj].e ? EDGE : 0);
+        const dur = durTxt(Math.max(1, pe - ps));
+        projs.push({
+          x: Math.round(x0 + insL), w: Math.max(80, Math.round(x1 - x0 - insL - insR)),
+          name: p.name, dur,
+          aria: 'Open project: ' + p.name,
+          open: () => this.openPop('Project', p.name, J[hj].org),
+          enter: () => this.hoverIn(hj),
+          leave: () => this.hoverOut(),
+          durSpace: Math.ceil(this.measure(dur, "12px 'JetBrains Mono', monospace") + 48),
+          boxRef: this.reg(key, 'box'), tRef: this.reg(key, 't'), lRef: this.reg(key, 'l')
+        });
+        [[x0, ps, '0'], [x1, pe, '-100%']].forEach(([px, tm, tx]) => {
+          if (!ticks.some((tk) => Math.abs(tk.x - px) < 8)) ticks.push({ x: px, label: fmt(tm), tx, color: accent, lc: accent, ly: 44, cls: 'tick-in' });
+        });
+      });
+    }
+    const allTicks = ticks.map((tk) => ({ color: '#142019', lc: '#4A564E', ly: 22, cls: '', ...tk }));
+    const langData = [
+      { id: 'en', name: 'English' },
+      { id: 'ca', name: 'Català' },
+      { id: 'es', name: 'Español' },
+      { id: 'lt', name: 'Lietuvių' },
+      { id: 'de', name: 'Deutsch' }
+    ];
+    const lang = this.state.lang;
+    const langOpen = this.state.langOpen;
+    const current = langData.find((l) => l.id === lang) || langData[0];
+    const langs = langData.map((l) => ({
+      code: l.id.toUpperCase(),
+      name: l.name,
+      selected: l.id === lang,
+      bg: l.id === lang ? '#E6EEE8' : 'transparent',
+      pick: () => this.setState({ lang: l.id, langOpen: false })
+    }));
+    return {
+      langs,
+      langOpen,
+      langClosed: !langOpen,
+      langUl: langOpen ? 'on' : '',
+      langCode: current.id.toUpperCase(),
+      langName: current.name,
+      toggleLang: () => this.setState({ langOpen: !langOpen }),
+      accent: this.props.accent ?? '#1E4D3A',
+      lanes, projs, boxes, lines, ticks: allTicks, pills, gaps, futureX, tlW,
+      laneOpacity: hj !== null ? 0.18 : 1,
+      axisShift: 0,
+      vpRef: (el) => { this.vp = el; },
+      onScroll: () => { this.updateEdges(); this.layoutSliders(); },
+      showBack: !this.state.atStart,
+      showFwd: !this.state.atEnd,
+      hoverBack: () => this.startScroll(-1),
+      hoverFwd: () => this.startScroll(1),
+      stopHover: () => this.stopScroll(),
+      popOpen: !!this.state.pop,
+      popKind: this.state.pop ? this.state.pop.kind : '',
+      popTitle: this.state.pop ? this.state.pop.title : '',
+      popSub: this.state.pop ? this.state.pop.sub : '',
+      popRef: (el) => { this.popEl = el; },
+      closePop: () => this.setState({ pop: null }),
+      dragCursor: this.state.dragging ? 'grabbing' : 'grab',
+      dragStart: (e) => {
+        if (!this.vp || e.pointerType !== 'mouse' || e.button !== 0) return;
+        if (e.target.closest && e.target.closest('button, article, a')) return;
+        this.drag = { x: e.clientX, sl: this.vp.scrollLeft };
+        try { this.vp.setPointerCapture(e.pointerId); } catch (err) {}
+        this.setState({ dragging: true });
+      },
+      dragMove: (e) => {
+        if (!this.drag || !this.vp) return;
+        this.vp.scrollLeft = this.drag.sl - (e.clientX - this.drag.x);
+      },
+      dragEnd: (e) => {
+        if (!this.drag) return;
+        this.drag = null;
+        try { this.vp.releasePointerCapture(e.pointerId); } catch (err) {}
+        this.setState({ dragging: false });
+      },
+      popKey: (e) => { if (e.key === 'Escape') this.setState({ pop: null }); },
+      stepBack: () => { if (this.vp) this.vp.scrollBy({ left: -420, behavior: 'smooth' }); },
+      stepFwd: () => { if (this.vp) this.vp.scrollBy({ left: 420, behavior: 'smooth' }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

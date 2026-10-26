@@ -1,0 +1,77 @@
+/* Design tokens — portfolio v2. Keep in sync with DESIGN.md. */
+:root {
+  /* Colour — surfaces */
+  --color-bg: #F6F5F0;            /* page ground (warm off-white) */
+  --color-surface: #FFFFFF;       /* alternate sections, cards on cream */
+  --color-tint: #E6EEE8;          /* pale green: pills, image placeholders, selected rows */
+  --color-tint-2: #D6E2D9;        /* second pale green: alternating fills */
+  --color-tint-hover: #F0F3EE;    /* hover on light rows */
+  --color-project-hover: #EEF4EF; /* hover on project boxes */
+
+  /* Colour — ink */
+  --color-ink: #142019;           /* headings, primary text, outlines */
+  --color-ink-2: #3E4A42;         /* body text, nav links */
+  --color-muted: #4A564E;         /* labels, captions, meta */
+  --color-on-accent: #F6F5F0;     /* text on green */
+
+  /* Colour — accent */
+  --color-accent: #1E4D3A;        /* dark green */
+  --color-accent-hover: #123326;  /* link hover */
+  --color-status: #2F8F5B;        /* "open to opportunities" dot only */
+
+  /* Colour — lines */
+  --color-line: #DEE2DA;          /* borders, dividers */
+  --color-line-strong: #C9D0C7;   /* hero divider */
+  --color-line-dashed: #A9B3AA;   /* dashed timeline gaps, inactive dots */
+
+  /* Shadows */
+  --shadow-badge: 0 8px 24px rgba(20, 32, 25, 0.08);
+  --shadow-button-hover: 0 10px 24px rgba(30, 77, 58, 0.24);
+  --shadow-floating: 0 6px 18px rgba(20, 32, 25, 0.12);
+  --shadow-menu: 0 14px 36px rgba(20, 32, 25, 0.14);
+  --shadow-box-open: 0 14px 32px rgba(20, 32, 25, 0.16);
+  --shadow-project: 0 8px 20px rgba(20, 32, 25, 0.10);
+  --shadow-modal: 0 30px 80px rgba(20, 32, 25, 0.30);
+  --glow-clickable: drop-shadow(0 6px 14px rgba(30, 77, 58, 0.30));
+  --edge-shade: rgba(20, 32, 25, 0.16);
+
+  /* Typography */
+  --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --fs-hero: clamp(52px, 7.6vw, 108px);
+  --fs-h2: clamp(36px, 4.5vw, 52px);
+  --fs-h2-about: clamp(32px, 3.8vw, 46px);
+  --fs-contact: clamp(40px, 6vw, 76px);
+  --fs-modal-title: clamp(36px, 5vw, 64px);
+  --fs-card-title: 26px;
+  --fs-lead: 20px;
+  --fs-body: 17px;
+  --fs-small: 15px;
+  --fs-caption: 14px;
+  --fs-label: 13px;
+  --fs-label-sm: 12px;
+
+  /* Layout */
+  --container: 1200px;
+  --gutter: 24px;
+  --section-pad: 96px;
+  --nav-height: 73px;
+
+  /* Radii */
+  --radius-pill: 999px;
+  --radius-xl: 28px;   /* hero photo, modal */
+  --radius-card: 22px; /* cards, work boxes */
+  --radius-md: 20px;   /* gallery tiles, education card */
+  --radius-sm: 16px;   /* small cards, logo tiles */
+  --radius-xs: 14px;   /* project boxes, badges, menus */
+  --radius-lane: 12px; /* timeline lanes, icon tiles */
+  --radius-logo: 10px; /* JM badge */
+
+  /* Motion */
+  --ease-out: cubic-bezier(.2, .7, .2, 1);
+  --dur-fast: .15s;
+  --dur: .22s;
+  --dur-slow: .3s;
+}
