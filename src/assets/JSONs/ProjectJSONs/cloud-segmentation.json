@@ -1,0 +1,45 @@
+{
+  "id": "cloud-segmentation",
+  "title": "Cloud Segmentation",
+  "tagline": "A computer-vision model that maps thin, medium and thick clouds in satellite imagery, pixel by pixel.",
+  "summary": "A U-Net computer-vision model that segments cloud types in Sentinel-1 and Sentinel-2 satellite imagery.",
+
+  "experienceId": "cvc",
+  "lane": "projects",
+  "relatedProjectIds": [],
+
+  "start": "2024-02",
+  "end": "2024-06",
+  "ongoing": false,
+
+  "role": "Software Engineer Intern",
+  "context": "Rosa Sensat internship",
+
+  "overview": [
+    "I designed, prototyped and tested a computer-vision model that labels every pixel of a satellite image as thin, medium or thick cloud — or clear sky. It works on real multispectral Earth-observation data from the Sentinel-1 and Sentinel-2 satellites.",
+    "It was my first deep dive into how AI models are really built: preparing the data, designing the network, training it and measuring how well it performs."
+  ],
+
+  "media": [
+    { "type": "image", "src": "fotoOutput1", "alt": "Satellite image, ground-truth cloud mask and the model's prediction, side by side", "caption": "Sample result 1 — input · ground truth · prediction" },
+    { "type": "image", "src": "fotoOutput2", "alt": "Satellite image, ground-truth cloud mask and the model's prediction, side by side", "caption": "Sample result 2 — input · ground truth · prediction" },
+    { "type": "image", "src": "fotoOutput3", "alt": "Satellite image, ground-truth cloud mask and the model's prediction, side by side", "caption": "Sample result 3 — input · ground truth · prediction" },
+    { "type": "image", "src": "fotoOutput4", "alt": "Satellite image, ground-truth cloud mask and the model's prediction, side by side", "caption": "Sample result 4 — input · ground truth · prediction" },
+    { "type": "image", "src": "fotoOutput5", "alt": "Satellite image, ground-truth cloud mask and the model's prediction, side by side", "caption": "Sample result 5 — input · ground truth · prediction" }
+  ],
+
+  "highlights": [
+    { "label": "Data", "title": "Prepare the data", "text": "Real multispectral imagery from Sentinel-1 and Sentinel-2, paired with ground-truth cloud masks." },
+    { "label": "Model", "title": "Design the network", "text": "A convolutional neural network (CNN) with a U-Net architecture, built for pixel-by-pixel segmentation." },
+    { "label": "Training", "title": "Train & evaluate", "text": "Trained the model and iteratively improved its predictions against the ground truth." },
+    { "label": "Handover", "title": "Document it", "text": "Documented the whole pipeline so others can run the model and build on it." }
+  ],
+
+  "skills": ["Computer vision", "Deep learning", "CNN · U-Net", "Model training", "TensorFlow", "Python"],
+
+  "links": [
+    { "label": "Project report", "url": "Jans_Report", "type": "report" },
+    { "label": "My internship experience", "url": "My_experience_as_an_intern_of_the_Rosa_Sensat_internship.pdf", "type": "report" },
+    { "label": "LinkedIn post", "url": "https://lnkd.in/p/dV7qfUCF", "type": "post" }
+  ]
+}

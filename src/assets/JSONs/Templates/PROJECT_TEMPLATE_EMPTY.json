@@ -1,0 +1,66 @@
+{
+  "id": "",
+  "title": "",
+  "tagline": "",
+  "summary": "",
+
+  "experienceId": "",
+  "lane": "",
+  "relatedProjectIds": [],
+
+  "start": "",
+  "end": "",
+  "ongoing": false,
+
+  "role": "",
+  "context": "",
+
+  "overview": [
+    "",
+    ""
+  ],
+
+  "media": [
+    { 
+      "type": "video", 
+      "url": "", 
+      "poster": "", 
+      "alt": "", 
+      "caption": "" 
+    },
+    { 
+      "type": "image",
+      "src": "",
+      "alt": "", 
+      "caption": "" 
+    },
+    {
+      "type": "youtube",
+      "url": "",
+      "start": 0,
+      "alt": "",
+      "caption": ""
+    }
+  ],
+
+  "highlights": [
+    { 
+      "label": "",
+      "title": "",
+      "text": ""
+    }
+  ],
+
+  "skills": [
+    "",
+    ""
+  ],
+
+  "links": [
+    { 
+      "label": "", 
+      "url": "",
+      "type": ""
+    }
+  ]
+}

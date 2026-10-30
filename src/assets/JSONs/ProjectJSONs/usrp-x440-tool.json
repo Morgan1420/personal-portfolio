@@ -1,0 +1,46 @@
+{
+  "id": "usrp-x440-tool",
+  "title": "USRP X440 Tool",
+  "tagline": "A tool that turns signal capture on the USRP X440 — a direct-sampling SDR — into a few simple inputs.",
+  "summary": "A web interface and Python backend that make Ettus' direct-sampling USRP X440 SDR easy for researchers to use.",
+
+  "experienceId": "ieec",
+  "lane": "projects",
+  "relatedProjectIds": [],
+
+  "start": "2026-02",
+  "end": "2026-07",
+  "ongoing": false,
+
+  "role": "Engineer Intern",
+  "context": "IEEC · SPCOMNAV research team",
+
+  "overview": [
+    "The USRP X440 is a software-defined radio (SDR) built on a direct-sampling architecture: it digitises signals straight at their radio frequency, with no intermediate-frequency stage. That makes it powerful — but also tricky to set up for every capture.",
+    "The goal was to simplify the whole capture pipeline: researchers describe the signal they want to record, and the tool works out everything the device needs.",
+    "The solution is a web interface with a Python backend that handles all the pre-capture calculations and [finish this sentence — e.g. configures the device and runs the capture].",
+    "It was also my bachelor's thesis for the Computer Engineering degree at UAB: a tracking station for LEO satellite mega-constellations built on a programmable high-speed RFSoC device."
+  ],
+
+  "media": [
+    { "type": "image", "src": "realCapture", "alt": "Setup for capturing a real signal", "caption": "Capture setup — real signal" },
+    { "type": "image", "src": "artificailsignal", "alt": "Setup for capturing an artificially generated signal", "caption": "Capture setup — generated test signal" },
+    { "type": "image", "src": "pipeline.png", "alt": "Diagram of the USRP X440 capture architecture", "caption": "The USRP X440 capture architecture" },
+    { "type": "image", "src": "signal.png", "alt": "An Iridium satellite signal captured with the tool", "caption": "An Iridium signal, captured with the tool" }
+  ],
+
+  "highlights": [
+    { "label": "Signal", "title": "Choose the signal", "text": "Enter the center frequency and bandwidth of the signal you want to capture." },
+    { "label": "Bands", "title": "Compute the bands", "text": "The tool calculates which capture bands the USRP X440 should use." },
+    { "label": "FPGA", "title": "Load the right image", "text": "Switches the USRP X440's FPGA image to match the capture band." },
+    { "label": "Capture", "title": "Capture the signal", "text": "Records the signal directly at RF — no intermediate frequency needed." }
+  ],
+
+  "skills": ["SDR", "USRP X440", "Direct sampling", "Signal capture", "Signal processing", "Python"],
+
+  "links": [
+    { "label": "Bachelor's thesis — report", "url": "TFG-GEI_Desenvolupament-duna-estació-de-seguiment-de-megaconstel-lacions-de-satèl-lits-LEO-mitjançant-un-dispositiu-RFSoC-programable-dalta-velocitat_JanMoranRicardo", "type": "report" },
+    { "label": "Bachelor's thesis — slides", "url": "TFG_GEI_Presentació", "type": "report" },
+    { "label": "GitHub repo", "url": "https://github.com/Morgan1420/USRP_X440_wizard", "type": "code" }
+  ]
+}
