@@ -23,11 +23,11 @@
   ],
 
   "media": [
-    { "type": "video", "src": "/src/assets/ProjectAssets/RotatoryAntenna/AntenaFailedTest.mp4", "poster": "src/assets/ProjectAssets/RotatoryAntenna/antenna_project_photo.png", "alt": "An early field test of the antenna that didn't go as planned", "caption": "An early test — not everything worked (yet)" },
-    { "type": "image", "src": "/src/assets/ProjectAssets/RotatoryAntenna/AntennaWorkStation.png", "alt": "The antenna's control workstation", "caption": "The workstation" },
-    { "type": "image", "src": "/src/assets/ProjectAssets/RotatoryAntenna/AntennaCaptureStation2.jpg", "alt": "The capture station, north side", "caption": "Capture station — north" },
+    { "type": "image", "src": "/projects/rotatory-antenna-system/antena_project_foto.png", "alt": "The antenna rotator on an outdoor table, next to a laptop running its control interface" },
+    { "type": "image", "src": "/projects/rotatory-antenna-system/AntennaWorkStation.jpg", "alt": "The antenna's control workstation", "caption": "The workstation" },
+    { "type": "image", "src": "/projects/rotatory-antenna-system/AntennaCaptureStation2.jpg", "alt": "The capture station, north side", "caption": "Capture station — north" },
     { "type": "youtube", "url": "https://www.youtube.com/watch?v=BQt4AMmJ8hA", "start": 0, "alt": "The antenna successfully tracking a satellite pass", "caption": "A successful tracking test during a satellite pass" },
-    { "type": "image", "src": "/src/assets/ProjectAssets/RotatoryAntenna/palurdo.png", "alt": "Running a live outdoor demo of the antenna", "caption": "Live demoing is hard (and cold)" }
+    { "type": "image", "src": "/projects/rotatory-antenna-system/palurdo.jpg", "alt": "Running a live outdoor demo of the antenna", "caption": "Live demoing is hard (and cold)" }
   ],
 
   "highlights": [
@@ -43,7 +43,7 @@
     { "label": "GitHub repo", "url": "https://github.com/Morgan1420/Self-Adjusting-Antenna-for-LEO-Satellites", "type": "code" },
     { "label": "Video on YouTube", "url": "https://www.youtube.com/watch?v=BQt4AMmJ8hA", "type": "video" },
     { "label": "LinkedIn post", "url": "https://lnkd.in/p/dQEwnQMa", "type": "post" },
-    { "label": "Bachelor's thesis — report", "url": "TFG_GEET_JanMoranRicardo_Informe_Final", "type": "report" },
-    { "label": "Bachelor's thesis — slides", "url": "TFG_GEET_Presentació", "type": "report" }
+    { "label": "Bachelor's thesis — report", "url": "/projects/rotatory-antenna-system/TFG_GEET_JanMoranRicardo_Informe_Final.pdf", "type": "report" },
+    { "label": "Bachelor's thesis — slides", "url": "/projects/rotatory-antenna-system/TFG_GEET_Presentació.pdf", "type": "report" }
   ]
 }

@@ -1,93 +1,18 @@
 {
-  "$comment": "Projects and education. Dates are 'YYYY-MM'; end: null means ongoing. experienceId links a project to an entry in experience.json (null = independent, e.g. BitSpace). relatedProjectIds links projects to each other. lane: where it appears on the timeline ('projects' = shown above its work box on hover, 'venture' = its own bar under the studies).",
-  "projects": [
-    {
-      "id": "cloud-segmentation",
-      "title": "Cloud segmentation",
-      "experienceId": "cvc",
-      "relatedProjectIds": [],
-      "lane": "projects",
-      "start": "2024-02",
-      "end": "2024-06",
-      "summary": "A computer-vision model that segments different cloud types in multispectral Sentinel-1 and Sentinel-2 imagery.",
-      "skills": [],
-      "links": [],
-      "images": []
-    },
-    {
-      "id": "signal-processing-ui",
-      "title": "Signal Processing UI",
-      "experienceId": "ieec",
-      "relatedProjectIds": [],
-      "lane": "projects",
-      "start": "2024-09",
-      "end": "2025-07",
-      "summary": "My first project with the team: a web interface that runs fellow researchers’ processing scripts, making shared code easy to use.",
-      "skills": [],
-      "links": [],
-      "images": []
-    },
-    {
-      "id": "rotatory-antenna-system",
-      "title": "Rotatory Antenna System",
-      "experienceId": "ieec",
-      "relatedProjectIds": [],
-      "lane": "projects",
-      "start": "2025-09",
-      "end": "2026-02",
-      "summary": "A rotating antenna system that tracks satellites and captures their signals, built end to end: 3D-modelled hardware, part selection and firmware, C code that reads TLE data and propagates orbits with SGP4, and the web interface that controls it all.",
-      "skills": [],
-      "links": [],
-      "images": []
-    },
-    {
-      "id": "usrp-x440-tool",
-      "title": "USRP X440 Operating Tool",
-      "experienceId": "ieec",
-      "relatedProjectIds": [],
-      "lane": "projects",
-      "start": "2026-02",
-      "end": "2026-07",
-      "summary": "Scripts and interfaces that make Ettus’ direct-sampling USRP X440 SDR easy for researchers to use: they enter the signal parameters they want to record, and the tool works out everything the USRP needs.",
-      "skills": [],
-      "links": [],
-      "images": []
-    },
-    {
-      "id": "bsproof",
-      "title": "BSProof",
-      "experienceId": "eye",
-      "relatedProjectIds": ["bitspace"],
-      "lane": "projects",
-      "start": "2026-07",
-      "end": "2027-01",
-      "summary": "An app that grades supplements on scientific evidence, cutting through the noise and confusion of buying them.",
-      "skills": [],
-      "links": [],
-      "images": []
-    },
-    {
-      "id": "bitspace",
-      "title": "BitSpace",
-      "experienceId": null,
-      "relatedProjectIds": ["bsproof"],
-      "lane": "venture",
-      "laneLabel": { "left": "Co-Founder · Entrepreneur", "right": "Future Startup · BitSpace" },
-      "role": "Co-Founder",
-      "start": "2025-05",
-      "end": null,
-      "summary": "",
-      "skills": [],
-      "links": [],
-      "images": []
-    }
-  ],
+  "$comment": "Education entries shown on the timeline's studies lanes. Dates are 'YYYY-MM'. Projects live in projects/<id>.json (one file per project).",
   "education": [
     {
       "id": "telecom-eng",
       "degree": "Telecommunications Engineering",
-      "institution": { "name": "Universitat Autònoma de Barcelona", "short": "UAB", "logo": null },
-      "laneLabel": { "left": "Engineering Student", "right": "Telecommunications Engineering · UAB" },
+      "institution": {
+        "name": "Universitat Autònoma de Barcelona",
+        "short": "UAB",
+        "logo": null
+      },
+      "laneLabel": {
+        "left": "Engineering Student",
+        "right": "Telecommunications Engineering · UAB"
+      },
       "start": "2021-09",
       "end": "2026-07",
       "description": "",
@@ -97,8 +22,15 @@
     {
       "id": "computer-eng",
       "degree": "Computer Engineering",
-      "institution": { "name": "Universitat Autònoma de Barcelona", "short": "UAB", "logo": null },
-      "laneLabel": { "left": "Engineering Student", "right": "Computer Engineering · UAB" },
+      "institution": {
+        "name": "Universitat Autònoma de Barcelona",
+        "short": "UAB",
+        "logo": null
+      },
+      "laneLabel": {
+        "left": "Engineering Student",
+        "right": "Computer Engineering · UAB"
+      },
       "start": "2021-09",
       "end": "2026-07",
       "description": "",

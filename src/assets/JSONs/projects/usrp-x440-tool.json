@@ -23,10 +23,10 @@
   ],
 
   "media": [
-    { "type": "image", "src": "realCapture", "alt": "Setup for capturing a real signal", "caption": "Capture setup — real signal" },
-    { "type": "image", "src": "artificailsignal", "alt": "Setup for capturing an artificially generated signal", "caption": "Capture setup — generated test signal" },
-    { "type": "image", "src": "pipeline.png", "alt": "Diagram of the USRP X440 capture architecture", "caption": "The USRP X440 capture architecture" },
-    { "type": "image", "src": "signal.png", "alt": "An Iridium satellite signal captured with the tool", "caption": "An Iridium signal, captured with the tool" }
+    { "type": "image", "src": "/projects/usrp-x440-tool/RealCapture.png", "alt": "Setup for capturing a real signal", "caption": "Capture setup — real signal" },
+    { "type": "image", "src": "/projects/usrp-x440-tool/atificialsignal.png", "alt": "Setup for capturing an artificially generated signal", "caption": "Capture setup — generated test signal" },
+    { "type": "image", "src": "/projects/usrp-x440-tool/pipeline.png", "alt": "Diagram of the USRP X440 capture architecture", "caption": "The USRP X440 capture architecture" },
+    { "type": "image", "src": "/projects/usrp-x440-tool/Signal.png", "alt": "An Iridium satellite signal captured with the tool", "caption": "An Iridium signal, captured with the tool" }
   ],
 
   "highlights": [
@@ -39,8 +39,8 @@
   "skills": ["SDR", "USRP X440", "Direct sampling", "Signal capture", "Signal processing", "Python"],
 
   "links": [
-    { "label": "Bachelor's thesis — report", "url": "TFG-GEI_Desenvolupament-duna-estació-de-seguiment-de-megaconstel-lacions-de-satèl-lits-LEO-mitjançant-un-dispositiu-RFSoC-programable-dalta-velocitat_JanMoranRicardo", "type": "report" },
-    { "label": "Bachelor's thesis — slides", "url": "TFG_GEI_Presentació", "type": "report" },
+    { "label": "Bachelor's thesis — report", "url": "/projects/usrp-x440-tool/TFG-GEI_Desenvolupament-duna-estació-de-seguiment-de-megaconstel-lacions-de-satèl-lits-LEO-mitjançant-un-dispositiu-RFSoC-programable-dalta-velocitat_JanMoranRicardo.pdf", "type": "report" },
+    { "label": "Bachelor's thesis — slides", "url": "/projects/usrp-x440-tool/TFG_GEI_Presentació.pdf", "type": "report" },
     { "label": "GitHub repo", "url": "https://github.com/Morgan1420/USRP_X440_wizard", "type": "code" }
   ]
 }

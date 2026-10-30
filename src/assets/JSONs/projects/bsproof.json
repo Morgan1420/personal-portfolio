@@ -1,0 +1,13 @@
+{
+  "id": "bsproof",
+  "title": "BSProof",
+  "summary": "An app that grades supplements on scientific evidence, cutting through the noise and confusion of buying them.",
+
+  "experienceId": "eye",
+  "lane": "projects",
+  "relatedProjectIds": ["bitspace"],
+
+  "start": "2026-07",
+  "end": "2027-01",
+  "ongoing": false
+}

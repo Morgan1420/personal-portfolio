@@ -1,0 +1,16 @@
+{
+  "id": "bitspace",
+  "title": "BitSpace",
+  "tagline": "Future startup",
+
+  "experienceId": null,
+  "lane": "venture",
+  "laneLabel": { "left": "Co-Founder · Entrepreneur", "right": "Future Startup · BitSpace" },
+  "relatedProjectIds": ["bsproof"],
+
+  "start": "2025-05",
+  "end": null,
+  "ongoing": true,
+
+  "role": "Co-Founder"
+}

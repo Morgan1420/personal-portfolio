@@ -1,7 +1,7 @@
 // Timeline geometry: dates → x positions, ticks, pills and gap labels.
 // Pure functions only (no DOM, no Vue) — see docs/TIMELINE.md §1–4.
 
-const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+import { formatDuration, formatMonth, toMonthIndex } from '../utils/dates.js'
 
 export const PAD = 96 // track side padding
 export const SEAM = 14 // space between joined jobs
@@ -12,27 +12,6 @@ export const VENTURE_OVERHANG = 150 // ongoing venture runs past the future mark
 
 const FONT_PROJECT = '600 14px Inter, system-ui, sans-serif'
 const FONT_MONO = "12px 'JetBrains Mono', monospace"
-
-/** "YYYY-MM" → months since year 0. */
-export const toMonthIndex = (date) => {
-  const [year, month] = date.split('-').map(Number)
-  return year * 12 + (month - 1)
-}
-
-export const currentMonthIndex = (now = new Date()) => now.getFullYear() * 12 + now.getMonth()
-
-/** Month index → "Feb 2024". */
-export const formatMonth = (index) => `${MONTHS[index % 12]} ${Math.floor(index / 12)}`
-
-/** Months → "4 mos", "1 yr", "1 yr 10 mos". */
-export const formatDuration = (months) => {
-  const years = Math.floor(months / 12)
-  const rest = months % 12
-  const parts = []
-  if (years) parts.push(`${years} ${years === 1 ? 'yr' : 'yrs'}`)
-  if (rest) parts.push(`${rest} ${rest === 1 ? 'mo' : 'mos'}`)
-  return parts.join(' ') || '< 1 mo'
-}
 
 /** Rough fallback when no canvas is available (tests, SSR). */
 export const estimateTextWidth = (text) => text.length * 8.4

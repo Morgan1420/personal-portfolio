@@ -23,7 +23,7 @@
   ],
 
   "media": [
-    { "type": "image", "src": "/src/assets/ProjectAssets/signal-processing-ui/GNSSResults.png", "alt": "The GNSS results page of the web app", "caption": "GNSS results page" },
+    { "type": "image", "src": "/projects/signal-processing-ui/GNSSResults.png", "alt": "The GNSS results page of the web app", "caption": "GNSS results page" },
     { "type": "youtube", "url": "https://www.youtube.com/watch?v=1nLmzI2GYyM", "start": 0, "alt": "Screen recording: filling in the GNSS processing form", "caption": "GNSS form — walkthrough" },
     { "type": "youtube", "url": "https://www.youtube.com/watch?v=o3qqPV4j-SU", "start": 0, "alt": "Screen recording: exploring the GNSS results", "caption": "GNSS results — walkthrough" },
     { "type": "youtube", "url": "https://www.youtube.com/watch?v=6eCRlbVYHbM", "start": 0, "alt": "Screen recording: filling in the LEO processing form", "caption": "LEO form — walkthrough" },
@@ -39,7 +39,7 @@
   "skills": ["Vue", "Web development", "Linux", "Signal processing"],
 
   "links": [
-    { "label": "IEEC Forum poster", "url": "/src/assets/ProjectAssets/signal-processing-ui/IEEC_Forum_póster_Jan.pdf", "type": "report" },
+    { "label": "IEEC Forum poster", "url": "/projects/signal-processing-ui/IEEC_Forum_póster_Jan.pdf", "type": "report" },
     { "label": "Demo video", "url": "https://www.youtube.com/watch?v=o3qqPV4j-SU", "type": "video" }
   ]
 }

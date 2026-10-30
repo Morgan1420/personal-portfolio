@@ -2,8 +2,10 @@
 // Horizontal, scrollable experience timeline — spec in docs/TIMELINE.md.
 import { computed, nextTick, onBeforeUnmount, onMounted, onUpdated, ref, shallowRef, watch } from 'vue'
 import { experience } from '../../assets/JSONs/experience.json'
-import { projects, education } from '../../assets/JSONs/projects_education.json'
-import { buildTimeline, createTextMeasurer, currentMonthIndex } from '../../composables/useTimelineScale.js'
+import { education } from '../../assets/JSONs/projects_education.json'
+import { projects, projectById } from '../../composables/useProjects.js'
+import { buildTimeline, createTextMeasurer } from '../../composables/useTimelineScale.js'
+import { currentMonthIndex } from '../../utils/dates.js'
 import { useSlidingLabels } from '../../composables/useSlidingLabels.js'
 import { useEdgeScroll } from '../../composables/useEdgeScroll.js'
 import { useDetailModal } from '../../composables/useDetailModal.js'
@@ -17,18 +19,15 @@ const CLOSE_DELAY = 160
 const LANE_STEP = 48
 
 // ---- Data (JSON → timeline input) ----
-const projectById = Object.fromEntries(projects.map((p) => [p.id, p]))
-
 const jobs = experience.map((job) => ({
   id: job.id,
   role: job.role,
   org: `${job.organization.short} · ${job.organization.name}`,
-  orgName: job.organization.name,
   description: job.description,
   start: job.start,
   end: job.end,
   projects: job.projectIds
-    .map((id) => projectById[id])
+    .map(projectById)
     .filter((p) => p?.lane === 'projects')
     .map(({ id, title, start, end }) => ({ id, title, start, end })),
 }))
@@ -41,7 +40,7 @@ const lanes = [
     right: entry.laneLabel.right,
     start: entry.start,
     end: entry.end,
-    detail: { kind: 'Education', title: entry.degree, subtitle: entry.institution.name, id: entry.id },
+    education: { id: entry.id, title: entry.degree, subtitle: entry.institution.name },
     ariaLabel: `Open studies: ${entry.laneLabel.right}`,
   })),
   ...projects
@@ -53,7 +52,6 @@ const lanes = [
       right: p.laneLabel.right,
       start: p.start,
       end: p.end,
-      detail: { kind: 'Project', title: p.title, subtitle: p.laneLabel.left, id: p.id },
       ariaLabel: `Open project: ${p.title}`,
     })),
 ]
@@ -100,25 +98,24 @@ function onBoxPointerDown(index, event) {
 }
 
 // ---- Detail pop-up ----
-const { openDetail } = useDetailModal()
+const { openProject: openProjectDetail, openEducation } = useDetailModal()
 
 function openLane(lane, event) {
   clearTimeout(closeTimer)
   openJob.value = null
-  openDetail(lane.detail, { trigger: event.currentTarget })
+  const focus = { trigger: event.currentTarget }
+  if (lane.kind === 'venture') openProjectDetail(lane.id, focus)
+  else openEducation(lane.education, focus)
 }
 
-function openProject(job, project, index, event) {
+function openProject(project, index, event) {
   // The project box unmounts when the work box closes, so focus returns to the
   // work box (keyboard) or the scroller (mouse) instead.
   const keyboard = event.detail === 0
   const fallback = keyboard ? track.value?.querySelector(`article[data-job="${index}"]`) : scroller.value
   clearTimeout(closeTimer)
   openJob.value = null
-  openDetail(
-    { kind: 'Project', title: project.title, subtitle: job.orgName, id: project.id },
-    { trigger: event.currentTarget, fallback },
-  )
+  openProjectDetail(project.id, { trigger: event.currentTarget, fallback })
 }
 
 // ---- Scrolling & sliding labels ----
@@ -214,7 +211,7 @@ onBeforeUnmount(() => {
             @mouseleave="closeSoon"
             @focusin="openBox(i)"
             @focusout="onFocusOut(i, $event)"
-            @click="openProject(job, project, i, $event)"
+            @click="openProject(project, i, $event)"
           />
         </template>
       </template>

@@ -1,21 +1,128 @@
 <script setup>
-// Project / education pop-up. Placeholder content for now — see DESIGN.md "Detail pop-up".
-import { nextTick, onBeforeUnmount, ref, watch } from 'vue'
+// Pop-up shell: overlay, card, scroll lock, focus trap, Esc/Back, FLIP open/close, mobile sheet.
+// See docs/PROJECT_POPUP.md §3, §5–§7.
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useDetailModal } from '../../composables/useDetailModal.js'
+import { projectById } from '../../composables/useProjects.js'
 import IconClose from './icons/IconClose.vue'
 import IconConstruction from './icons/IconConstruction.vue'
 
-const { detail, closeDetail } = useDetailModal()
+const EASE_OPEN = 'cubic-bezier(.2,.7,.2,1)'
+const EASE_CLOSE = 'cubic-bezier(.4,0,.2,1)'
+
+const { detail, closing, getOrigin, close, finishClose, startHistorySync, stopHistorySync } = useDetailModal()
+
 const card = ref(null)
+const backdrop = ref(null)
+
+const project = computed(() => (detail.value?.kind === 'Project' ? projectById(detail.value.id) : null))
+const title = computed(() => project.value?.title ?? detail.value?.title)
+const subtitle = computed(() =>
+  project.value ? project.value.tagline || project.value.summary : detail.value?.subtitle,
+)
+
+const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
+const isMobile = () => window.matchMedia('(max-width: 700px)').matches
+
+// ---- Animations ----
+
+// The part of the trigger on screen: a timeline lane can be far wider than the viewport
+function visibleOrigin() {
+  const rect = getOrigin()
+  if (!rect) return null
+  const left = Math.max(rect.left, 0)
+  const top = Math.max(rect.top, 0)
+  const width = Math.min(rect.right, window.innerWidth) - left
+  const height = Math.min(rect.bottom, window.innerHeight) - top
+  return width > 0 && height > 0 ? { left, top, width, height } : null
+}
+
+function flipTransform(from) {
+  const to = card.value.getBoundingClientRect()
+  const scaleX = Math.max(0.05, from.width / to.width)
+  const scaleY = Math.max(0.05, from.height / to.height)
+  return `translate(${from.left - to.left}px, ${from.top - to.top}px) scale(${scaleX}, ${scaleY})`
+}
+
+function stagger(delay) {
+  if (reducedMotion()) return
+  card.value?.querySelectorAll('[data-stagger]').forEach((el, i) => {
+    el.animate(
+      [
+        { opacity: 0, transform: 'translateY(10px)' },
+        { opacity: 1, transform: 'none' },
+      ],
+      { duration: 260, delay: delay + i * 60, easing: EASE_OPEN, fill: 'backwards' },
+    )
+  })
+}
+
+function animateOpen() {
+  if (reducedMotion()) return
+  backdrop.value.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 250, easing: 'ease' })
+  const from = visibleOrigin()
+  if (isMobile()) {
+    card.value.animate([{ transform: 'translateY(100%)' }, { transform: 'none' }], {
+      duration: 340,
+      easing: EASE_OPEN,
+    })
+  } else if (from) {
+    card.value.animate(
+      [
+        { transformOrigin: '0 0', transform: flipTransform(from), opacity: 0.5, borderRadius: '14px' },
+        { transformOrigin: '0 0', transform: 'none', opacity: 1, borderRadius: '28px' },
+      ],
+      { duration: 380, easing: EASE_OPEN },
+    )
+  } else {
+    card.value.animate(
+      [
+        { opacity: 0, transform: 'translateY(16px) scale(.97)' },
+        { opacity: 1, transform: 'none' },
+      ],
+      { duration: 280, easing: EASE_OPEN },
+    )
+  }
+  stagger(220)
+}
+
+async function animateClose() {
+  const el = card.value
+  if (!el || reducedMotion()) return
+  el.getAnimations({ subtree: true }).forEach((animation) => animation.cancel())
+  const mobile = isMobile()
+  const from = visibleOrigin()
+  let frames
+  if (mobile) {
+    frames = [{ transform: 'none' }, { transform: 'translateY(100%)' }]
+  } else if (from) {
+    frames = [
+      { transformOrigin: '0 0', transform: 'none', opacity: 1 },
+      { transformOrigin: '0 0', transform: flipTransform(from), opacity: 0 },
+    ]
+  } else {
+    frames = [
+      { opacity: 1, transform: 'none' },
+      { opacity: 0, transform: 'translateY(12px)' },
+    ]
+  }
+  const duration = mobile ? 260 : 300
+  backdrop.value.animate([{ opacity: 1 }, { opacity: 0 }], { duration, easing: 'ease', fill: 'forwards' })
+  await el
+    .animate(frames, { duration, easing: EASE_CLOSE, fill: 'forwards' })
+    .finished.catch(() => {})
+}
+
+// ---- Keyboard & focus ----
 
 function onKeydown(event) {
-  if (event.key === 'Escape') closeDetail()
+  if (event.key === 'Escape') close()
 }
 
 // Keep Tab inside the dialog
 function onCardKeydown(event) {
   if (event.key !== 'Tab') return
-  const focusable = [...card.value.querySelectorAll('button, a[href], [tabindex]:not([tabindex="-1"])')]
+  const focusable = [...card.value.querySelectorAll('button, a[href], video[controls], iframe, [tabindex]:not([tabindex="-1"])')]
   if (!focusable.length) return
   const first = focusable[0]
   const last = focusable[focusable.length - 1]
@@ -28,29 +135,67 @@ function onCardKeydown(event) {
   }
 }
 
+// Safety net for what the Tab handler can't see, e.g. tabbing out of a cross-origin iframe
+function onFocusIn(event) {
+  if (card.value && !card.value.contains(event.target)) card.value.focus()
+}
+
 function setOpen(isOpen) {
+  const method = isOpen ? 'addEventListener' : 'removeEventListener'
   document.documentElement.style.overflow = isOpen ? 'hidden' : ''
-  document[isOpen ? 'addEventListener' : 'removeEventListener']('keydown', onKeydown)
+  document[method]('keydown', onKeydown)
+  document[method]('focusin', onFocusIn)
 }
 
 watch(
   () => !!detail.value,
   async (isOpen) => {
     setOpen(isOpen)
-    if (isOpen) {
-      await nextTick()
-      card.value?.focus()
-    }
+    if (!isOpen) return
+    await nextTick()
+    card.value?.focus({ preventScroll: true })
+    animateOpen()
   },
 )
 
-onBeforeUnmount(() => setOpen(false))
+watch(closing, async (isClosing) => {
+  if (!isClosing) return
+  await animateClose()
+  setOpen(false)
+  finishClose()
+})
+
+// Switching project: same card, new content
+watch(
+  () => detail.value?.id,
+  async (id, previous) => {
+    if (!id || !previous) return
+    await nextTick()
+    const body = card.value?.querySelector('[data-modal-scroll]')
+    if (body) body.scrollTop = 0
+    stagger(0)
+  },
+)
+
+onMounted(startHistorySync)
+
+onBeforeUnmount(() => {
+  stopHistorySync()
+  setOpen(false)
+})
 </script>
 
 <template>
   <Teleport to="body">
     <div v-if="detail" class="modal">
-      <button type="button" class="modal__backdrop" tabindex="-1" aria-label="Close pop-up" @click="closeDetail"></button>
+      <button
+        ref="backdrop"
+        type="button"
+        class="modal__backdrop"
+        tabindex="-1"
+        aria-label="Close pop-up"
+        @click="close"
+      ></button>
       <div
         ref="card"
         class="modal__card"
@@ -61,20 +206,22 @@ onBeforeUnmount(() => setOpen(false))
         @keydown="onCardKeydown"
       >
         <div class="modal__head">
-          <div class="modal__heading">
-            <span class="modal__kind">{{ detail.kind }}</span>
-            <h2 id="detail-title" class="modal__title">{{ detail.title }}</h2>
-            <p v-if="detail.subtitle" class="modal__subtitle">{{ detail.subtitle }}</p>
+          <div class="modal__row">
+            <span class="modal__kind" data-stagger>{{ detail.kind }}</span>
+            <button type="button" class="modal__close" aria-label="Close" @click="close">
+              <IconClose />
+            </button>
           </div>
-          <button type="button" class="modal__close" aria-label="Close" @click="closeDetail">
-            <IconClose />
-          </button>
+          <h2 id="detail-title" class="modal__title" data-stagger>{{ title }}</h2>
+          <p v-if="subtitle" class="modal__subtitle" data-stagger>{{ subtitle }}</p>
         </div>
 
-        <div class="modal__placeholder">
-          <span class="modal__placeholder-icon" aria-hidden="true"><IconConstruction :size="26" /></span>
-          <p class="modal__placeholder-title">Under construction</p>
-          <p class="modal__placeholder-text">The full story — images, details and results — is coming soon.</p>
+        <div class="modal__body" data-modal-scroll>
+          <div class="modal__placeholder" data-stagger>
+            <span class="modal__placeholder-icon" aria-hidden="true"><IconConstruction :size="26" /></span>
+            <p class="modal__placeholder-title">Under construction</p>
+            <p class="modal__placeholder-text">The full story — images, details and results — is coming soon.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -89,7 +236,6 @@ onBeforeUnmount(() => setOpen(false))
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--gutter);
 }
 
 .modal__backdrop {
@@ -102,35 +248,33 @@ onBeforeUnmount(() => setOpen(false))
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   cursor: pointer;
-  animation: fade-in 0.2s ease both;
 }
 
 .modal__card {
   position: relative;
-  width: min(1100px, 100%);
-  height: min(760px, calc(100vh - 48px));
-  overflow: auto;
+  width: min(1100px, calc(100% - 48px));
+  height: min(840px, calc(100vh - 48px));
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 28px;
-  padding: clamp(28px, 5vw, 56px);
   border-radius: var(--radius-xl);
   background: var(--color-bg);
   color: var(--color-ink);
   box-shadow: var(--shadow-modal);
   outline: none;
-  animation: pop-in 0.28s var(--ease-out) both;
 }
 
 .modal__head {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 24px;
+  flex: 0 0 auto;
+  padding: 32px 48px 26px;
+  border-bottom: 1px solid var(--color-line);
 }
 
-.modal__heading {
-  min-width: 0;
+.modal__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
 }
 
 .modal__kind {
@@ -146,24 +290,26 @@ onBeforeUnmount(() => setOpen(false))
 }
 
 .modal__title {
-  margin-top: 20px;
+  margin-top: 14px;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: var(--fs-modal-title);
+  font-size: var(--fs-popup-title);
   line-height: 1.02;
   letter-spacing: -0.02em;
 }
 
 .modal__subtitle {
   margin-top: 12px;
-  font-size: var(--fs-body);
-  color: var(--color-muted);
+  max-width: 720px;
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--color-ink-2);
 }
 
 .modal__close {
   flex: 0 0 auto;
-  width: 52px;
-  height: 52px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   border: 1.5px solid var(--color-ink);
   background: var(--color-surface);
@@ -184,6 +330,15 @@ onBeforeUnmount(() => setOpen(false))
   border-color: var(--color-accent);
   color: var(--color-on-accent);
   transform: rotate(90deg);
+}
+
+.modal__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 36px 48px 48px;
 }
 
 .modal__placeholder {
@@ -223,23 +378,25 @@ onBeforeUnmount(() => setOpen(false))
   color: var(--color-muted);
 }
 
-@keyframes fade-in {
-  from {
-    opacity: 0;
+/* Mobile: full-screen sheet */
+@media (max-width: 700px) {
+  .modal__card {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    box-shadow: none;
   }
-  to {
-    opacity: 1;
-  }
-}
 
-@keyframes pop-in {
-  from {
-    opacity: 0;
-    transform: translateY(16px) scale(0.97);
+  .modal__head {
+    padding: 16px;
   }
-  to {
-    opacity: 1;
-    transform: none;
+
+  .modal__title {
+    font-size: 34px;
+  }
+
+  .modal__body {
+    padding: 20px 16px 32px;
   }
 }
 </style>
