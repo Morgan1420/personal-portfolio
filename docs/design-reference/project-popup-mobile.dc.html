@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Project pop-up — mobile</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1E4D3A}a:hover{color:#123326}
+</style>
+</helmet>
+
+<div role="dialog" aria-modal="true" aria-labelledby="pm-title" style="width: 390px; height: 2400px; box-sizing: border-box; background: #F6F5F0; color: #142019; font-family: 'Inter', system-ui, sans-serif; overflow: hidden">
+
+  <!-- Sticky top bar -->
+  <div style="position: sticky; top: 0; z-index: 2; height: 64px; padding: 0 16px; display: flex; align-items: center; justify-content: space-between; background: rgba(246,245,240,0.94); border-bottom: 1px solid #DEE2DA">
+    <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #1E4D3A; padding: 5px 10px; border: 1px solid #1E4D3A; border-radius: 999px">Project</span>
+    <button type="button" aria-label="Close" style="width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid #142019; background: #FFFFFF; color: #142019; display: inline-flex; align-items: center; justify-content: center">
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12"></path><path d="M18 6 6 18"></path></svg>
+    </button>
+  </div>
+
+  <div style="padding: 24px 16px 40px; display: flex; flex-direction: column; gap: 28px">
+
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      <a href="#" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; min-height: 32px; padding: 0 12px; border-radius: 999px; background: #E6EEE8; color: #142019; text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 12px">IEEC · Engineering Intern</a>
+      <h2 id="pm-title" style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 36px; line-height: 1.05; letter-spacing: -0.02em">Rotatory Antenna System</h2>
+      <p style="margin: 0; font-size: 17px; line-height: 1.55; color: #3E4A42">A rotating antenna that tracks satellites across the sky and captures their signals — built end to end, from hardware to web interface.</p>
+    </div>
+
+    <dl style="margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); background: #FFFFFF; border: 1px solid #DEE2DA; border-radius: 16px; overflow: hidden">
+      <div style="padding: 12px 14px; border-right: 1px solid #DEE2DA; border-bottom: 1px solid #DEE2DA"><dt style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #4A564E">Dates</dt><dd style="margin: 4px 0 0; font-weight: 600; font-size: 14px">Sep 2025 – Feb 2026</dd></div>
+      <div style="padding: 12px 14px; border-bottom: 1px solid #DEE2DA"><dt style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #4A564E">Duration</dt><dd style="margin: 4px 0 0; font-weight: 600; font-size: 14px">5 months</dd></div>
+      <div style="padding: 12px 14px; border-right: 1px solid #DEE2DA"><dt style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #4A564E">My role</dt><dd style="margin: 4px 0 0; font-weight: 600; font-size: 14px">[Your role]</dd></div>
+      <div style="padding: 12px 14px"><dt style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #4A564E">Context</dt><dd style="margin: 4px 0 0; font-weight: 600; font-size: 14px">IEEC research team</dd></div>
+    </dl>
+
+    <figure style="margin: 0; display: flex; flex-direction: column; gap: 8px">
+      <div style="aspect-ratio: 4 / 3; border-radius: 18px; background: #1E4D3A; color: #F6F5F0; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 12px">[Swipeable photos]</div>
+      <div aria-hidden="true" style="display: flex; justify-content: center; gap: 6px"><span style="width: 20px; height: 6px; border-radius: 999px; background: #1E4D3A"></span><span style="width: 6px; height: 6px; border-radius: 999px; background: #A9B3AA"></span><span style="width: 6px; height: 6px; border-radius: 999px; background: #A9B3AA"></span><span style="width: 6px; height: 6px; border-radius: 999px; background: #A9B3AA"></span></div>
+    </figure>
+
+    <section style="display: flex; flex-direction: column; gap: 10px">
+      <p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #1E4D3A">Overview</p>
+      <p style="margin: 0; font-size: 16px; line-height: 1.7; color: #3E4A42">I designed and built a modular rotating structure that points highly directive antennas at satellites in low Earth orbit and follows them across the sky — from mechanics and firmware to orbit prediction and the web interface.</p>
+    </section>
+
+    <section style="display: flex; flex-direction: column; gap: 12px">
+      <p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #1E4D3A">How it works</p>
+      <ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px">
+        <li style="background: #FFFFFF; border: 1px solid #DEE2DA; border-radius: 16px; padding: 16px"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #1E4D3A">01 · Hardware</span><p style="margin: 6px 0 0; font-weight: 600">Mechanics &amp; parts</p><p style="margin: 4px 0 0; font-size: 14px; line-height: 1.55; color: #3E4A42">3D-modelled the structure and selected motors and components.</p></li>
+        <li style="background: #FFFFFF; border: 1px solid #DEE2DA; border-radius: 16px; padding: 16px"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #1E4D3A">02 · Firmware</span><p style="margin: 6px 0 0; font-weight: 600">Motor control</p><p style="margin: 4px 0 0; font-size: 14px; line-height: 1.55; color: #3E4A42">Turns pointing commands into precise motor movement.</p></li>
+        <li style="background: #FFFFFF; border: 1px solid #DEE2DA; border-radius: 16px; padding: 16px"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #1E4D3A">03 · Orbits</span><p style="margin: 6px 0 0; font-weight: 600">Satellite tracking</p><p style="margin: 4px 0 0; font-size: 14px; line-height: 1.55; color: #3E4A42">C code reading TLE data and propagating orbits with SGP4.</p></li>
+        <li style="background: #FFFFFF; border: 1px solid #DEE2DA; border-radius: 16px; padding: 16px"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #1E4D3A">04 · Interface</span><p style="margin: 6px 0 0; font-weight: 600">Web control panel</p><p style="margin: 4px 0 0; font-size: 14px; line-height: 1.55; color: #3E4A42">Choose satellites, start tracking and monitor the system.</p></li>
+      </ol>
+    </section>
+
+    <section style="display: flex; flex-direction: column; gap: 12px">
+      <p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #1E4D3A">Outcome</p>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+        <div style="background: #1E4D3A; color: #F6F5F0; border-radius: 16px; padding: 16px"><p style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 26px; font-weight: 700">[Value]</p><p style="margin: 2px 0 0; font-size: 13px; opacity: 0.85">[Metric]</p></div>
+        <div style="background: #FFFFFF; border: 1px solid #DEE2DA; border-radius: 16px; padding: 16px"><p style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 26px; font-weight: 700">[Value]</p><p style="margin: 2px 0 0; font-size: 13px; color: #4A564E">[Metric]</p></div>
+      </div>
+    </section>
+
+    <section style="display: flex; flex-direction: column; gap: 12px">
+      <p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #4A564E">Built with</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px">
+        <span style="padding: 6px 12px; border-radius: 999px; background: #E6EEE8; font-size: 14px; font-weight: 500">C</span>
+        <span style="padding: 6px 12px; border-radius: 999px; background: #E6EEE8; font-size: 14px; font-weight: 500">Firmware</span>
+        <span style="padding: 6px 12px; border-radius: 999px; background: #E6EEE8; font-size: 14px; font-weight: 500">3D modelling</span>
+        <span style="padding: 6px 12px; border-radius: 999px; background: #E6EEE8; font-size: 14px; font-weight: 500">TLE · SGP4</span>
+        <span style="padding: 6px 12px; border-radius: 999px; background: #E6EEE8; font-size: 14px; font-weight: 500">Web interface</span>
+      </div>
+    </section>
+
+    <section style="display: flex; flex-direction: column; gap: 10px">
+      <p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #4A564E">Links</p>
+      <a href="#" style="display: flex; align-items: center; justify-content: space-between; min-height: 48px; padding: 0 16px; border-radius: 12px; border: 1.5px solid #142019; color: #142019; text-decoration: none; font-weight: 600">Source code <span aria-hidden="true">↗</span></a>
+      <a href="#" style="display: flex; align-items: center; justify-content: space-between; min-height: 48px; padding: 0 16px; border-radius: 12px; border: 1.5px solid #DEE2DA; color: #142019; text-decoration: none; font-weight: 600">[Demo video] <span aria-hidden="true">↗</span></a>
+    </section>
+
+    <section style="background: #FFFFFF; border: 1px solid #DEE2DA; border-radius: 18px; padding: 18px; display: flex; flex-direction: column; gap: 12px">
+      <p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #4A564E">Projects at IEEC</p>
+      <div aria-hidden="true" style="display: flex; gap: 3px; height: 8px">
+        <span style="flex: 10; border-radius: 999px; background: #D6E2D9"></span>
+        <span style="flex: 2; border-top: 2px dashed #A9B3AA; align-self: center"></span>
+        <span style="flex: 5; border-radius: 999px; background: #1E4D3A"></span>
+        <span style="flex: 5; border-radius: 999px; background: #D6E2D9"></span>
+      </div>
+      <ul style="margin: 0; padding: 0; list-style: none">
+        <li><a href="#" style="display: flex; align-items: center; gap: 10px; min-height: 44px; color: #3E4A42; text-decoration: none; font-size: 14px"><span aria-hidden="true" style="width: 8px; height: 8px; border-radius: 50%; background: #A9B3AA"></span>Signal Processing UI</a></li>
+        <li><span aria-current="true" style="display: flex; align-items: center; gap: 10px; min-height: 44px; font-weight: 600; font-size: 14px"><span aria-hidden="true" style="width: 8px; height: 8px; border-radius: 50%; background: #1E4D3A"></span>Rotatory Antenna System</span></li>
+        <li><a href="#" style="display: flex; align-items: center; gap: 10px; min-height: 44px; color: #3E4A42; text-decoration: none; font-size: 14px"><span aria-hidden="true" style="width: 8px; height: 8px; border-radius: 50%; background: #A9B3AA"></span>USRP X440 Operating Tool</a></li>
+      </ul>
+    </section>
+
+    <nav aria-label="More projects" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+      <a href="#" style="display: flex; flex-direction: column; gap: 4px; padding: 14px; border-radius: 14px; border: 1px solid #DEE2DA; background: #FFFFFF; color: #142019; text-decoration: none"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #4A564E">← Previous</span><span style="font-weight: 600; font-size: 14px">Signal Processing UI</span></a>
+      <a href="#" style="display: flex; flex-direction: column; align-items: flex-end; text-align: right; gap: 4px; padding: 14px; border-radius: 14px; border: 1px solid #DEE2DA; background: #FFFFFF; color: #142019; text-decoration: none"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #4A564E">Next →</span><span style="font-weight: 600; font-size: 14px">USRP X440 Operating Tool</span></a>
+    </nav>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":2400}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

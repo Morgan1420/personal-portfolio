@@ -1,0 +1,1356 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Jan Moran — Portfolio</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F6F5F0}
+html{scroll-behavior:smooth}
+a{color:#1E4D3A}a:hover{color:#123326}
+.ul{background-image:linear-gradient(var(--accent,#1E4D3A),var(--accent,#1E4D3A));background-repeat:no-repeat;background-position:0 calc(100% - 6px);background-size:0% 2px;transition:background-size .25s ease}
+.ul:hover,.ul:focus-visible,.ul.on,.langbtn:hover .ul,.langbtn:focus-visible .ul{background-size:100% 2px}
+.langbtn .ul{background-position:0 100%;padding-bottom:3px}
+.btn{transition:background-color .2s ease,color .2s ease,box-shadow .2s ease,transform .12s ease}
+.btn:active{transform:scale(.96)}
+.btn-primary:hover,.btn-primary:focus-visible{background:transparent !important;color:var(--accent,#1E4D3A) !important;box-shadow:inset 0 0 0 1.5px var(--accent,#1E4D3A)}
+.btn-outline:hover,.btn-outline:focus-visible{background:#142019 !important;color:#F6F5F0 !important}
+.btn-light:hover,.btn-light:focus-visible{background:transparent !important;color:#F6F5F0 !important;box-shadow:inset 0 0 0 1.5px #F6F5F0}
+.langopt{transition:background-color .15s ease}
+.langopt:not([aria-pressed="true"]):hover{background:#F0F3EE !important}
+.hb{box-sizing:border-box;flex-shrink:0;transition:background-color .22s ease,color .22s ease,border-color .22s ease,padding .22s ease,min-height .22s ease,width .22s ease,height .22s ease,box-shadow .22s ease,transform .12s ease}
+.hb:hover,.hb:focus-visible{background:var(--accent,#1E4D3A) !important;color:#F6F5F0 !important;border-color:var(--accent,#1E4D3A) !important;box-shadow:0 10px 24px rgba(30,77,58,.24)}
+.hb-pill:hover,.hb-pill:focus-visible{padding:0 32px !important;min-height:58px !important}
+.hb-circle:hover,.hb-circle:focus-visible{width:58px !important;height:58px !important}
+.tl-vp{scrollbar-width:none}.tl-vp::-webkit-scrollbar{display:none}
+.tl-btn{transition:background-color .2s ease,color .2s ease,border-color .2s ease,transform .2s ease,opacity .2s ease}
+.tl-btn:hover,.tl-btn:focus-visible,.tl-edge:hover .tl-btn{background:var(--accent,#1E4D3A) !important;color:#F6F5F0 !important;border-color:var(--accent,#1E4D3A) !important;transform:scale(1.1)}
+.tl-edge{z-index:5}
+@keyframes projIn{from{transform:translateY(64px);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes tickIn{from{opacity:0}to{opacity:1}}
+.proj-in{animation:projIn .38s cubic-bezier(.2,.7,.2,1) .3s both}
+.tick-in{animation:tickIn .3s ease .45s both}
+.tl-click{cursor:pointer}
+.tl-click:hover,.tl-click:focus-visible{filter:drop-shadow(0 6px 14px rgba(30,77,58,.30));translate:0 -2px}
+.tl-click:hover .tl-layer,.tl-click:focus-visible .tl-layer{border-color:var(--accent,#1E4D3A) !important;filter:brightness(1.04)}
+.proj-in.tl-click:hover,.proj-in.tl-click:focus-visible{background:#EEF4EF !important}
+.tl-click:focus-visible{outline:2px solid var(--accent,#1E4D3A);outline-offset:3px}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes popIn{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:none}}
+.pop-bg{animation:fadeIn .25s ease both}
+.pp-link{transition:background-color .2s ease,color .2s ease,border-color .2s ease}
+.pp-link:hover,.pp-link:focus-visible{background:var(--accent,#1E4D3A) !important;color:#F6F5F0 !important;border-color:var(--accent,#1E4D3A) !important}
+.pp-nav-btn{transition:border-color .2s ease,translate .2s ease,box-shadow .2s ease}
+.pp-nav-btn:hover,.pp-nav-btn:focus-visible{border-color:var(--accent,#1E4D3A) !important;translate:0 -2px;box-shadow:0 8px 20px rgba(30,77,58,.14)}
+.pp-sib:hover,.pp-sib:focus-visible{color:var(--accent,#1E4D3A) !important}
+.pp-thumb{transition:border-color .2s ease}
+.pp-thumb:hover{border-color:#A9B3AA !important}
+.pp-chip{transition:background-color .2s ease}
+@media (max-width: 700px){
+  .pp-wrap{padding:0 !important}
+  .pp-card{width:100% !important;height:100% !important;max-height:none !important;border-radius:0 !important}
+  .pp-head{padding:16px 16px 18px !important}
+  .pp-title{font-size:34px !important}
+  .pp-body{grid-template-columns:minmax(0,1fr) !important;padding:24px 16px 40px !important;gap:32px !important}
+  .pp-facts{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+  .pp-side{position:static !important}
+  .pp-media{aspect-ratio:4/3 !important}
+}
+.pop-close{transition:background-color .2s ease,color .2s ease,transform .2s ease}
+.pop-close:hover,.pop-close:focus-visible{background:var(--accent,#1E4D3A) !important;color:#F6F5F0 !important;transform:rotate(90deg)}
+@media (prefers-reduced-motion: reduce){.proj-in,.tick-in,.pop-bg{animation:none}.tl-click,.pop-close,.pp-link,.pp-nav-btn,.pp-thumb{transition:none}}
+.tl-edge::before{content:"";position:absolute;inset:0;opacity:0;transition:opacity .25s ease;pointer-events:none;z-index:-1}
+.tl-edge-l::before{background:linear-gradient(to right,rgba(20,32,25,0.16),rgba(20,32,25,0))}
+.tl-edge-r::before{background:linear-gradient(to left,rgba(20,32,25,0.16),rgba(20,32,25,0))}
+.tl-edge:hover::before{opacity:1}
+@media (prefers-reduced-motion: reduce){.btn,.ul,.langopt,.hb,.tl-btn{transition:none}.btn:active{transform:none}}
+</style>
+</helmet>
+
+<div style="--accent: {{accent}}; background: #F6F5F0; color: #142019; font-family: 'Inter', system-ui, sans-serif; font-size: 17px; line-height: 1.6; min-height: 100vh">
+
+  <!-- NAV -->
+  <header style="position: sticky; top: 0; z-index: 10; background: rgba(246,245,240,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid #DEE2DA">
+    <nav aria-label="Main" style="max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+      <a href="#top" style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 22px; text-decoration: none; color: #142019; display: flex; align-items: center; gap: 10px">
+        <span style="display: inline-flex; width: 36px; height: 36px; border-radius: 10px; background: {{accent}}; color: #F6F5F0; align-items: center; justify-content: center; font-size: 16px">JM</span>
+        Jan Moran Ricardo
+      </a>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 22px; font-size: 15px; font-weight: 500">
+        <a href="#about" class="ul" style="color: #3E4A42; text-decoration: none; padding: 10px 0">About</a>
+        <a href="#experience" class="ul" style="color: #3E4A42; text-decoration: none; padding: 10px 0">Experience</a>
+        <a href="#projects" class="ul" style="color: #3E4A42; text-decoration: none; padding: 10px 0">Projects</a>
+        <a href="#achievements" class="ul" style="color: #3E4A42; text-decoration: none; padding: 10px 0">Achievements</a>
+        <a href="#skills" class="ul" style="color: #3E4A42; text-decoration: none; padding: 10px 0">Skills</a>
+        <a href="#gallery" class="ul" style="color: #3E4A42; text-decoration: none; padding: 10px 0">Gallery</a>
+        <a href="#contact" class="btn btn-primary" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 999px; background: {{accent}}; color: #F6F5F0; text-decoration: none; font-weight: 600">Contact</a>
+        <div style="position: relative">
+          <button type="button" class="langbtn" aria-haspopup="true" aria-expanded="{{langOpen}}" aria-label="Language: {{langName}}" onClick="{{toggleLang}}" style="min-height: 44px; min-width: 44px; padding: 0 4px; border: none; background: transparent; color: #142019; font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; cursor: pointer">
+            <span class="ul {{langUl}}">{{langCode}}</span>
+            <sc-if value="{{langOpen}}" hint-placeholder-val="{{ false }}">
+              <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 15 6-6 6 6"></path></svg>
+            </sc-if>
+            <sc-if value="{{langClosed}}" hint-placeholder-val="{{ true }}">
+              <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg>
+            </sc-if>
+          </button>
+          <sc-if value="{{langOpen}}" hint-placeholder-val="{{ false }}">
+            <ul aria-label="Choose language" style="position: absolute; right: 0; top: calc(100% + 10px); z-index: 20; margin: 0; padding: 6px; list-style: none; width: 168px; background: #FFFFFF; border: 1px solid #DEE2DA; border-radius: 14px; box-shadow: 0 14px 36px rgba(20,32,25,0.14)">
+              <sc-for list="{{langs}}" as="l" hint-placeholder-count="5">
+                <li>
+                  <button type="button" class="langopt" aria-pressed="{{l.selected}}" onClick="{{l.pick}}" style="width: 100%; min-height: 44px; display: flex; align-items: center; gap: 12px; padding: 0 12px; border: none; border-radius: 10px; background: {{l.bg}}; color: #142019; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 500; text-align: left; cursor: pointer">
+                    <span style="width: 24px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{accent}}">{{l.code}}</span>
+                    <span style="flex: 1">{{l.name}}</span>
+                  </button>
+                </li>
+              </sc-for>
+            </ul>
+          </sc-if>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section id="top" style="position: relative; box-sizing: border-box; max-width: 1200px; min-height: clamp(620px, calc(100vh - 73px), 960px); margin: 0 auto; padding: 56px 24px 112px; display: flex; flex-wrap: wrap; align-items: center; align-content: center; gap: 64px">
+    <div style="flex: 1 1 520px; min-width: 0">
+      <p style="margin: 0 0 20px; font-family: 'JetBrains Mono', monospace; font-size: 14px; letter-spacing: 0.04em; color: {{accent}}; display: flex; align-items: center; gap: 10px">
+        <span aria-hidden="true" style="display: inline-block; width: 28px; height: 2px; background: {{accent}}"></span>
+        Telecom &amp; Computer Engineer · Entrepreneur
+      </p>
+      <h1 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(52px, 7.6vw, 108px); line-height: 0.95; letter-spacing: -0.03em">Jan Moran<br><span style="color: {{accent}}">Ricardo</span></h1>
+      <p style="margin: 28px 0 0; max-width: 540px; font-size: 20px; line-height: 1.55; color: #3E4A42">I turn high-level engineering concepts into tangible products that solve real-world problems — from satellite-tracking antennas to a startup of my own.</p>
+      <div style="margin-top: 40px; min-height: 64px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px">
+        <a href="mailto:jan.moran.r@gmail.com" class="btn hb hb-pill" style="display: inline-flex; align-items: center; gap: 10px; min-height: 52px; border: 1.5px solid {{accent}}; padding: 0 26px; border-radius: 999px; background: {{accent}}; color: #F6F5F0; font-weight: 600; font-size: 16px; text-decoration: none">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg>
+          Contact me
+        </a>
+        <a href="/_blob/e8e460a9ab660128026d34be3f372de4" download="Jan_Moran_CV.pdf" class="btn hb hb-pill" style="display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 26px; border-radius: 999px; border: 1.5px solid #142019; color: #142019; font-weight: 600; font-size: 16px; text-decoration: none">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"></path><path d="m7 10 5 5 5-5"></path><path d="M5 20h14"></path></svg>
+          Download CV
+        </a>
+        <span aria-hidden="true" style="width: 1px; height: 32px; background: #C9D0C7; margin: 0 6px"></span>
+        <a href="https://github.com/Morgan1420" aria-label="GitHub" class="btn hb hb-circle" style="width: 52px; height: 52px; border-radius: 50%; border: 1.5px solid #142019; background: #FFFFFF; color: #142019; display: inline-flex; align-items: center; justify-content: center">
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 8-4 4 4 4"></path><path d="m16 8 4 4-4 4"></path><path d="m14 4-4 16"></path></svg>
+        </a>
+        <a href="https://linkedin.com/in/jan-moran" aria-label="LinkedIn" class="btn hb hb-circle" style="width: 52px; height: 52px; border-radius: 50%; border: 1.5px solid #142019; background: #FFFFFF; color: #142019; display: inline-flex; align-items: center; justify-content: center">
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+        </a>
+        <a href="#" aria-label="YouTube" class="btn hb hb-circle" style="width: 52px; height: 52px; border-radius: 50%; border: 1.5px solid #142019; background: #FFFFFF; color: #142019; display: inline-flex; align-items: center; justify-content: center">
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="m10 8.5 5 3.5-5 3.5z"></path></svg>
+        </a>
+      </div>
+    </div>
+    <div style="flex: 0 1 400px; min-width: 260px; position: relative; margin: 0 auto">
+      <div aria-hidden="true" style="position: absolute; inset: 24px -24px -24px 24px; border-radius: 28px; background: {{accent}}"></div>
+      <img src="/_blob/75a3dc9404a527939d12519f67da783f" alt="Portrait of Jan Moran" style="position: relative; display: block; width: 100%; aspect-ratio: 519 / 589; object-fit: cover; border-radius: 28px; background: #E6EEE8">
+      <div style="position: absolute; left: -20px; bottom: 36px; background: #FFFFFF; border: 1px solid #DEE2DA; border-radius: 14px; padding: 12px 16px; display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; box-shadow: 0 8px 24px rgba(20,32,25,0.08)">
+        <span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #2F8F5B"></span>
+        Open to opportunities
+      </div>
+    </div>
+    <a href="#about" style="position: absolute; left: 50%; bottom: 24px; transform: translateX(-50%); display: inline-flex; flex-direction: column; align-items: center; gap: 4px; min-height: 44px; color: #4A564E; text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase">Scroll
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"></path><path d="m6 13 6 6 6-6"></path></svg>
+    </a>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" style="background: #FFFFFF; border-top: 1px solid #DEE2DA; border-bottom: 1px solid #DEE2DA">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 72px 24px">
+    <p style="margin: 0 0 20px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{accent}}">01 — About me</p>
+    <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 48px">
+      <div style="flex: 1.5 1 480px; min-width: 0">
+        <h2 style="margin: 0 0 22px; font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(32px, 3.8vw, 46px); line-height: 1.08; letter-spacing: -0.02em">Dual engineer <span style="color: {{accent}}">&amp; entrepreneur</span></h2>
+        <p style="margin: 0 0 14px; max-width: 600px; font-size: 17px; line-height: 1.7; color: #3E4A42">I'm a Telecommunications and Computer Engineer driven by empirical learning and proactive problem-solving. My work spans the whole stack of a telecom system — rotating antennas, embedded systems, software-defined radios and signal processing — up to the web apps that show the data.</p>
+        <p style="margin: 0; max-width: 600px; font-size: 17px; line-height: 1.7; color: #3E4A42">Alongside engineering, I'm co-founding BitSpace, a digital-health startup that has taught me to think like a founder, not just a builder. And you'll usually find me at a hackathon, pitching an idea to anyone who will listen.</p>
+      </div>
+      <div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+        <div style="background: #F6F5F0; border-radius: 20px; padding: 22px 24px 8px">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 6px">
+            <p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #4A564E; text-transform: uppercase; letter-spacing: 0.06em">Education</p>
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; padding: 4px 10px; border-radius: 999px; border: 1px solid {{accent}}; color: {{accent}}">Dual degree</span>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 14px; padding: 16px 0; border-bottom: 1px solid #DEE2DA">
+            <span aria-hidden="true" style="flex: 0 0 auto; width: 40px; height: 40px; border-radius: 12px; background: {{accent}}; color: #F6F5F0; display: inline-flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12v9"></path><circle cx="12" cy="10" r="2"></circle><path d="M8.5 6.5a5 5 0 0 0 0 7"></path><path d="M15.5 6.5a5 5 0 0 1 0 7"></path></svg></span>
+            <div style="min-width: 0">
+              <p style="margin: 0; font-weight: 600; font-size: 17px; line-height: 1.35">Telecommunications Engineering</p>
+              <p style="margin: 3px 0 0; font-size: 14px; color: #4A564E">Universitat Autònoma de Barcelona · 2021 – 2026</p>
+            </div>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 14px; padding: 16px 0">
+            <span aria-hidden="true" style="flex: 0 0 auto; width: 40px; height: 40px; border-radius: 12px; background: {{accent}}; color: #F6F5F0; display: inline-flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"></rect><path d="M8 20h8"></path><path d="M12 16v4"></path></svg></span>
+            <div style="min-width: 0">
+              <p style="margin: 0; font-weight: 600; font-size: 17px; line-height: 1.35">Computer Engineering</p>
+              <p style="margin: 3px 0 0; font-size: 14px; color: #4A564E">Universitat Autònoma de Barcelona · 2021 – 2026</p>
+            </div>
+          </div>
+        </div>
+        <div style="background: #F6F5F0; border-radius: 16px; padding: 18px 20px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 16px">
+          <p style="margin: 0; flex: 0 0 96px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #4A564E; text-transform: uppercase; letter-spacing: 0.06em">Languages</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px 16px; font-family: 'JetBrains Mono', monospace; font-size: 15px">
+            <abbr title="Catalan — native" style="text-decoration: none; font-weight: 700; color: #142019">CA</abbr>
+            <abbr title="Spanish — native" style="text-decoration: none; font-weight: 700; color: #142019">ES</abbr>
+            <abbr title="English — C1" style="text-decoration: none; font-weight: 700; color: #142019">EN</abbr>
+            <abbr title="Lithuanian — A1" style="text-decoration: none; font-weight: 400; color: #4A564E">LT</abbr>
+            <abbr title="German — A1" style="text-decoration: none; font-weight: 400; color: #4A564E">DE</abbr>
+          </div>
+          <p style="margin: 0; flex: 1 1 100%; padding-top: 12px; border-top: 1px solid #DEE2DA; display: flex; align-items: flex-start; gap: 8px; font-size: 12px; line-height: 1.5; color: #4A564E"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto; margin-top: 2px"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg><span>This site is available in every language I speak</span></p>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE SLIDER -->
+  <section id="experience" style="position: relative; padding: 96px 0 0">
+    <!-- The timeline scroller clips anything outside it, so it gets 28px of top room for hover lift and shadows -->
+    <div style="max-width: 1200px; margin: 0 auto 20px; padding: 0 24px">
+      <p style="margin: 0 0 12px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{accent}}">02 — Experience</p>
+      <h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(36px, 4.5vw, 52px); line-height: 1.05; letter-spacing: -0.02em">Where I've worked</h2>
+    </div>
+
+    <div class="tl-vp" ref="{{vpRef}}" onScroll="{{onScroll}}" tabindex="0" role="region" aria-label="Studies and work experience timeline, scrollable" onPointerDown="{{dragStart}}" onPointerMove="{{dragMove}}" onPointerUp="{{dragEnd}}" onPointerCancel="{{dragEnd}}" style="overflow-x: auto; overflow-y: hidden; padding-top: 28px; padding-bottom: 72px; outline-offset: -4px; cursor: {{dragCursor}}; user-select: none; -webkit-user-select: none">
+      <div style="position: relative; width: {{tlW}}px; height: 372px">
+
+        <!-- Upper lanes: studies + BitSpace (fade back while a work box is hovered) -->
+        <sc-for list="{{lanes}}" as="b" hint-placeholder-count="3">
+          <button type="button" class="tl-click" ref="{{b.boxRef}}" onClick="{{b.open}}" aria-label="{{b.aria}}" style="position: absolute; left: {{b.x}}px; top: {{b.y}}px; width: {{b.w}}px; height: 40px; box-sizing: border-box; margin: 0; padding: 0; border: none; background: transparent; font: inherit; text-align: left; color: #142019; overflow: hidden; opacity: {{laneOpacity}}; transition: opacity .25s ease, filter .2s ease, translate .2s ease">
+            <span aria-hidden="true" class="tl-layer" style="position: absolute; inset: 0; transition: border-color .2s ease, filter .2s ease; box-sizing: border-box; border-radius: {{b.radius}}; background: {{b.bg}}; border: 1.5px solid {{b.border}}; border-right-width: {{b.borderR}}; -webkit-mask-image: {{b.mask}}; mask-image: {{b.mask}}"></span>
+            <span ref="{{b.tRef}}" style="position: absolute; left: 16px; top: 0; height: 40px; display: flex; align-items: center; font-size: 14px; font-weight: 600; white-space: nowrap">{{b.left}}</span>
+            <span ref="{{b.lRef}}" style="position: absolute; right: {{b.rightInset}}px; top: 0; height: 40px; display: flex; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: {{accent}}; white-space: nowrap">{{b.right}}</span>
+          </button>
+        </sc-for>
+
+        <!-- Projects of the hovered work box -->
+        <sc-for list="{{projs}}" as="pr" hint-placeholder-count="0">
+          <button type="button" ref="{{pr.boxRef}}" class="proj-in tl-click" onClick="{{pr.open}}" onMouseEnter="{{pr.enter}}" onMouseLeave="{{pr.leave}}" aria-label="{{pr.aria}}" style="margin: 0; padding: 0; font: inherit; text-align: left; transition: background-color .2s ease, filter .2s ease, translate .2s ease; position: absolute; left: {{pr.x}}px; top: 8px; width: {{pr.w}}px; height: 48px; box-sizing: border-box; border-radius: 14px; background: #FFFFFF; border: 1.5px solid {{accent}}; color: #142019; overflow: hidden; box-shadow: 0 8px 20px rgba(20,32,25,0.10); z-index: 2">
+            <span ref="{{pr.tRef}}" style="position: absolute; left: 14px; top: 0; height: 45px; max-width: calc(100% - {{pr.durSpace}}px); display: flex; align-items: center; font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{pr.name}}</span>
+            <span ref="{{pr.lRef}}" style="position: absolute; right: 14px; top: 0; height: 45px; display: flex; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: {{accent}}; white-space: nowrap">{{pr.dur}}</span>
+          </button>
+        </sc-for>
+
+        <!-- Work lane -->
+        <sc-for list="{{boxes}}" as="j" hint-placeholder-count="3">
+          <article ref="{{j.boxRef}}" onMouseEnter="{{j.enter}}" onMouseLeave="{{j.leave}}" style="position: absolute; left: {{j.x}}px; top: {{j.top}}px; width: {{j.w}}px; height: {{j.h}}px; box-sizing: border-box; border-radius: 22px; background: {{j.bg}}; color: {{j.fg}}; border: 1.5px solid {{j.border}}; overflow: hidden; z-index: {{j.z}}; box-shadow: {{j.shadow}}; transition: top .3s ease, height .3s ease, box-shadow .3s ease">
+            <div ref="{{j.tRef}}" style="position: absolute; left: 22px; top: 0; padding-top: 38px; max-width: min(480px, calc(100% - 140px))">
+              <p style="margin: 0 0 6px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.04em; opacity: 0.8">{{j.org}}</p>
+              <h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 26px; line-height: 1.1; letter-spacing: -0.01em">{{j.role}}</h3>
+              <p style="margin: 22px 0 0; font-size: 15px; line-height: 1.55; opacity: {{j.descOpacity}}; transition: opacity .25s ease .05s">{{j.desc}}</p>
+            </div>
+            <div ref="{{j.lRef}}" style="position: absolute; right: 22px; top: 28px; width: 72px; height: 72px; border-radius: 16px; background: {{j.logoBg}}; color: {{j.logoFg}}; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 11px">[Logo]</div>
+          </article>
+        </sc-for>
+
+        <!-- Gap labels -->
+        <sc-for list="{{gaps}}" as="g" hint-placeholder-count="1">
+          <span style="position: absolute; left: {{g.x}}px; top: 218px; transform: translateX(-50%); font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #4A564E; white-space: nowrap">{{g.label}}</span>
+        </sc-for>
+
+        <!-- Future -->
+        <div style="position: absolute; left: {{futureX}}px; top: 160px; height: 132px; padding-left: 20px; display: flex; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: {{accent}}; white-space: nowrap">Future →</div>
+
+        <!-- Axis (moves down while a box is expanded) -->
+        <div style="position: absolute; left: 0; top: 0; width: {{tlW}}px; height: 0; transform: translateY({{axisShift}}px); transition: transform .3s ease">
+          <sc-for list="{{lines}}" as="ln" hint-placeholder-count="5">
+            <span aria-hidden="true" style="position: absolute; left: {{ln.x}}px; top: 306px; width: {{ln.w}}px; height: 0; border-top: 2px {{ln.kind}} {{ln.color}}"></span>
+          </sc-for>
+          <sc-for list="{{ticks}}" as="t" hint-placeholder-count="5">
+            <span class="{{t.cls}}" style="position: absolute; left: {{t.x}}px; top: 299px; width: 0; height: 0">
+              <span aria-hidden="true" style="position: absolute; left: -1px; top: 0; width: 2px; height: 16px; background: {{t.color}}"></span>
+              <span style="position: absolute; left: 0; top: {{t.ly}}px; transform: translateX({{t.tx}}); font-family: 'JetBrains Mono', monospace; font-size: 12px; color: {{t.lc}}; white-space: nowrap">{{t.label}}</span>
+            </span>
+          </sc-for>
+          <sc-for list="{{pills}}" as="p" hint-placeholder-count="3">
+            <span style="position: absolute; left: {{p.x}}px; top: 318px; transform: translateX(-50%); padding: 2px 10px; border-radius: 999px; background: #E6EEE8; color: {{accent}}; font-family: 'JetBrains Mono', monospace; font-size: 12px; white-space: nowrap">{{p.label}}</span>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+      <sc-if value="{{showBack}}" hint-placeholder-val="{{ true }}">
+        <div class="tl-edge tl-edge-l" onMouseEnter="{{hoverBack}}" onMouseLeave="{{stopHover}}" style="position: absolute; left: 0; top: 0; bottom: 0; width: max(112px, 12%)">
+          <button type="button" class="tl-btn" aria-label="Scroll timeline back" onClick="{{stepBack}}" style="position: absolute; left: 24px; bottom: 192px; width: 52px; height: 52px; border-radius: 50%; border: 1.5px solid #142019; background: #FFFFFF; color: #142019; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(20,32,25,0.12)">
+            <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"></path></svg>
+          </button>
+        </div>
+      </sc-if>
+      <sc-if value="{{showFwd}}" hint-placeholder-val="{{ false }}">
+        <div class="tl-edge tl-edge-r" onMouseEnter="{{hoverFwd}}" onMouseLeave="{{stopHover}}" style="position: absolute; right: 0; top: 0; bottom: 0; width: max(112px, 12%)">
+          <button type="button" class="tl-btn" aria-label="Scroll timeline forward" onClick="{{stepFwd}}" style="position: absolute; right: 24px; bottom: 192px; width: 52px; height: 52px; border-radius: 50%; border: 1.5px solid #142019; background: #FFFFFF; color: #142019; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(20,32,25,0.12)">
+            <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg>
+          </button>
+        </div>
+      </sc-if>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" style="background: #FFFFFF; border-top: 1px solid #DEE2DA; border-bottom: 1px solid #DEE2DA">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 96px 24px">
+      <p style="margin: 0 0 12px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{accent}}">03 — Projects</p>
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 40px">
+        <h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(36px, 4.5vw, 52px); line-height: 1.05; letter-spacing: -0.02em">Things I've built</h2>
+        <a href="https://github.com/Morgan1420" style="font-weight: 600; font-size: 16px; display: inline-flex; align-items: center; gap: 8px; min-height: 44px">More on GitHub
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg>
+        </a>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px">
+
+        <article style="border: 1px solid #DEE2DA; border-radius: 22px; overflow: hidden; display: flex; flex-direction: column; background: #F6F5F0">
+          <div style="aspect-ratio: 16 / 10; background: #E6EEE8; display: flex; align-items: center; justify-content: center; color: #4A564E; font-family: 'JetBrains Mono', monospace; font-size: 13px">[Project image]</div>
+          <div style="padding: 26px; display: flex; flex-direction: column; gap: 12px; flex: 1">
+            <p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: {{accent}}; text-transform: uppercase; letter-spacing: 0.06em">Embedded · Satellite tech</p>
+            <h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 26px; line-height: 1.15">Rotatory antenna system</h3>
+            <p style="margin: 0; color: #3E4A42; font-size: 16px; flex: 1">A modular rotating structure, programmed to track LEO satellites with highly directive antennas.</p>
+            <a href="https://github.com/Morgan1420" style="font-weight: 600; font-size: 15px; min-height: 44px; display: inline-flex; align-items: center">View project →</a>
+          </div>
+        </article>
+
+        <article style="border: 1px solid #DEE2DA; border-radius: 22px; overflow: hidden; display: flex; flex-direction: column; background: #F6F5F0">
+          <div style="aspect-ratio: 16 / 10; background: {{accent}}; display: flex; align-items: center; justify-content: center; color: #F6F5F0; font-family: 'JetBrains Mono', monospace; font-size: 13px">[Project image]</div>
+          <div style="padding: 26px; display: flex; flex-direction: column; gap: 12px; flex: 1">
+            <p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: {{accent}}; text-transform: uppercase; letter-spacing: 0.06em">App dev · Entrepreneurship</p>
+            <h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 26px; line-height: 1.15">BitSpace</h3>
+            <p style="margin: 0; color: #3E4A42; font-size: 16px; flex: 1">A startup about to launch: a mobile app that helps young adults build healthier phone-usage habits.</p>
+            <a href="https://github.com/Morgan1420" style="font-weight: 600; font-size: 15px; min-height: 44px; display: inline-flex; align-items: center">View project →</a>
+          </div>
+        </article>
+
+        <article style="border: 1px solid #DEE2DA; border-radius: 22px; overflow: hidden; display: flex; flex-direction: column; background: #F6F5F0">
+          <div style="aspect-ratio: 16 / 10; background: #E6EEE8; display: flex; align-items: center; justify-content: center; color: #4A564E; font-family: 'JetBrains Mono', monospace; font-size: 13px">[Project image]</div>
+          <div style="padding: 26px; display: flex; flex-direction: column; gap: 12px; flex: 1">
+            <p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: {{accent}}; text-transform: uppercase; letter-spacing: 0.06em">Web · SDR · GNSS</p>
+            <h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 26px; line-height: 1.15">GNSS signal dashboard</h3>
+            <p style="margin: 0; color: #3E4A42; font-size: 16px; flex: 1">A Vue web app that receives GNSS signals through software-defined radios and visualises the processed data.</p>
+            <a href="https://github.com/Morgan1420" style="font-weight: 600; font-size: 15px; min-height: 44px; display: inline-flex; align-items: center">View project →</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements" style="background: {{accent}}; color: #F6F5F0">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 96px 24px">
+      <p style="margin: 0 0 12px; font-family: 'JetBrains Mono', monospace; font-size: 13px; opacity: 0.85">04 — Achievements</p>
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 40px">
+        <h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(36px, 4.5vw, 52px); line-height: 1.05; letter-spacing: -0.02em">Awards &amp; hackathons</h2>
+        <p style="margin: 0; max-width: 360px; font-size: 15px; opacity: 0.85">[One line on what competing has taught you]</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px">
+        <article style="background: #F6F5F0; color: #142019; border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+          <p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: {{accent}}; text-transform: uppercase; letter-spacing: 0.06em">Winner · 2025</p>
+          <h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 30px; line-height: 1.1">iFest</h3>
+          <p style="margin: 0; font-size: 15px; color: #4A564E">[What you built and what you won — one line]</p>
+        </article>
+        <article style="background: #F6F5F0; color: #142019; border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+          <p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: {{accent}}; text-transform: uppercase; letter-spacing: 0.06em">Winner · 2025</p>
+          <h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 30px; line-height: 1.1">HackEPS Lleida</h3>
+          <p style="margin: 0; font-size: 15px; color: #4A564E">[What you built and what you won — one line]</p>
+        </article>
+        <article style="background: #F6F5F0; color: #142019; border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+          <p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: {{accent}}; text-transform: uppercase; letter-spacing: 0.06em">Winner · 2024</p>
+          <h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 30px; line-height: 1.1">Innovation Day</h3>
+          <p style="margin: 0; font-size: 15px; color: #4A564E">[What you built and what you won — one line]</p>
+        </article>
+      </div>
+      <div style="margin-top: 40px; padding-top: 28px; border-top: 1px solid rgba(246,245,240,0.25); display: flex; flex-wrap: wrap; align-items: center; gap: 16px 32px">
+        <p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; opacity: 0.85">Also competed in</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px">
+          <span style="padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(246,245,240,0.4); font-size: 15px">HackUPC ’22–’26</span>
+          <span style="padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(246,245,240,0.4); font-size: 15px">UAB the Hack ’24–’25</span>
+          <span style="padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(246,245,240,0.4); font-size: 15px">AESSBot UPC ’26</span>
+          <span style="padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(246,245,240,0.4); font-size: 15px">HP CodeWars ’19</span>
+          <span style="padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(246,245,240,0.4); font-size: 15px">Erasmus for Young Entrepreneurs ’26–’27</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" style="max-width: 1200px; margin: 0 auto; padding: 96px 24px">
+    <p style="margin: 0 0 12px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{accent}}">05 — Skills</p>
+    <h2 style="margin: 0 0 40px; font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(36px, 4.5vw, 52px); line-height: 1.05; letter-spacing: -0.02em">What I work with</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px">
+      <div style="background: {{accent}}; color: #F6F5F0; border-radius: 22px; padding: 32px">
+        <h3 style="margin: 0 0 6px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px">Core strengths</h3>
+        <p style="margin: 0 0 22px; font-size: 15px; opacity: 0.85">What I use day to day.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px">
+          <span style="padding: 8px 14px; border-radius: 999px; background: rgba(246,245,240,0.14); font-size: 15px; font-weight: 500">GNU/Linux</span>
+          <span style="padding: 8px 14px; border-radius: 999px; background: rgba(246,245,240,0.14); font-size: 15px; font-weight: 500">Git &amp; GitHub</span>
+          <span style="padding: 8px 14px; border-radius: 999px; background: rgba(246,245,240,0.14); font-size: 15px; font-weight: 500">C / C++</span>
+          <span style="padding: 8px 14px; border-radius: 999px; background: rgba(246,245,240,0.14); font-size: 15px; font-weight: 500">Python</span>
+          <span style="padding: 8px 14px; border-radius: 999px; background: rgba(246,245,240,0.14); font-size: 15px; font-weight: 500">Web development</span>
+          <span style="padding: 8px 14px; border-radius: 999px; background: rgba(246,245,240,0.14); font-size: 15px; font-weight: 500">React Native</span>
+          <span style="padding: 8px 14px; border-radius: 999px; background: rgba(246,245,240,0.14); font-size: 15px; font-weight: 500">Public pitching</span>
+          <span style="padding: 8px 14px; border-radius: 999px; background: rgba(246,245,240,0.14); font-size: 15px; font-weight: 500">Entrepreneurship</span>
+        </div>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #DEE2DA; border-radius: 22px; padding: 32px">
+        <h3 style="margin: 0 0 6px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px">Also worked with</h3>
+        <p style="margin: 0 0 22px; font-size: 15px; color: #4A564E">Hands-on experience from projects and internships.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px">
+          <span style="padding: 8px 14px; border-radius: 999px; background: #E6EEE8; color: #142019; font-size: 15px; font-weight: 500">MATLAB</span>
+          <span style="padding: 8px 14px; border-radius: 999px; background: #E6EEE8; color: #142019; font-size: 15px; font-weight: 500">Signal processing</span>
+          <span style="padding: 8px 14px; border-radius: 999px; background: #E6EEE8; color: #142019; font-size: 15px; font-weight: 500">TensorFlow</span>
+          <span style="padding: 8px 14px; border-radius: 999px; background: #E6EEE8; color: #142019; font-size: 15px; font-weight: 500">Electronics</span>
+          <span style="padding: 8px 14px; border-radius: 999px; background: #E6EEE8; color: #142019; font-size: 15px; font-weight: 500">PCB fabrication &amp; soldering</span>
+          <span style="padding: 8px 14px; border-radius: 999px; background: #E6EEE8; color: #142019; font-size: 15px; font-weight: 500">Embedded systems</span>
+          <span style="padding: 8px 14px; border-radius: 999px; background: #E6EEE8; color: #142019; font-size: 15px; font-weight: 500">Transmission-line theory</span>
+          <span style="padding: 8px 14px; border-radius: 999px; background: #E6EEE8; color: #142019; font-size: 15px; font-weight: 500">SDRs</span>
+          <span style="padding: 8px 14px; border-radius: 999px; background: #E6EEE8; color: #142019; font-size: 15px; font-weight: 500">Ethical hacking</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" style="background: #FFFFFF; border-top: 1px solid #DEE2DA">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 96px 24px">
+      <p style="margin: 0 0 12px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{accent}}">06 — Gallery</p>
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 40px">
+        <h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(36px, 4.5vw, 52px); line-height: 1.05; letter-spacing: -0.02em">Hackathons, builds &amp; moments</h2>
+        <p style="margin: 0; max-width: 360px; color: #4A564E; font-size: 15px">Winner at iFest 2025, HackEPS Lleida 2025 and Innovation Day 2024 — plus five HackUPC editions.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); grid-auto-rows: 220px; gap: 16px">
+        <figure style="margin: 0; grid-row: span 2; border-radius: 20px; background: {{accent}}; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; color: #F6F5F0; font-family: 'JetBrains Mono', monospace; font-size: 13px">[Photo]
+          <figcaption style="position: absolute; left: 16px; bottom: 16px; background: #FFFFFF; color: #142019; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; padding: 8px 12px; border-radius: 10px">iFest 2025 — winning team</figcaption>
+        </figure>
+        <figure style="margin: 0; border-radius: 20px; background: #E6EEE8; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; color: #4A564E; font-family: 'JetBrains Mono', monospace; font-size: 13px">[Photo]
+          <figcaption style="position: absolute; left: 16px; bottom: 16px; background: #FFFFFF; color: #142019; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; padding: 8px 12px; border-radius: 10px">HackUPC</figcaption>
+        </figure>
+        <figure style="margin: 0; border-radius: 20px; background: #D6E2D9; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; color: #4A564E; font-family: 'JetBrains Mono', monospace; font-size: 13px">[Photo]
+          <figcaption style="position: absolute; left: 16px; bottom: 16px; background: #FFFFFF; color: #142019; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; padding: 8px 12px; border-radius: 10px">Antenna rotator build</figcaption>
+        </figure>
+        <figure style="margin: 0; grid-column: span 2; border-radius: 20px; background: #E6EEE8; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; color: #4A564E; font-family: 'JetBrains Mono', monospace; font-size: 13px">[Photo]
+          <figcaption style="position: absolute; left: 16px; bottom: 16px; background: #FFFFFF; color: #142019; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; padding: 8px 12px; border-radius: 10px">Pitching BitSpace</figcaption>
+        </figure>
+        <figure style="margin: 0; border-radius: 20px; background: #D6E2D9; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; color: #4A564E; font-family: 'JetBrains Mono', monospace; font-size: 13px">[Photo]
+          <figcaption style="position: absolute; left: 16px; bottom: 16px; background: #FFFFFF; color: #142019; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; padding: 8px 12px; border-radius: 10px">HackEPS Lleida 2025</figcaption>
+        </figure>
+        <figure style="margin: 0; border-radius: 20px; background: #E6EEE8; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; color: #4A564E; font-family: 'JetBrains Mono', monospace; font-size: 13px">[Photo]
+          <figcaption style="position: absolute; left: 16px; bottom: 16px; background: #FFFFFF; color: #142019; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; padding: 8px 12px; border-radius: 10px">Lab at IEEC</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT (placeholder) -->
+  <section id="contact" style="background: {{accent}}; color: #F6F5F0">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 96px 24px 40px">
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 32px">
+        <div style="flex: 1 1 480px">
+          <p style="margin: 0 0 12px; font-family: 'JetBrains Mono', monospace; font-size: 13px; opacity: 0.85">07 — Contact</p>
+          <h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(40px, 6vw, 76px); line-height: 1; letter-spacing: -0.02em">Let's build<br>something.</h2>
+          <p style="margin: 20px 0 0; font-size: 18px; opacity: 0.9; max-width: 460px">Internships, collaborations, hackathon teams or just a good idea — my inbox is open.</p>
+        </div>
+        <a href="mailto:jan.moran.r@gmail.com" class="btn btn-light" style="display: inline-flex; align-items: center; gap: 10px; min-height: 56px; padding: 0 28px; border-radius: 999px; background: #F6F5F0; color: #142019; font-weight: 600; font-size: 17px; text-decoration: none">jan.moran.r@gmail.com
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg>
+        </a>
+      </div>
+      <div style="margin-top: 56px; min-height: 280px; border: 1.5px dashed rgba(246,245,240,0.5); border-radius: 22px; padding: 32px; display: flex; align-items: center; justify-content: center; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 14px">[Contact section — form, details and availability, to be designed]</div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background: {{accent}}; color: #F6F5F0">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px 40px">
+      <div style="margin-top: 0; padding-top: 24px; border-top: 1px solid rgba(246,245,240,0.25); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-family: 'JetBrains Mono', monospace; font-size: 13px">
+        <span>© 2026 Jan Moran</span>
+        <div style="display: flex; flex-wrap: wrap; gap: 20px">
+          <a href="https://github.com/Morgan1420" style="color: #F6F5F0">GitHub</a>
+          <a href="https://linkedin.com/in/jan-moran" style="color: #F6F5F0">LinkedIn</a>
+          <a href="https://jan-moran.com" style="color: #F6F5F0">jan-moran.com</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Pop-up (projects / education) -->
+  <sc-if value="{{popOpen}}" hint-placeholder-val="{{ false }}">
+    <div class="pp-wrap" style="position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 24px; box-sizing: border-box">
+      <button type="button" class="pop-bg" ref="{{popBgRef}}" tabindex="-1" aria-label="Close pop-up" onClick="{{closePop}}" style="position: absolute; inset: 0; margin: 0; padding: 0; border: none; background: rgba(20,32,25,0.45); backdrop-filter: blur(4px); cursor: pointer"></button>
+      <div class="pp-card" ref="{{popRef}}" role="dialog" aria-modal="true" aria-labelledby="pop-title" tabindex="-1" onKeyDown="{{popKey}}" style="position: relative; width: min(1100px, 100%); height: min(840px, calc(100vh - 48px)); box-sizing: border-box; overflow: hidden; background: #F6F5F0; color: #142019; border-radius: 28px; display: flex; flex-direction: column; box-shadow: 0 30px 80px rgba(20,32,25,0.30); outline: none">
+
+        <!-- ===== PROJECT ===== -->
+        <sc-if value="{{pp.isProject}}" hint-placeholder-val="{{ false }}">
+          <header class="pp-head" style="flex: 0 0 auto; padding: 32px 48px 26px; border-bottom: 1px solid #DEE2DA; display: flex; flex-direction: column; gap: 14px">
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px">
+              <div data-stagger="" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px; min-width: 0">
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{accent}}; padding: 6px 12px; border: 1px solid {{accent}}; border-radius: 999px">Project</span>
+                <sc-if value="{{pp.hasChip}}" hint-placeholder-val="{{ true }}">
+                  <span style="display: inline-flex; align-items: center; min-height: 30px; padding: 0 12px; border-radius: 999px; background: #E6EEE8; color: #142019; font-family: 'JetBrains Mono', monospace; font-size: 12px">{{pp.chip}}</span>
+                </sc-if>
+              </div>
+              <button type="button" class="pop-close" aria-label="Close" onClick="{{closePop}}" style="flex: 0 0 auto; width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid #142019; background: #FFFFFF; color: #142019; cursor: pointer; display: inline-flex; align-items: center; justify-content: center">
+                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12"></path><path d="M18 6 6 18"></path></svg>
+              </button>
+            </div>
+            <h2 id="pop-title" class="pp-title" data-stagger="" style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(34px, 4.2vw, 54px); line-height: 1.02; letter-spacing: -0.02em">{{pp.title}}</h2>
+            <sc-if value="{{pp.hasTagline}}" hint-placeholder-val="{{ true }}">
+              <p data-stagger="" style="margin: 0; max-width: 720px; font-size: 18px; line-height: 1.55; color: #3E4A42">{{pp.tagline}}</p>
+            </sc-if>
+            <sc-if value="{{pp.hasFacts}}" hint-placeholder-val="{{ true }}">
+              <dl class="pp-facts" data-stagger="" style="margin: 4px 0 0; display: grid; grid-template-columns: {{pp.factCols}}; gap: 1px; background: #DEE2DA; border: 1px solid #DEE2DA; border-radius: 16px; overflow: hidden">
+                <sc-for list="{{pp.facts}}" as="f" hint-placeholder-count="4">
+                  <div style="background: #FFFFFF; padding: 12px 18px; min-width: 0">
+                    <dt style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #4A564E">{{f.label}}</dt>
+                    <dd style="margin: 4px 0 0; font-weight: 600; font-size: 15px">{{f.value}}</dd>
+                  </div>
+                </sc-for>
+              </dl>
+            </sc-if>
+          </header>
+
+          <div ref="{{popScrollRef}}" style="flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain">
+            <div class="pp-body" data-stagger="" style="padding: 36px 48px 48px; display: grid; grid-template-columns: {{pp.bodyCols}}; gap: 48px; align-items: start">
+
+              <!-- Main column -->
+              <div style="display: flex; flex-direction: column; gap: 40px; min-width: 0">
+
+                <sc-if value="{{pp.hasMedia}}" hint-placeholder-val="{{ false }}">
+                  <figure style="margin: 0; display: flex; flex-direction: column; gap: 10px">
+                    <div class="pp-media" style="position: relative; aspect-ratio: 16 / 9; border-radius: 20px; overflow: hidden; background: #E6EEE8; color: #F6F5F0">
+                      <sc-if value="{{pp.m.isImage}}" hint-placeholder-val="{{ false }}">
+                        <img src="{{pp.m.src}}" alt="{{pp.m.alt}}" onLoad="{{pp.m.onLoad}}" style="display: block; width: 100%; height: 100%; object-fit: {{pp.m.fit}}; object-position: {{pp.m.focus}}">
+                      </sc-if>
+                      <sc-if value="{{pp.m.isVideo}}" hint-placeholder-val="{{ false }}">
+                        <video src="{{pp.m.src}}" poster="{{pp.m.poster}}" controls="" playsinline="" style="display: block; width: 100%; height: 100%; object-fit: cover; background: #142019"></video>
+                      </sc-if>
+                      <sc-if value="{{pp.m.isPlaceholder}}" hint-placeholder-val="{{ true }}">
+                        <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center">
+                        <div style="height: 100%; max-width: 100%; aspect-ratio: {{pp.m.ratio}}; box-sizing: border-box; padding: 20px; background: {{accent}}; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 13px">
+                          <sc-if value="{{pp.m.isVideoPh}}" hint-placeholder-val="{{ false }}">
+                            <span aria-hidden="true" style="width: 56px; height: 56px; border-radius: 50%; border: 1.5px solid rgba(246,245,240,0.6); display: inline-flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"></path></svg></span>
+                          </sc-if>
+                          <span>{{pp.m.phLabel}}</span>
+                          <span style="opacity: 0.7; font-size: 12px">{{pp.m.ratioLabel}}</span>
+                        </div>
+                        </div>
+                      </sc-if>
+                      <sc-if value="{{pp.hasThumbs}}" hint-placeholder-val="{{ false }}">
+                        <span style="position: absolute; right: 14px; bottom: 14px; padding: 4px 10px; border-radius: 999px; background: rgba(20,32,25,0.6); color: #F6F5F0; font-family: 'JetBrains Mono', monospace; font-size: 12px">{{pp.counter}}</span>
+                      </sc-if>
+                    </div>
+                    <sc-if value="{{pp.hasThumbs}}" hint-placeholder-val="{{ false }}">
+                      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 10px">
+                        <sc-for list="{{pp.thumbs}}" as="th" hint-placeholder-count="5">
+                          <button type="button" class="pp-thumb" aria-label="{{th.label}}" aria-pressed="{{th.sel}}" onClick="{{th.pick}}" style="position: relative; aspect-ratio: 4 / 3; margin: 0; padding: 0; border-radius: 12px; border: 2px solid {{th.border}}; background: {{th.bg}}; overflow: hidden; cursor: pointer">
+                            <sc-if value="{{th.hasImg}}" hint-placeholder-val="{{ false }}">
+                              <img src="{{th.thumb}}" alt="" style="display: block; width: 100%; height: 100%; object-fit: cover">
+                            </sc-if>
+                            <sc-if value="{{th.isVideo}}" hint-placeholder-val="{{ false }}">
+                              <span aria-hidden="true" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: {{accent}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"></path></svg></span>
+                            </sc-if>
+                          </button>
+                        </sc-for>
+                      </div>
+                    </sc-if>
+                    <sc-if value="{{pp.m.hasCaption}}" hint-placeholder-val="{{ false }}">
+                      <figcaption style="font-size: 14px; color: #4A564E">{{pp.m.caption}}</figcaption>
+                    </sc-if>
+                  </figure>
+                </sc-if>
+
+                <sc-if value="{{pp.hasOverview}}" hint-placeholder-val="{{ false }}">
+                  <section style="display: flex; flex-direction: column; gap: 12px">
+                    <h3 style="margin: 0; font-family: 'JetBrains Mono', monospace; font-weight: 400; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{accent}}">Overview</h3>
+                    <sc-for list="{{pp.overview}}" as="o" hint-placeholder-count="1">
+                      <p style="margin: 0; font-size: 17px; line-height: 1.7; color: #3E4A42">{{o.t}}</p>
+                    </sc-for>
+                  </section>
+                </sc-if>
+
+                <sc-if value="{{pp.hasHighlights}}" hint-placeholder-val="{{ false }}">
+                  <section style="display: flex; flex-direction: column; gap: 16px">
+                    <h3 style="margin: 0; font-family: 'JetBrains Mono', monospace; font-weight: 400; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{accent}}">How it works</h3>
+                    <ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px">
+                      <sc-for list="{{pp.highlights}}" as="h" hint-placeholder-count="4">
+                        <li style="background: #FFFFFF; border: 1px solid #DEE2DA; border-radius: 18px; padding: 20px; display: flex; flex-direction: column; gap: 8px">
+                          <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: {{accent}}">{{h.num}}</span>
+                          <sc-if value="{{h.hasTitle}}" hint-placeholder-val="{{ true }}"><strong style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 20px; line-height: 1.2">{{h.title}}</strong></sc-if>
+                          <sc-if value="{{h.hasText}}" hint-placeholder-val="{{ true }}"><span style="font-size: 15px; line-height: 1.55; color: #3E4A42">{{h.text}}</span></sc-if>
+                        </li>
+                      </sc-for>
+                    </ol>
+                  </section>
+                </sc-if>
+
+                <sc-if value="{{pp.hasOutcomes}}" hint-placeholder-val="{{ false }}">
+                  <section style="display: flex; flex-direction: column; gap: 16px">
+                    <h3 style="margin: 0; font-family: 'JetBrains Mono', monospace; font-weight: 400; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{accent}}">Outcome</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px">
+                      <sc-for list="{{pp.outcomes}}" as="oc" hint-placeholder-count="3">
+                        <div style="background: {{oc.bg}}; color: {{oc.fg}}; border: 1px solid {{oc.border}}; border-radius: 18px; padding: 20px">
+                          <p style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 32px; font-weight: 700; line-height: 1.1">{{oc.value}}</p>
+                          <p style="margin: 6px 0 0; font-size: 14px; color: {{oc.sub}}">{{oc.label}}</p>
+                        </div>
+                      </sc-for>
+                    </div>
+                  </section>
+                </sc-if>
+
+                <sc-if value="{{pp.isSparse}}" hint-placeholder-val="{{ false }}">
+                  <div style="border: 1.5px dashed #A9B3AA; border-radius: 20px; padding: 28px; display: flex; align-items: center; gap: 16px; color: #4A564E">
+                    <span aria-hidden="true" style="flex: 0 0 auto; width: 44px; height: 44px; border-radius: 12px; background: #E6EEE8; color: {{accent}}; display: inline-flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg></span>
+                    <p style="margin: 0; font-size: 15px; line-height: 1.55">More about this project — images, details and results — is on its way.</p>
+                  </div>
+                </sc-if>
+
+                <sc-if value="{{pp.hasNav}}" hint-placeholder-val="{{ false }}">
+                  <nav aria-label="More projects" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; padding-top: 24px; border-top: 1px solid #DEE2DA">
+                    <div style="min-width: 0">
+                      <sc-if value="{{pp.hasPrev}}" hint-placeholder-val="{{ true }}">
+                        <button type="button" class="pp-nav-btn" onClick="{{pp.prev.go}}" style="width: 100%; margin: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; padding: 16px 20px; border-radius: 16px; border: 1px solid #DEE2DA; background: #FFFFFF; color: #142019; font: inherit; text-align: left; cursor: pointer">
+                          <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #4A564E">← Previous project</span>
+                          <span style="font-weight: 600; font-size: 16px">{{pp.prev.title}}</span>
+                        </button>
+                      </sc-if>
+                    </div>
+                    <div style="min-width: 0">
+                      <sc-if value="{{pp.hasNext}}" hint-placeholder-val="{{ true }}">
+                        <button type="button" class="pp-nav-btn" onClick="{{pp.next.go}}" style="width: 100%; margin: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 4px; padding: 16px 20px; border-radius: 16px; border: 1px solid #DEE2DA; background: #FFFFFF; color: #142019; font: inherit; text-align: right; cursor: pointer">
+                          <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #4A564E">Next project →</span>
+                          <span style="font-weight: 600; font-size: 16px">{{pp.next.title}}</span>
+                        </button>
+                      </sc-if>
+                    </div>
+                  </nav>
+                </sc-if>
+              </div>
+
+              <!-- Sidebar -->
+              <sc-if value="{{pp.hasSide}}" hint-placeholder-val="{{ true }}">
+                <aside class="pp-side" style="position: sticky; top: 0; display: flex; flex-direction: column; gap: 16px">
+                  <sc-if value="{{pp.hasSkills}}" hint-placeholder-val="{{ true }}">
+                    <div style="background: #FFFFFF; border: 1px solid #DEE2DA; border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 14px">
+                      <h3 style="margin: 0; font-family: 'JetBrains Mono', monospace; font-weight: 400; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #4A564E">Built with</h3>
+                      <div style="display: flex; flex-wrap: wrap; gap: 8px">
+                        <sc-for list="{{pp.skills}}" as="sk" hint-placeholder-count="5">
+                          <span style="padding: 6px 12px; border-radius: 999px; background: #E6EEE8; font-size: 14px; font-weight: 500">{{sk.s}}</span>
+                        </sc-for>
+                      </div>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{pp.hasLinks}}" hint-placeholder-val="{{ true }}">
+                    <div style="background: #FFFFFF; border: 1px solid #DEE2DA; border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 10px">
+                      <h3 style="margin: 0 0 4px; font-family: 'JetBrains Mono', monospace; font-weight: 400; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #4A564E">Links</h3>
+                      <sc-for list="{{pp.links}}" as="lk" hint-placeholder-count="2">
+                        <a class="pp-link" href="{{lk.url}}" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 44px; padding: 0 14px; border-radius: 12px; border: 1.5px solid {{lk.border}}; color: #142019; text-decoration: none; font-weight: 600; font-size: 15px">{{lk.label}} <span aria-hidden="true">↗</span></a>
+                      </sc-for>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{pp.hasSiblings}}" hint-placeholder-val="{{ true }}">
+                    <div style="background: #FFFFFF; border: 1px solid #DEE2DA; border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 12px">
+                      <h3 style="margin: 0; font-family: 'JetBrains Mono', monospace; font-weight: 400; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #4A564E">Projects at {{pp.sibOrg}}</h3>
+                      <div aria-hidden="true" style="display: flex; align-items: center; gap: 3px; height: 10px">
+                        <sc-for list="{{pp.segs}}" as="sg" hint-placeholder-count="4">
+                          <sc-if value="{{sg.isGap}}" hint-placeholder-val="{{ false }}">
+                            <span style="flex: {{sg.flex}}; height: 0; border-top: 2px dashed #A9B3AA"></span>
+                          </sc-if>
+                          <sc-if value="{{sg.bg}}" hint-placeholder-val="{{ true }}">
+                            <span style="flex: {{sg.flex}}; height: 10px; border-radius: 999px; background: {{sg.bg}}"></span>
+                          </sc-if>
+                        </sc-for>
+                      </div>
+                      <div style="display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #4A564E"><span>{{pp.sibStart}}</span><span>{{pp.sibEnd}}</span></div>
+                      <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column">
+                        <sc-for list="{{pp.siblings}}" as="sb" hint-placeholder-count="3">
+                          <li>
+                            <sc-if value="{{sb.current}}" hint-placeholder-val="{{ false }}">
+                              <span aria-current="true" style="display: flex; align-items: center; gap: 10px; min-height: 40px; font-weight: 600; font-size: 14px"><span aria-hidden="true" style="flex: 0 0 auto; width: 8px; height: 8px; border-radius: 50%; background: {{accent}}"></span>{{sb.title}}</span>
+                            </sc-if>
+                            <sc-if value="{{sb.other}}" hint-placeholder-val="{{ true }}">
+                              <button type="button" class="pp-sib" onClick="{{sb.go}}" style="width: 100%; margin: 0; padding: 0; display: flex; align-items: center; gap: 10px; min-height: 40px; border: none; background: transparent; color: #3E4A42; font: inherit; font-size: 14px; text-align: left; cursor: pointer"><span aria-hidden="true" style="flex: 0 0 auto; width: 8px; height: 8px; border-radius: 50%; background: #A9B3AA"></span>{{sb.title}}</button>
+                            </sc-if>
+                          </li>
+                        </sc-for>
+                      </ul>
+                    </div>
+                  </sc-if>
+                </aside>
+              </sc-if>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- ===== EDUCATION (placeholder for now) ===== -->
+        <sc-if value="{{pe.isEdu}}" hint-placeholder-val="{{ false }}">
+          <div style="flex: 1; min-height: 0; overflow: auto; padding: clamp(28px, 5vw, 56px); display: flex; flex-direction: column; gap: 28px">
+            <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 24px">
+              <div data-stagger="" style="min-width: 0">
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{accent}}; padding: 6px 12px; border: 1px solid {{accent}}; border-radius: 999px">Education</span>
+                <h2 id="pop-title" style="margin: 20px 0 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(34px, 4.2vw, 54px); line-height: 1.02; letter-spacing: -0.02em">{{pe.title}}</h2>
+                <p style="margin: 12px 0 0; font-size: 17px; color: #4A564E">{{pe.sub}}</p>
+              </div>
+              <button type="button" class="pop-close" aria-label="Close" onClick="{{closePop}}" style="flex: 0 0 auto; width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid #142019; background: #FFFFFF; color: #142019; cursor: pointer; display: inline-flex; align-items: center; justify-content: center">
+                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12"></path><path d="M18 6 6 18"></path></svg>
+              </button>
+            </div>
+            <div data-stagger="" style="flex: 1; min-height: 240px; border: 1.5px dashed #A9B3AA; border-radius: 22px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; text-align: center; padding: 32px">
+              <p style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 28px; font-weight: 700">Under construction</p>
+              <p style="margin: 0; max-width: 420px; font-size: 15px; color: #4A564E">The education pop-up will be designed next.</p>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#1E4D3A","options":["#1E4D3A","#14532D","#2D5A3D","#0F3D33"]},"$preview":{"width":1440,"height":4600}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { lang: 'en', langOpen: false, atStart: false, atEnd: true, vpW: 1440, hoverJob: null, pop: null, mediaIdx: 0 };
+    this.popOrigin = null;
+    this.popBg = null;
+    this.popScroll = null;
+    this.closing = false;
+    this.hoverT = null;
+    this.popEl = null;
+    this.lastFocus = null;
+    this.vp = null;
+    this.raf = null;
+    this.sl = {};
+    this.onResize = () => {
+      if (!this.vp) return;
+      const w = this.vp.clientWidth;
+      if (w && Math.abs(w - this.state.vpW) > 1) this.setState({ vpW: w });
+      else this.layoutSliders();
+    };
+  }
+  componentDidMount() {
+    window.addEventListener('resize', this.onResize);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (this.vp) this.forceUpdate(); });
+    this.t = setTimeout(() => {
+      if (!this.vp) return;
+      const w = this.vp.clientWidth || 1440;
+      this.setState({ vpW: w }, () => {
+        if (!this.vp) return;
+        this.vp.scrollLeft = this.vp.scrollWidth;
+        this.updateEdges();
+        this.layoutSliders();
+      });
+    }, 60);
+  }
+  componentDidUpdate(prevProps, prevState) {
+    this.layoutSliders();
+    const was = prevState && prevState.pop, is = this.state.pop;
+    if (is && !was) {
+      this.lockScroll(true);
+      if (this.popEl) this.popEl.focus();
+      this.animateOpen();
+    } else if (!is && was) {
+      this.lockScroll(false);
+      if (this.lastFocus && this.lastFocus.isConnected && this.lastFocus.focus) this.lastFocus.focus();
+    } else if (is && was && is.id !== was.id) {
+      if (this.popScroll) this.popScroll.scrollTop = 0;
+      this.staggerIn(0);
+    }
+  }
+  hoverIn(i) {
+    clearTimeout(this.hoverT);
+    if (this.state.hoverJob !== i) this.setState({ hoverJob: i });
+  }
+  hoverOut() {
+    clearTimeout(this.hoverT);
+    this.hoverT = setTimeout(() => this.setState({ hoverJob: null }), 160);
+  }
+  // ---------- Pop-up: open / switch / close ----------
+  reducedMotion() {
+    try { return window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { return false; }
+  }
+  rememberOrigin(e) {
+    const el = e && e.currentTarget;
+    this.popOrigin = el && el.getBoundingClientRect ? el.getBoundingClientRect() : null;
+    this.lastFocus = el || document.activeElement;
+  }
+  openProject(id, e) {
+    this.rememberOrigin(e);
+    clearTimeout(this.hoverT);
+    this.setState({ pop: { type: 'project', id }, hoverJob: null, mediaIdx: 0 });
+  }
+  openEdu(title, sub, e) {
+    this.rememberOrigin(e);
+    clearTimeout(this.hoverT);
+    this.setState({ pop: { type: 'education', title, sub }, hoverJob: null });
+  }
+  goProject(id) {
+    this.popOrigin = null; // closing after switching just fades out
+    this.setState({ pop: { type: 'project', id }, mediaIdx: 0 });
+  }
+  closePop() {
+    if (this.closing || !this.state.pop) return;
+    const card = this.popEl;
+    const done = () => { this.closing = false; this.setState({ pop: null, mediaIdx: 0 }); };
+    if (!card || !card.animate || this.reducedMotion()) { done(); return; }
+    this.closing = true;
+    const r = card.getBoundingClientRect();
+    const o = this.popOrigin;
+    const mobile = window.innerWidth <= 700;
+    let frames;
+    if (mobile) frames = [{ transform: 'none' }, { transform: 'translateY(100%)' }];
+    else if (o) frames = [
+      { transformOrigin: '0 0', transform: 'none', opacity: 1 },
+      { transformOrigin: '0 0', transform: 'translate(' + (o.left - r.left) + 'px,' + (o.top - r.top) + 'px) scale(' + Math.max(0.05, o.width / r.width) + ',' + Math.max(0.05, o.height / r.height) + ')', opacity: 0 }
+    ];
+    else frames = [{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateY(12px) scale(.98)' }];
+    const a = card.animate(frames, { duration: mobile ? 260 : 300, easing: 'cubic-bezier(.4,0,.2,1)', fill: 'forwards' });
+    if (this.popBg && this.popBg.animate) this.popBg.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 300, fill: 'forwards' });
+    a.onfinish = done;
+  }
+  animateOpen() {
+    const card = this.popEl;
+    if (!card || !card.animate || this.reducedMotion()) return;
+    const r = card.getBoundingClientRect();
+    const o = this.popOrigin;
+    const ease = 'cubic-bezier(.2,.7,.2,1)';
+    if (window.innerWidth <= 700) {
+      card.animate([{ transform: 'translateY(100%)' }, { transform: 'none' }], { duration: 340, easing: ease });
+    } else if (o) {
+      card.animate([
+        { transformOrigin: '0 0', transform: 'translate(' + (o.left - r.left) + 'px,' + (o.top - r.top) + 'px) scale(' + Math.max(0.05, o.width / r.width) + ',' + Math.max(0.05, o.height / r.height) + ')', opacity: 0.5, borderRadius: '14px' },
+        { transformOrigin: '0 0', transform: 'none', opacity: 1, borderRadius: '28px' }
+      ], { duration: 380, easing: ease });
+    } else {
+      card.animate([{ opacity: 0, transform: 'translateY(16px) scale(.97)' }, { opacity: 1, transform: 'none' }], { duration: 280, easing: ease });
+    }
+    this.staggerIn(220);
+  }
+  staggerIn(delay) {
+    const card = this.popEl;
+    if (!card || this.reducedMotion()) return;
+    card.querySelectorAll('[data-stagger]').forEach((el, i) => {
+      if (el.animate) el.animate([{ opacity: 0, transform: 'translateY(10px)' }, { opacity: 1, transform: 'none' }], { duration: 260, delay: delay + i * 60, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'backwards' });
+    });
+  }
+  lockScroll(on) {
+    try {
+      document.documentElement.style.overflow = on ? 'hidden' : '';
+      document.body.style.overflow = on ? 'hidden' : '';
+    } catch (e) {}
+  }
+
+  // ---------- Project data (mirrors projects_education.json) ----------
+  projectData() {
+    if (this._pd) return this._pd;
+    this._pd = [
+      {
+        id: 'cloud-segmentation', title: 'Cloud segmentation', experienceId: 'cvc', lane: 'projects',
+        start: '2024-02', end: '2024-06',
+        summary: 'A computer-vision model that segments different cloud types in multispectral Sentinel-1 and Sentinel-2 imagery.'
+      },
+      {
+        id: 'signal-processing-ui', title: 'Signal Processing UI', experienceId: 'ieec', lane: 'projects',
+        start: '2024-09', end: '2025-07', context: 'IEEC research team',
+        summary: 'My first project with the team: a web interface that runs fellow researchers’ processing scripts, making shared code easy to use.'
+      },
+      {
+        id: 'rotatory-antenna-system', title: 'Rotatory Antenna System', experienceId: 'ieec', lane: 'projects',
+        tagline: 'A rotating antenna that tracks satellites across the sky and captures their signals — built end to end, from hardware to web interface.',
+        start: '2025-09', end: '2026-02', role: '[Your role]', context: 'IEEC research team',
+        summary: 'End to end: 3D-modelled hardware, part selection and firmware, C code that reads TLE data and propagates orbits with SGP4, and the web interface that controls it all.',
+        overview: [
+          'I designed and built a modular rotating structure that points highly directive antennas at satellites in low Earth orbit and follows them across the sky. The work covered every layer of the system: the mechanical design and parts, the firmware that drives the motors, the C code that predicts each satellite’s position, and the web interface researchers use to control it.',
+          '[Why it was needed — the problem it solved for the team]'
+        ],
+        media: [
+          { type: 'image', src: null, alt: 'Hero photo of the antenna', caption: '[Caption — what this image shows]' },
+          { type: 'youtube', url: 'https://www.youtube.com/watch?v=[VIDEO_ID]', alt: 'Demo video: tracking a satellite pass', caption: '[Caption for the video]' },
+          { type: 'image', src: null, alt: 'CAD model of the rotator', caption: 'Square image: shown whole, with pale side bands', demoRatio: '1 / 1' },
+          { type: 'image', src: null, alt: 'Firmware / electronics close-up', caption: 'Portrait photo: shown whole, never cropped', demoRatio: '3 / 4' },
+          { type: 'image', src: null, alt: 'Web control panel screenshot', caption: 'Close to 16:9: fills the frame', demoRatio: '16 / 10' }
+        ],
+        highlights: [
+          { label: 'Hardware', title: 'Mechanics & parts', text: '3D-modelled the rotating structure and selected the motors, drivers and components.' },
+          { label: 'Firmware', title: 'Motor control', text: 'Firmware that turns pointing commands into precise motor movement.' },
+          { label: 'Orbits', title: 'Satellite tracking', text: 'C code that reads TLE data and propagates each orbit with SGP4 to know where to point.' },
+          { label: 'Interface', title: 'Web control panel', text: 'A browser interface to choose satellites, start tracking and monitor the system.' }
+        ],
+        outcomes: [
+          { value: '[Value]', label: '[e.g. satellites tracked]' },
+          { value: '[Value]', label: '[e.g. pointing accuracy]' },
+          { value: '[Value]', label: '[e.g. passes recorded]' }
+        ],
+        skills: ['C', 'Firmware', '3D modelling', 'TLE · SGP4', 'Web interface'],
+        links: [
+          { label: 'Source code', url: 'https://github.com/Morgan1420', type: 'code' },
+          { label: '[Demo video]', url: '#', type: 'demo' }
+        ]
+      },
+      {
+        id: 'usrp-x440-tool', title: 'USRP X440 Operating Tool', experienceId: 'ieec', lane: 'projects',
+        start: '2026-02', end: '2026-07', context: 'IEEC research team',
+        summary: 'Scripts and interfaces that make Ettus’ direct-sampling USRP X440 SDR easy for researchers to use.',
+        overview: ['I learned the ins and outs of the USRP X440 and designed the scripts and interfaces that let fellow researchers get the most out of it: they enter the signal parameters they want to record, and the tool works out all the logic the USRP needs. The goal was to cut the workload and learning curve of this new kind of direct-sampling SDR.'],
+        skills: ['SDR', 'USRP X440', 'Direct sampling']
+      },
+      {
+        id: 'bsproof', title: 'BSProof', experienceId: 'eye', lane: 'projects', relatedProjectIds: ['bitspace'],
+        start: '2026-07', end: '2027-01',
+        summary: 'An app that grades supplements on scientific evidence, cutting through the noise and confusion of buying them.'
+      },
+      {
+        id: 'bitspace', title: 'BitSpace', experienceId: null, lane: 'venture', relatedProjectIds: ['bsproof'],
+        tagline: 'Future startup', role: 'Co-Founder', start: '2025-05', end: null, ongoing: true
+      }
+    ];
+    return this._pd;
+  }
+  // Text width in px, used to make project boxes wide enough for their titles.
+  measure(text, font) {
+    if (this._cv === undefined) {
+      try { this._cv = document.createElement('canvas').getContext('2d'); } catch (e) { this._cv = null; }
+    }
+    if (this._cv) { this._cv.font = font; return this._cv.measureText(text).width; }
+    return text.length * 8.4;
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    clearTimeout(this.t);
+    clearTimeout(this.hoverT);
+    this.stopScroll();
+    this.lockScroll(false);
+  }
+  reg(key, part) {
+    return (el) => {
+      if (!this.sl[key]) this.sl[key] = {};
+      this.sl[key][part] = el;
+    };
+  }
+  // Keeps each box's left text and right element on screen while scrolling,
+  // stopping them a small gap apart instead of overlapping.
+  layoutSliders() {
+    const v = this.vp;
+    if (!v) return;
+    const vr = v.getBoundingClientRect();
+    const inset = Math.max(112, vr.width * 0.12) + 12;
+    const viewL = vr.left + inset;
+    const viewR = vr.right - inset;
+    const GAP = 24;
+    Object.keys(this.sl).forEach((k) => {
+      const it = this.sl[k];
+      if (!it.box || !it.t || !it.l || !it.box.isConnected) return;
+      const br = it.box.getBoundingClientRect();
+      const cl = it.box.clientLeft || 0;
+      const tw = it.t.offsetWidth, lw = it.l.offsetWidth;
+      const tNat = br.left + cl + it.t.offsetLeft;
+      const lNat = br.left + cl + it.l.offsetLeft;
+      let tx = Math.min(Math.max(viewL, tNat), lNat - GAP - tw);
+      tx = Math.max(tx, tNat);
+      const lx = Math.min(lNat, Math.max(viewR - lw, tx + tw + GAP));
+      it.t.style.transform = 'translateX(' + (tx - tNat) + 'px)';
+      it.l.style.transform = 'translateX(' + (lx - lNat) + 'px)';
+    });
+  }
+  updateEdges() {
+    const v = this.vp;
+    if (!v) return;
+    const atStart = v.scrollLeft <= 2;
+    const atEnd = v.scrollLeft + v.clientWidth >= v.scrollWidth - 2;
+    if (atStart !== this.state.atStart || atEnd !== this.state.atEnd) this.setState({ atStart, atEnd });
+  }
+  startScroll(dir) {
+    this.stopScroll();
+    const step = () => {
+      if (!this.vp) return;
+      this.vp.scrollLeft += dir * 7;
+      this.raf = requestAnimationFrame(step);
+    };
+    this.raf = requestAnimationFrame(step);
+  }
+  stopScroll() {
+    if (this.raf) cancelAnimationFrame(this.raf);
+    this.raf = null;
+  }
+  renderVals() {
+    // Work descriptions (mirror experience.json)
+    const XP_DESC = {
+      cvc: 'A four-month internship within the Rosa Sensat programme, learning how computer-vision and AI models work — and how to build them.',
+      ieec: 'Alongside my degrees, I worked with a university research team at IEEC, building the tools and systems behind their projects.',
+      eye: 'I joined Erasmus for Young Entrepreneurs to sharpen my entrepreneurial skills and push BitSpace forward.'
+    };
+    const PROJECTS = this.projectData();
+    // Projects shown above a work box: need both dates to sit on the timeline
+    const projectsOf = (key) => PROJECTS
+      .filter((p) => p.experienceId === key && p.lane === 'projects')
+      .sort((a, b) => String(a.start || '9999').localeCompare(String(b.start || '9999')));
+    const timedProjectsOf = (key) => projectsOf(key).filter((p) => p.start && p.end);
+    // Timeline — oldest first. Dates are 'YYYY-MM'; end: null = ongoing. SAMPLE DATES: replace with real ones.
+    const jobs = [
+      { key: 'cvc', role: 'Computer Vision Intern', org: 'CVC · Computer Vision Center', start: '2024-02', end: '2024-06' },
+      { key: 'ieec', role: 'Engineering Intern', org: 'IEEC · Institut d’Estudis Espacials de Catalunya', start: '2024-09', end: '2026-07' },
+      { key: 'eye', role: 'Young Entrepreneur', org: 'Erasmus for Young Entrepreneurs', start: '2026-07', end: '2027-01' }
+    ];
+    const MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const toIdx = (s) => { const p = s.split('-'); return +p[0] * 12 + (+p[1] - 1); };
+    const now = new Date();
+    const nowIdx = now.getFullYear() * 12 + now.getMonth();
+    const fmt = (i) => MON[i % 12] + ' ' + Math.floor(i / 12);
+    const durTxt = (m) => {
+      const y = Math.floor(m / 12), r = m % 12;
+      const parts = [];
+      if (y) parts.push(y + (y === 1 ? ' yr' : ' yrs'));
+      if (r) parts.push(r + (r === 1 ? ' mo' : ' mos'));
+      return parts.join(' ') || '< 1 mo';
+    };
+    // Studies lanes (shown above the work lane). SAMPLE MONTHS: adjust to the real start/end.
+    const studyData = [
+      { left: 'Engineering Student', right: 'Telecommunications Engineering · UAB', start: '2021-09', end: '2026-07' },
+      { left: 'Engineering Student', right: 'Computer Engineering · UAB', start: '2021-09', end: '2026-07' }
+    ];
+    const accent = this.props.accent ?? '#1E4D3A';
+    const vpW = this.state.vpW || 1440;
+    const P = 96;                                                    // side padding of the track
+    const jobW = (m) => Math.max(340, vpW * (0.14 + 0.032 * m));     // ~6 mos ≈ 1/3 screen, ~2 yrs ≈ 0.9 screen
+    const idleW = (m) => Math.max(44, vpW * 0.016 * m);              // months with no work, compressed
+    const SEAM = 14;                                                 // space between back-to-back boxes
+    const PROJ_GAP = 6;                                              // space between neighbouring project boxes
+    const EDGE = 18;                                                 // inset where a project shares a work box's start/end
+    const projNeed = (p) => {
+      const pm = Math.max(1, toIdx(p.end) - toIdx(p.start));
+      const nameW = this.measure(p.title, "600 14px Inter, system-ui, sans-serif");
+      const durW = this.measure(durTxt(pm), "12px 'JetBrains Mono', monospace");
+      return Math.ceil(14 + nameW + 20 + durW + 14 + 3 + 8);
+    };
+
+    const J = jobs.map((j) => {
+      const s = toIdx(j.start);
+      const e = j.end ? toIdx(j.end) : nowIdx;
+      return { ...j, s, e, months: Math.max(1, e - s), ongoing: !j.end };
+    });
+    // BitSpace lane, below the studies. SAMPLE START: adjust; end: null = ongoing.
+    const ventureData = [
+      { left: 'Co-Founder · Entrepreneur', right: 'Future Startup · BitSpace', start: '2025-05', end: null }
+    ];
+    const S = studyData.concat(ventureData).map((d) => ({ ...d, s: toIdx(d.start), e: d.end ? toIdx(d.end) : nowIdx, venture: ventureData.indexOf(d) >= 0 }));
+    const T0 = Math.min(J[0].s, ...S.map((d) => d.s));
+
+    // Piecewise time → x mapping shared by every lane
+    const pieces = [];
+    let x = P, t = T0;
+    const lines = [], ticks = [], pills = [], gaps = [], boxes = [];
+    J.forEach((j, i) => {
+      if (i === 0) {
+        if (j.s > t) {
+          const w = idleW(j.s - t);
+          pieces.push({ t0: t, t1: j.s, x0: x, x1: x + w });
+          lines.push({ x, w, kind: 'dashed', color: '#A9B3AA' });
+          x += w;
+        }
+      } else {
+        const prev = J[i - 1];
+        const gapMonths = j.s - prev.e - 1;
+        if (gapMonths > 0) {
+          const w = idleW(j.s - prev.e);
+          pieces.push({ t0: prev.e, t1: j.s, x0: x, x1: x + w });
+          lines.push({ x, w, kind: 'dashed', color: '#A9B3AA' });
+          gaps.push({ x: x + w / 2, label: durTxt(gapMonths) });
+          x += w;
+        } else {
+          pieces.push({ t0: prev.e, t1: j.s, x0: x, x1: x + SEAM });
+          lines.push({ x, w: SEAM, kind: 'solid', color: '#142019' });
+          ticks.push({ x: x + SEAM / 2, label: fmt(j.s), tx: '-50%' });
+          x += SEAM;
+        }
+      }
+      // Base width from duration, widened if any of its projects' titles would not fit
+      let w = jobW(j.months);
+      timedProjectsOf(j.key).forEach((p) => {
+        const ps = toIdx(p.start), pe = toIdx(p.end), pm = Math.max(1, pe - ps);
+        const inset = PROJ_GAP + (ps === j.s ? EDGE : 0) + (pe === j.e ? EDGE : 0);
+        w = Math.max(w, (projNeed(p) + inset) * j.months / pm);
+      });
+      w = Math.round(w);
+      pieces.push({ t0: j.s, t1: j.e, x0: x, x1: x + w });
+      lines.push({ x, w, kind: 'solid', color: '#142019' });
+      const joinedPrev = i > 0 && j.s - J[i - 1].e - 1 <= 0;
+      const joinedNext = i < J.length - 1 && J[i + 1].s - j.e - 1 <= 0;
+      if (!joinedPrev) ticks.push({ x, label: fmt(j.s), tx: '0' });
+      if (!joinedNext) ticks.push({ x: x + w, label: j.ongoing ? 'Present' : fmt(j.e), tx: '-100%' });
+      pills.push({ x: x + w / 2, label: durTxt(j.months) });
+      const latest = j.s <= nowIdx && j.e >= nowIdx;
+      const key = 'job' + i;
+      const hovered = this.state.hoverJob === i;
+      boxes.push({
+        x, w, role: j.role, org: j.org,
+        desc: XP_DESC[j.key] || '',
+        h: hovered ? 228 : 132,
+        top: hovered ? 64 : 160,
+        z: hovered ? 3 : 1,
+        shadow: hovered ? '0 14px 32px rgba(20,32,25,0.16)' : 'none',
+        descOpacity: hovered ? 1 : 0,
+        enter: () => this.hoverIn(i),
+        leave: () => this.hoverOut(),
+        bg: latest ? accent : '#FFFFFF',
+        fg: latest ? '#F6F5F0' : '#142019',
+        border: latest ? accent : '#DEE2DA',
+        logoBg: latest ? 'rgba(246,245,240,0.16)' : '#E6EEE8',
+        logoFg: latest ? '#F6F5F0' : '#4A564E',
+        boxRef: this.reg(key, 'box'), tRef: this.reg(key, 't'), lRef: this.reg(key, 'l')
+      });
+      x += w;
+    });
+    // Studies that run past the last job
+    const lastE = J[J.length - 1].e;
+    const maxStudyE = Math.max(...S.map((d) => d.e));
+    if (maxStudyE > lastE) {
+      const w = idleW(maxStudyE - lastE);
+      pieces.push({ t0: lastE, t1: maxStudyE, x0: x, x1: x + w });
+      lines.push({ x, w, kind: 'dashed', color: '#A9B3AA' });
+      x += w;
+    }
+    const futureX = x;
+    lines.push({ x, w: 180, kind: 'dashed', color: accent });
+    const tlW = Math.round(x + 180 + P);
+
+    const X = (tm) => {
+      for (const p of pieces) {
+        if (p.t1 > p.t0 && tm >= p.t0 && tm <= p.t1) return p.x0 + (tm - p.t0) / (p.t1 - p.t0) * (p.x1 - p.x0);
+      }
+      return tm <= T0 ? P : futureX;
+    };
+    const tickNear = (px) => ticks.some((tk) => Math.abs(tk.x - px) < 30);
+    const lanes = S.map((d, i) => {
+      const ongoing = d.venture && !ventureData[0].end;
+      const x0 = X(d.s), x1 = ongoing ? futureX + 150 : X(d.e);
+      if (!tickNear(x0)) ticks.push({ x: x0, label: fmt(d.s), tx: '0' });
+      if (!tickNear(x1) && !(d.venture && !ventureData[0].end)) ticks.push({ x: x1, label: fmt(d.e), tx: '-100%' });
+      const key = 'lane' + i;
+      return {
+        x: Math.round(x0), w: Math.round(x1 - x0), y: i * 48,
+        left: d.left, right: d.right,
+        bg: d.venture ? '#FFFFFF' : (i % 2 ? '#D6E2D9' : '#E6EEE8'),
+        border: d.venture ? accent : 'transparent',
+        borderR: ongoing ? '0' : '1.5px',
+        radius: ongoing ? '12px 0 0 12px' : '12px',
+        mask: ongoing ? 'linear-gradient(to right, #000 calc(100% - 220px), transparent)' : 'none',
+        rightInset: ongoing ? 200 : 16,
+        aria: (d.venture ? 'Open project: BitSpace' : 'Open studies: ' + d.right),
+        open: d.venture
+          ? (e) => this.openProject('bitspace', e)
+          : (e) => this.openEdu(d.right.split(' · ')[0], 'Universitat Autònoma de Barcelona', e),
+        boxRef: this.reg(key, 'box'), tRef: this.reg(key, 't'), lRef: this.reg(key, 'l')
+      };
+    });
+
+    // Projects + extra time stamps for the hovered work box
+    const hj = this.state.hoverJob;
+    const projs = [];
+    if (hj !== null && J[hj]) {
+      timedProjectsOf(J[hj].key).forEach((p, k) => {
+        const ps = toIdx(p.start), pe = toIdx(p.end);
+        const x0 = X(ps), x1 = X(pe);
+        const key = 'proj' + hj + '_' + k;
+        const insL = PROJ_GAP / 2 + (ps === J[hj].s ? EDGE : 0);
+        const insR = PROJ_GAP / 2 + (pe === J[hj].e ? EDGE : 0);
+        const dur = durTxt(Math.max(1, pe - ps));
+        projs.push({
+          x: Math.round(x0 + insL), w: Math.max(80, Math.round(x1 - x0 - insL - insR)),
+          name: p.title, dur,
+          aria: 'Open project: ' + p.title,
+          open: (e) => this.openProject(p.id, e),
+          enter: () => this.hoverIn(hj),
+          leave: () => this.hoverOut(),
+          durSpace: Math.ceil(this.measure(dur, "12px 'JetBrains Mono', monospace") + 48),
+          boxRef: this.reg(key, 'box'), tRef: this.reg(key, 't'), lRef: this.reg(key, 'l')
+        });
+        [[x0, ps, '0'], [x1, pe, '-100%']].forEach(([px, tm, tx]) => {
+          if (!ticks.some((tk) => Math.abs(tk.x - px) < 8)) ticks.push({ x: px, label: fmt(tm), tx, color: accent, lc: accent, ly: 44, cls: 'tick-in' });
+        });
+      });
+    }
+    const allTicks = ticks.map((tk) => ({ color: '#142019', lc: '#4A564E', ly: 22, cls: '', ...tk }));
+
+    // ---------- Pop-up view model: every block appears only if its data exists ----------
+    const pop = this.state.pop;
+    const has = (v) => Array.isArray(v) ? v.length > 0 : (v !== undefined && v !== null && String(v).trim() !== '');
+    const pp = { isProject: false, m: {}, facts: [], thumbs: [], overview: [], highlights: [], outcomes: [], skills: [], links: [], siblings: [], segs: [], prev: {}, next: {} };
+    if (pop && pop.type === 'project') {
+      const pr = PROJECTS.find((p) => p.id === pop.id);
+      if (pr) {
+        const job = J.find((j) => j.key === pr.experienceId);
+        // Dates & duration
+        const sI = pr.start ? toIdx(pr.start) : null;
+        const eI = pr.end ? toIdx(pr.end) : (pr.ongoing ? nowIdx : null);
+        let dates = '';
+        if (sI !== null && pr.end) dates = fmt(sI) + ' – ' + fmt(eI);
+        else if (sI !== null && pr.ongoing) dates = fmt(sI) + ' – Present';
+        else if (sI !== null) dates = fmt(sI);
+        const durStr = (sI !== null && eI !== null) ? durTxt(Math.max(1, eI - sI)) + (pr.ongoing ? ' so far' : '') : '';
+        const facts = [];
+        if (dates) facts.push({ label: 'Dates', value: dates });
+        if (durStr) facts.push({ label: 'Duration', value: durStr });
+        if (has(pr.role)) facts.push({ label: 'My role', value: pr.role });
+        if (has(pr.context)) facts.push({ label: 'Context', value: pr.context });
+        // Media
+        const media = (pr.media || []).filter((m) => m && (m.type === 'image' || m.type === 'video' || m.type === 'youtube'));
+        const mi = Math.min(this.state.mediaIdx || 0, Math.max(0, media.length - 1));
+        const cur = media[mi] || {};
+        const m = {
+          isImage: cur.type === 'image' && has(cur.src),
+          isVideo: cur.type === 'video' && has(cur.src),
+          // YouTube embeds can't load inside this prototype; the real site shows the thumbnail + player
+          isPlaceholder: !has(cur.src) || cur.type === 'youtube',
+          isVideoPh: (cur.type === 'video' && !has(cur.src)) || cur.type === 'youtube',
+          src: cur.src || '', poster: cur.poster || '', alt: cur.alt || '',
+          phLabel: (cur.type === 'youtube' ? 'YouTube · ' : '') + '[' + (cur.alt || (cur.type === 'image' ? 'Image' : 'Video')) + ']',
+          caption: cur.caption || '', hasCaption: has(cur.caption),
+          // Fit: an explicit "fit" wins; otherwise images near 16:9 fill the frame (cover),
+          // anything else is shown whole (contain) on the pale stage. "focus" = object-position for cover crops.
+          fit: cur.fit || (this.imgRatio && this.imgRatio[cur.src] && Math.abs(this.imgRatio[cur.src] / (16 / 9) - 1) < 0.15 ? 'cover' : 'contain'),
+          focus: cur.focus || 'center',
+          onLoad: (ev) => {
+            const im = ev && ev.target;
+            if (!im || !im.naturalWidth) return;
+            if (!this.imgRatio) this.imgRatio = {};
+            if (!this.imgRatio[cur.src]) { this.imgRatio[cur.src] = im.naturalWidth / im.naturalHeight; this.forceUpdate(); }
+          },
+          // Placeholder frame ratio (prototype only, to preview letterboxing)
+          ratio: (() => {
+            if (cur.type !== 'image' || !cur.demoRatio) return '16 / 9';
+            const pr2 = cur.demoRatio.split('/').map(Number);
+            return Math.abs(pr2[0] / pr2[1] / (16 / 9) - 1) < 0.15 ? '16 / 9' : cur.demoRatio;
+          })(),
+          ratioLabel: cur.type === 'image' ? (cur.demoRatio || '16 / 9').replace(/\s/g, '').replace('/', ':') : ''
+        };
+        const thumbs = media.map((it, k) => ({
+          label: (it.type === 'image' ? 'Image ' : 'Video ') + (k + 1) + (it.alt ? ': ' + it.alt : ''),
+          sel: k === mi,
+          border: k === mi ? accent : 'transparent',
+          bg: k === mi ? '#D6E2D9' : '#E6EEE8',
+          thumb: it.type === 'video' ? (it.poster || '') : (it.src || ''),
+          hasImg: it.type === 'youtube' ? false : has(it.type === 'video' ? it.poster : it.src),
+          isVideo: it.type !== 'image',
+          pick: () => this.setState({ mediaIdx: k })
+        }));
+        // Siblings (projects of the same work experience) → mini timeline + prev/next
+        const sibs = pr.experienceId ? projectsOf(pr.experienceId) : [];
+        const si = sibs.findIndex((p) => p.id === pr.id);
+        const prevP = si > 0 ? sibs[si - 1] : null;
+        const nextP = si >= 0 && si < sibs.length - 1 ? sibs[si + 1] : null;
+        const segs = [];
+        if (job && sibs.length > 1) {
+          let c = job.s;
+          sibs.filter((p) => p.start && p.end).forEach((p) => {
+            const a = toIdx(p.start), b = toIdx(p.end);
+            if (a > c) segs.push({ isGap: true, flex: a - c });
+            segs.push({ isGap: false, flex: Math.max(1, b - a), bg: p.id === pr.id ? accent : '#D6E2D9' });
+            c = Math.max(c, b);
+          });
+          if (job.e > c) segs.push({ isGap: true, flex: job.e - c });
+        }
+        const links = (pr.links || []).filter((l) => l && has(l.url) && has(l.label)).map((l, k) => ({
+          label: l.label, url: l.url, border: k === 0 ? '#142019' : '#DEE2DA'
+        }));
+        Object.assign(pp, {
+          isProject: true,
+          title: pr.title,
+          tagline: pr.tagline || pr.summary || '',
+          hasTagline: has(pr.tagline || pr.summary),
+          chip: job ? job.org.split(' · ')[0] + ' · ' + job.role : '',
+          hasChip: !!job,
+          facts, hasFacts: facts.length > 0,
+          factCols: 'repeat(' + Math.max(1, facts.length) + ', minmax(0, 1fr))',
+          hasMedia: media.length > 0, m, thumbs, hasThumbs: media.length > 1,
+          counter: (mi + 1) + ' / ' + media.length,
+          overview: (pr.overview || []).filter(has).map((t) => ({ t })),
+          hasOverview: has((pr.overview || []).filter(has)),
+          highlights: (pr.highlights || []).map((h, k) => ({ num: String(k + 1).padStart(2, '0') + (h.label ? ' · ' + h.label : ''), title: h.title || '', hasTitle: has(h.title), text: h.text || '', hasText: has(h.text) })),
+          hasHighlights: has(pr.highlights),
+          outcomes: (pr.outcomes || []).map((o, k) => ({ value: o.value, label: o.label || '', bg: k === 0 ? accent : '#FFFFFF', fg: k === 0 ? '#F6F5F0' : '#142019', sub: k === 0 ? 'rgba(246,245,240,0.85)' : '#4A564E', border: k === 0 ? accent : '#DEE2DA' })),
+          hasOutcomes: has(pr.outcomes),
+          skills: (pr.skills || []).map((s) => ({ s })), hasSkills: has(pr.skills),
+          links, hasLinks: links.length > 0,
+          sibOrg: job ? job.org.split(' · ')[0] : '',
+          siblings: sibs.map((p) => ({ title: p.title, current: p.id === pr.id, other: p.id !== pr.id, go: () => this.goProject(p.id) })),
+          segs, hasSiblings: sibs.length > 1,
+          sibStart: job ? fmt(job.s) : '', sibEnd: job ? (job.ongoing ? 'Present' : fmt(job.e)) : '',
+          prev: prevP ? { title: prevP.title, go: () => this.goProject(prevP.id) } : {},
+          next: nextP ? { title: nextP.title, go: () => this.goProject(nextP.id) } : {},
+          hasPrev: !!prevP, hasNext: !!nextP, hasNav: !!(prevP || nextP)
+        });
+        pp.hasSide = pp.hasSkills || pp.hasLinks || pp.hasSiblings;
+        pp.bodyCols = pp.hasSide ? 'minmax(0, 1fr) 300px' : 'minmax(0, 1fr)';
+        pp.isSparse = !pp.hasMedia && !pp.hasOverview && !pp.hasHighlights && !pp.hasOutcomes;
+      }
+    }
+    const pe = pop && pop.type === 'education' ? { isEdu: true, title: pop.title, sub: pop.sub } : { isEdu: false };
+    const langData = [
+      { id: 'en', name: 'English' },
+      { id: 'ca', name: 'Català' },
+      { id: 'es', name: 'Español' },
+      { id: 'lt', name: 'Lietuvių' },
+      { id: 'de', name: 'Deutsch' }
+    ];
+    const lang = this.state.lang;
+    const langOpen = this.state.langOpen;
+    const current = langData.find((l) => l.id === lang) || langData[0];
+    const langs = langData.map((l) => ({
+      code: l.id.toUpperCase(),
+      name: l.name,
+      selected: l.id === lang,
+      bg: l.id === lang ? '#E6EEE8' : 'transparent',
+      pick: () => this.setState({ lang: l.id, langOpen: false })
+    }));
+    return {
+      langs,
+      langOpen,
+      langClosed: !langOpen,
+      langUl: langOpen ? 'on' : '',
+      langCode: current.id.toUpperCase(),
+      langName: current.name,
+      toggleLang: () => this.setState({ langOpen: !langOpen }),
+      accent: this.props.accent ?? '#1E4D3A',
+      lanes, projs, boxes, lines, ticks: allTicks, pills, gaps, futureX, tlW,
+      laneOpacity: hj !== null ? 0.18 : 1,
+      axisShift: 0,
+      vpRef: (el) => { this.vp = el; },
+      onScroll: () => { this.updateEdges(); this.layoutSliders(); },
+      showBack: !this.state.atStart,
+      showFwd: !this.state.atEnd,
+      hoverBack: () => this.startScroll(-1),
+      hoverFwd: () => this.startScroll(1),
+      stopHover: () => this.stopScroll(),
+      popOpen: !!pop,
+      pp, pe,
+      popRef: (el) => { this.popEl = el; },
+      popBgRef: (el) => { this.popBg = el; },
+      popScrollRef: (el) => { this.popScroll = el; },
+      closePop: () => this.closePop(),
+      dragCursor: this.state.dragging ? 'grabbing' : 'grab',
+      dragStart: (e) => {
+        if (!this.vp || e.pointerType !== 'mouse' || e.button !== 0) return;
+        if (e.target.closest && e.target.closest('button, article, a')) return;
+        this.drag = { x: e.clientX, sl: this.vp.scrollLeft };
+        try { this.vp.setPointerCapture(e.pointerId); } catch (err) {}
+        this.setState({ dragging: true });
+      },
+      dragMove: (e) => {
+        if (!this.drag || !this.vp) return;
+        this.vp.scrollLeft = this.drag.sl - (e.clientX - this.drag.x);
+      },
+      dragEnd: (e) => {
+        if (!this.drag) return;
+        this.drag = null;
+        try { this.vp.releasePointerCapture(e.pointerId); } catch (err) {}
+        this.setState({ dragging: false });
+      },
+      popKey: (e) => { if (e.key === 'Escape') { e.stopPropagation(); this.closePop(); } },
+      stepBack: () => { if (this.vp) this.vp.scrollBy({ left: -420, behavior: 'smooth' }); },
+      stepFwd: () => { if (this.vp) this.vp.scrollBy({ left: 420, behavior: 'smooth' }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

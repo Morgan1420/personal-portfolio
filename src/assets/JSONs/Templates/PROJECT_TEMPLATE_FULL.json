@@ -1,0 +1,63 @@
+{
+  "$comment": "Template for ONE project. Only id and title are required. Every other field is optional: delete it, leave it empty (\"\" or []) or set it to null and that part of the pop-up simply isn't shown. Dates are \"YYYY-MM\".",
+
+  "id": "REQUIRED — unique, lowercase-with-dashes, e.g. rotatory-antenna-system",
+  "title": "REQUIRED — project name",
+  "tagline": "One sentence under the title. If missing, `summary` is used instead.",
+  "summary": "Short description (1–2 sentences) used on cards and as the tagline fallback.",
+
+  "experienceId": "id from experience.json (e.g. \"ieec\") — or null if it's independent",
+  "lane": "\"projects\" (appears above its work box on the timeline) or \"venture\" (own bar, like BitSpace)",
+  "relatedProjectIds": ["other-project-id"],
+
+  "start": "YYYY-MM",
+  "end": "YYYY-MM — or null",
+  "ongoing": false,
+
+  "role": "Your role, e.g. \"Sole developer\" or \"Hardware & firmware lead\"",
+  "context": "Where/with whom, e.g. \"IEEC research team\" or \"Hackathon team of 4\"",
+
+  "overview": [
+    "Paragraph 1.",
+    "Paragraph 2 (add as many as you want)."
+  ],
+
+  "media": [
+    {
+      "type": "image",
+      "src": "path or URL to the image",
+      "alt": "What the image shows (for screen readers)",
+      "caption": "Optional caption shown under the media",
+      "fit": "optional — \"contain\" (show whole image) or \"cover\" (fill the frame, may crop). Leave out for automatic.",
+      "focus": "optional — which part to keep when cropped with cover, e.g. \"center\", \"top\", \"30% 50%\""
+    },
+    {
+      "type": "youtube",
+      "url": "https://www.youtube.com/watch?v=VIDEO_ID  (youtu.be/… and /shorts/… links work too)",
+      "start": 0,
+      "alt": "What the video shows",
+      "caption": "Optional caption"
+    },
+    {
+      "type": "video",
+      "src": "path or URL to an .mp4/.webm file (only if you host the file yourself)",
+      "poster": "optional still image shown before playing",
+      "alt": "What the video shows",
+      "caption": "Optional caption"
+    }
+  ],
+
+  "highlights": [
+    { "label": "Short tag, e.g. Hardware", "title": "Step title", "text": "One or two sentences." }
+  ],
+
+  "outcomes": [
+    { "value": "e.g. 40+", "label": "e.g. satellites tracked" }
+  ],
+
+  "skills": ["Technology", "Tool", "Method"],
+
+  "links": [
+    { "label": "Source code", "url": "https://...", "type": "code | demo | paper | website | video | other" }
+  ]
+}

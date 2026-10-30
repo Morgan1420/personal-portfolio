@@ -1,0 +1,45 @@
+{
+  "id": "signal-processing-ui",
+  "title": "Signal Processing UI",
+  "tagline": "A web app that lets researchers run each other's signal-processing scripts straight from the browser — no installs, no setup.",
+  "summary": "A single web interface that lets the research team use each other's signal-processing scripts without installing anything or untangling someone else's code.",
+
+  "experienceId": "ieec",
+  "lane": "projects",
+  "relatedProjectIds": [],
+
+  "start": "2024-09",
+  "end": "2025-07",
+  "ongoing": false,
+
+  "role": "Engineer Intern",
+  "context": "IEEC · SPCOMNAV research team",
+
+  "overview": [
+    "In research, “don't reinvent the wheel” is the rule — especially with signal-processing code, which is intricate and hard to follow from the outside. Actually reusing it, though, is easier said than done.",
+    "Before this project, team members shared code as .zip files over Teams or by cloning and forking GitHub repos, and then had to get it running on their own machines — which often caused more problems than it solved.",
+    "I built one website where anyone on the team can run a colleague's scripts through a simple form and see the results, without dealing with installation or the code itself.",
+    "I developed it as a part-time job during my third year of studies and presented it at the IEEC Forum. It also opened the door to more responsibility on later projects."
+  ],
+
+  "media": [
+    { "type": "image", "src": "/projects/signal-processing-ui/GNSSResults.png", "alt": "The GNSS results page of the web app", "caption": "GNSS results page" },
+    { "type": "youtube", "url": "https://www.youtube.com/watch?v=1nLmzI2GYyM", "start": 0, "alt": "Screen recording: filling in the GNSS processing form", "caption": "GNSS form — walkthrough" },
+    { "type": "youtube", "url": "https://www.youtube.com/watch?v=o3qqPV4j-SU", "start": 0, "alt": "Screen recording: exploring the GNSS results", "caption": "GNSS results — walkthrough" },
+    { "type": "youtube", "url": "https://www.youtube.com/watch?v=6eCRlbVYHbM", "start": 0, "alt": "Screen recording: filling in the LEO processing form", "caption": "LEO form — walkthrough" },
+    { "type": "youtube", "url": "https://www.youtube.com/watch?v=ct52ZKiUkoA", "start": 0, "alt": "Screen recording: exploring the LEO results", "caption": "LEO results — walkthrough" }
+  ],
+
+  "highlights": [
+    { "label": "Share", "title": "Add your scripts", "text": "Researchers plug their scripts into the tool so the whole team can use them." },
+    { "label": "Run", "title": "Use anyone's scripts", "text": "Run a colleague's code as a black box: fill in a form — no installs, no setup." },
+    { "label": "Results", "title": "See the results", "text": "Outputs appear right in the browser, ready to explore." }
+  ],
+
+  "skills": ["Vue", "Web development", "Linux", "Signal processing"],
+
+  "links": [
+    { "label": "IEEC Forum poster", "url": "/projects/signal-processing-ui/IEEC_Forum_póster_Jan.pdf", "type": "report" },
+    { "label": "Demo video", "url": "https://www.youtube.com/watch?v=o3qqPV4j-SU", "type": "video" }
+  ]
+}

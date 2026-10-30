@@ -1,0 +1,50 @@
+{
+  "$comment": "Work experience shown on the main timeline lane, oldest first. Dates are 'YYYY-MM'; end: null means ongoing. projectIds point to entries in projects_education.json.",
+  "experience": [
+    {
+      "id": "cvc",
+      "role": "Computer Vision Intern",
+      "organization": {
+        "name": "Computer Vision Center",
+        "short": "CVC",
+        "logo": null,
+        "url": null
+      },
+      "start": "2024-02",
+      "end": "2024-06",
+      "description": "A four-month internship within the Rosa Sensat programme, learning how computer-vision and AI models work — and how to build them.",
+      "skills": [],
+      "projectIds": ["cloud-segmentation"]
+    },
+    {
+      "id": "ieec",
+      "role": "Engineering Intern",
+      "organization": {
+        "name": "Institut d’Estudis Espacials de Catalunya",
+        "short": "IEEC",
+        "logo": null,
+        "url": null
+      },
+      "start": "2024-09",
+      "end": "2026-07",
+      "description": "Alongside my degrees, I worked with a university research team at IEEC, building the tools and systems behind their projects.",
+      "skills": [],
+      "projectIds": ["signal-processing-ui", "rotatory-antenna-system", "usrp-x440-tool"]
+    },
+    {
+      "id": "eye",
+      "role": "Young Entrepreneur",
+      "organization": {
+        "name": "Erasmus for Young Entrepreneurs",
+        "short": "EYE",
+        "logo": null,
+        "url": null
+      },
+      "start": "2026-07",
+      "end": "2027-01",
+      "description": "I joined Erasmus for Young Entrepreneurs to sharpen my entrepreneurial skills and push BitSpace forward.",
+      "skills": [],
+      "projectIds": ["bsproof"]
+    }
+  ]
+}

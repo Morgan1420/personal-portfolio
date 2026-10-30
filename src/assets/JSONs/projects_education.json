@@ -1,0 +1,41 @@
+{
+  "$comment": "Education entries shown on the timeline's studies lanes. Dates are 'YYYY-MM'. Projects live in projects/<id>.json (one file per project).",
+  "education": [
+    {
+      "id": "telecom-eng",
+      "degree": "Telecommunications Engineering",
+      "institution": {
+        "name": "Universitat Autònoma de Barcelona",
+        "short": "UAB",
+        "logo": null
+      },
+      "laneLabel": {
+        "left": "Engineering Student",
+        "right": "Telecommunications Engineering · UAB"
+      },
+      "start": "2021-09",
+      "end": "2026-07",
+      "description": "",
+      "links": [],
+      "images": []
+    },
+    {
+      "id": "computer-eng",
+      "degree": "Computer Engineering",
+      "institution": {
+        "name": "Universitat Autònoma de Barcelona",
+        "short": "UAB",
+        "logo": null
+      },
+      "laneLabel": {
+        "left": "Engineering Student",
+        "right": "Computer Engineering · UAB"
+      },
+      "start": "2021-09",
+      "end": "2026-07",
+      "description": "",
+      "links": [],
+      "images": []
+    }
+  ]
+}
