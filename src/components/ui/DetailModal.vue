@@ -3,23 +3,22 @@
 // See docs/PROJECT_POPUP.md §3, §5–§7.
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useDetailModal } from '../../composables/useDetailModal.js'
-import { projectById } from '../../composables/useProjects.js'
-import IconClose from './icons/IconClose.vue'
+import { experienceById, projectById, projectsOfExperience } from '../../composables/useProjects.js'
+import ProjectDetail from '../project/ProjectDetail.vue'
+import DetailHeader from './DetailHeader.vue'
 import IconConstruction from './icons/IconConstruction.vue'
 
 const EASE_OPEN = 'cubic-bezier(.2,.7,.2,1)'
 const EASE_CLOSE = 'cubic-bezier(.4,0,.2,1)'
 
-const { detail, closing, getOrigin, close, finishClose, startHistorySync, stopHistorySync } = useDetailModal()
+const { detail, closing, getOrigin, close, finishClose, switchTo, startHistorySync, stopHistorySync } = useDetailModal()
 
 const card = ref(null)
 const backdrop = ref(null)
 
 const project = computed(() => (detail.value?.kind === 'Project' ? projectById(detail.value.id) : null))
-const title = computed(() => project.value?.title ?? detail.value?.title)
-const subtitle = computed(() =>
-  project.value ? project.value.tagline || project.value.summary : detail.value?.subtitle,
-)
+const experience = computed(() => (project.value?.experienceId ? experienceById(project.value.experienceId) : null))
+const siblings = computed(() => (experience.value ? projectsOfExperience(experience.value.id) : []))
 
 const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
 const isMobile = () => window.matchMedia('(max-width: 700px)').matches
@@ -173,6 +172,8 @@ watch(
     await nextTick()
     const body = card.value?.querySelector('[data-modal-scroll]')
     if (body) body.scrollTop = 0
+    // The button that switched may be gone (e.g. no "next" left, or now the current sibling)
+    if (!card.value?.contains(document.activeElement)) card.value?.focus({ preventScroll: true })
     stagger(0)
   },
 )
@@ -205,24 +206,24 @@ onBeforeUnmount(() => {
         tabindex="-1"
         @keydown="onCardKeydown"
       >
-        <div class="modal__head">
-          <div class="modal__row">
-            <span class="modal__kind" data-stagger>{{ detail.kind }}</span>
-            <button type="button" class="modal__close" aria-label="Close" @click="close">
-              <IconClose />
-            </button>
+        <ProjectDetail
+          v-if="project"
+          :project="project"
+          :experience="experience"
+          :siblings="siblings"
+          @close="close"
+          @switch="switchTo"
+        />
+        <template v-else>
+          <DetailHeader :kind="detail.kind" :title="detail.title" :tagline="detail.subtitle" @close="close" />
+          <div class="modal__body" data-modal-scroll>
+            <div class="modal__placeholder" data-stagger>
+              <span class="modal__placeholder-icon" aria-hidden="true"><IconConstruction :size="26" /></span>
+              <p class="modal__placeholder-title">Under construction</p>
+              <p class="modal__placeholder-text">The full story — images, details and results — is coming soon.</p>
+            </div>
           </div>
-          <h2 id="detail-title" class="modal__title" data-stagger>{{ title }}</h2>
-          <p v-if="subtitle" class="modal__subtitle" data-stagger>{{ subtitle }}</p>
-        </div>
-
-        <div class="modal__body" data-modal-scroll>
-          <div class="modal__placeholder" data-stagger>
-            <span class="modal__placeholder-icon" aria-hidden="true"><IconConstruction :size="26" /></span>
-            <p class="modal__placeholder-title">Under construction</p>
-            <p class="modal__placeholder-text">The full story — images, details and results — is coming soon.</p>
-          </div>
-        </div>
+        </template>
       </div>
     </div>
   </Teleport>
@@ -262,74 +263,6 @@ onBeforeUnmount(() => {
   color: var(--color-ink);
   box-shadow: var(--shadow-modal);
   outline: none;
-}
-
-.modal__head {
-  flex: 0 0 auto;
-  padding: 32px 48px 26px;
-  border-bottom: 1px solid var(--color-line);
-}
-
-.modal__row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-}
-
-.modal__kind {
-  display: inline-flex;
-  padding: 6px 12px;
-  border: 1px solid var(--color-accent);
-  border-radius: var(--radius-pill);
-  font-family: var(--font-mono);
-  font-size: var(--fs-label-sm);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-accent);
-}
-
-.modal__title {
-  margin-top: 14px;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: var(--fs-popup-title);
-  line-height: 1.02;
-  letter-spacing: -0.02em;
-}
-
-.modal__subtitle {
-  margin-top: 12px;
-  max-width: 720px;
-  font-size: 18px;
-  line-height: 1.55;
-  color: var(--color-ink-2);
-}
-
-.modal__close {
-  flex: 0 0 auto;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  border: 1.5px solid var(--color-ink);
-  background: var(--color-surface);
-  color: var(--color-ink);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition:
-    background-color var(--dur) ease,
-    color var(--dur) ease,
-    transform var(--dur) ease;
-}
-
-.modal__close:hover,
-.modal__close:focus-visible {
-  background: var(--color-accent);
-  border-color: var(--color-accent);
-  color: var(--color-on-accent);
-  transform: rotate(90deg);
 }
 
 .modal__body {
@@ -385,14 +318,6 @@ onBeforeUnmount(() => {
     height: 100%;
     border-radius: 0;
     box-shadow: none;
-  }
-
-  .modal__head {
-    padding: 16px;
-  }
-
-  .modal__title {
-    font-size: 34px;
   }
 
   .modal__body {

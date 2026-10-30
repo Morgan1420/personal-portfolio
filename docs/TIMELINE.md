@@ -7,10 +7,10 @@ Technical spec for the horizontal, scrollable experience timeline. The working p
 From `src/assets/JSONs/`:
 
 - `experience.json` → work boxes (main lane). Fields used: `id`, `role`, `organization.name/short`, `start`, `end`, `description`, `projectIds`.
-- `projects_education.json` →
-  - `education[]` → studies lanes (`laneLabel.left` / `laneLabel.right`, `start`, `end`).
-  - `projects[]` with `lane: "venture"` → BitSpace lane (`laneLabel`, `end: null` = ongoing).
-  - `projects[]` with `lane: "projects"` → shown above their work box (`experienceId`) on hover.
+- `projects_education.json` → `education[]` → studies lanes (`laneLabel.left` / `laneLabel.right`, `start`, `end`).
+- `projects/<id>.json` (via `useProjects.js`) →
+  - `lane: "venture"` → BitSpace lane (`laneLabel`, `end: null` = ongoing).
+  - `lane: "projects"` → shown above their work box (`experienceId`) on hover.
 
 Dates are `"YYYY-MM"`. Convert to a month index: `year * 12 + (month - 1)`. `end: null` → current month.
 
@@ -113,7 +113,7 @@ Studies lanes, BitSpace lane and project boxes are `<button>`s. Hover/focus: `fi
 
 ## 9. Detail pop-up
 
-Clicking a lane/project calls `openDetail({ kind: 'Project' | 'Education', title, subtitle, id })`. For now the modal shows only kind, title, subtitle and "Under construction" (see `DESIGN.md`). Later it will render the project/education entry by `id`.
+Clicking a project box or the BitSpace lane calls `openProject(id, { trigger, fallback })`; a studies lane calls `openEducation({ id, title, subtitle }, { trigger })` (both from `useDetailModal`). Project pop-up: `docs/PROJECT_POPUP.md`. Education is still the placeholder (see `DESIGN.md`).
 
 ## 10. Mobile notes
 

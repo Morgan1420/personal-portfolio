@@ -33,7 +33,9 @@ npm run preview   # serve the built output
 |---|---|
 | Visual design, tokens, component specs | `DESIGN.md` |
 | Experience timeline logic (the complex part) | `docs/TIMELINE.md` |
-| Content data | `src/assets/JSONs/experience.json`, `src/assets/JSONs/projects_education.json` |
+| Project pop-up (data schema, behaviour) | `docs/PROJECT_POPUP.md` |
+| Content data | `src/assets/JSONs/experience.json`, `src/assets/JSONs/projects_education.json` (education), `src/assets/JSONs/projects/<id>.json` (one per project) |
+| Project assets | `public/projects/<id>/` — no heavy videos: they go on YouTube |
 | Design reference (working prototype) | `docs/design-reference/portfolio-v2.dc.html` |
 | Old requirements | `website_requisites.md` — older notes; if it conflicts with `DESIGN.md`, `DESIGN.md` wins |
 
@@ -68,12 +70,15 @@ src/
                GallerySection.vue  ContactSection.vue
     timeline/  ExperienceTimeline.vue  TimelineLane.vue  WorkBox.vue
                ProjectBox.vue  TimelineAxis.vue  EdgeScrollZone.vue
-    ui/        BaseButton.vue  IconButton.vue  SectionHeader.vue  DetailModal.vue  icons/
+    project/   ProjectDetail.vue  ProjectMedia.vue  YouTubeLite.vue  ProjectMiniTimeline.vue
+    ui/        BaseButton.vue  IconButton.vue  SectionHeader.vue  DetailModal.vue  DetailHeader.vue  icons/
   composables/
     useTimelineScale.js       # dates → x positions (pure, unit-testable)
     useSlidingLabels.js       # keeps box labels on screen while scrolling
     useEdgeScroll.js          # hover-edge scrolling, step buttons, drag-to-scroll
-    useDetailModal.js         # open/close state for project/education pop-ups
+    useDetailModal.js         # open/switch/close state and #project/<id> history
+    useProjects.js            # loads and validates the project JSONs
+  utils/                      # dates.js (shared with the timeline), media.js
 ```
 
 This is a guide, not a contract — keep it simple and don't over-split.
@@ -91,7 +96,8 @@ This is a guide, not a contract — keep it simple and don't over-split.
 | 05 | Skills | 🟡 Draft | |
 | 06 | Gallery | 🟡 Draft | |
 | 07 | Contact | ⬜ Placeholder | To be designed |
-| — | Project / education pop-up | ⬜ Placeholder | Only kind label + title + "Under construction" for now |
+| — | Project pop-up | ✅ Final | See `docs/PROJECT_POPUP.md` |
+| — | Education pop-up | ⬜ Placeholder | Only kind label + title + "Under construction" for now |
 
 Port ✅ sections faithfully. For 🟡/⬜ sections, build a simple version that matches the design reference but expect it to change — don't over-engineer.
 

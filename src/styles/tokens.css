@@ -37,6 +37,8 @@
   --glow-clickable: drop-shadow(0 6px 14px rgba(30, 77, 58, 0.30));
   --edge-shade: rgba(20, 32, 25, 0.16);
   --color-overlay: rgba(20, 32, 25, 0.45); /* pop-up backdrop */
+  --color-media-chip: rgba(20, 32, 25, 0.6); /* "1 / N" counter on media */
+  --shadow-nav-hover: 0 8px 20px rgba(30, 77, 58, 0.14); /* prev / next buttons */
 
   /* Typography */
   --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
@@ -68,6 +70,7 @@
   --radius-xl: 28px;   /* hero photo, modal */
   --radius-card: 22px; /* cards, work boxes */
   --radius-md: 20px;   /* gallery tiles, education card */
+  --radius-tile: 18px; /* pop-up highlight and outcome cards */
   --radius-sm: 16px;   /* small cards, logo tiles */
   --radius-xs: 14px;   /* project boxes, badges, menus */
   --radius-lane: 12px; /* timeline lanes, icon tiles */

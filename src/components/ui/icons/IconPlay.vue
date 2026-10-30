@@ -1,0 +1,9 @@
+<script setup>
+defineProps({ size: { type: [Number, String], default: 18 } })
+</script>
+
+<template>
+  <svg :width="size" :height="size" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+    <path d="M8 5.5v13l11-6.5z" />
+  </svg>
+</template>

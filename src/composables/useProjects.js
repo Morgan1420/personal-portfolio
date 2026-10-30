@@ -10,6 +10,8 @@ const byId = new Map(projects.map((p) => [p.id, p]))
 
 export const projectById = (id) => byId.get(id)
 
+export const experienceById = (id) => experience.find((e) => e.id === id) ?? null
+
 /** Projects of one experience, oldest first. */
 export const projectsOfExperience = (experienceId) =>
   projects

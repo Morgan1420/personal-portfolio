@@ -23,6 +23,7 @@ The visual language of jan-moran.com. Tokens live in `src/styles/tokens.css`; th
 | `--color-on-accent` | `#F6F5F0` | Text on green |
 | `--color-on-accent-soft` | `rgba(246,245,240,.16)` | Logo tile on the current (green) work box |
 | `--color-overlay` | `rgba(20,32,25,.45)` | Pop-up backdrop |
+| `--color-media-chip` | `rgba(20,32,25,.6)` | "1 / N" counter on pop-up media |
 | `--color-line` | `#DEE2DA` | Borders, dividers |
 | `--color-line-dashed` | `#A9B3AA` | Dashed timeline gaps |
 
@@ -71,7 +72,7 @@ Mono is the "data voice": section numbers, dates, durations, tags, codes (EN, CA
 
 ### Radii
 
-pill `999px` · xl `28px` (hero photo, modal) · card `22px` · md `20px` · sm `16px` · xs `14px` · lane `12px` · logo `10px`.
+pill `999px` · xl `28px` (hero photo, modal) · card `22px` · md `20px` · tile `18px` (pop-up cards) · sm `16px` · xs `14px` · lane `12px` · logo `10px`.
 
 ### Motion
 
@@ -141,15 +142,22 @@ Full spec in `docs/TIMELINE.md`. Visual summary:
 - Header in the normal container; the timeline itself is **full-bleed** (edge to edge).
 - Lanes top→bottom: two studies bars (pale greens), BitSpace bar (white, accent border, open-ended fade), work boxes (white; the current role in accent), axis line with dates and duration pills.
 - Hover on a work box → it grows upward and shows its description; its projects slide out from behind it; upper lanes fade to 18%.
-- Studies bars, BitSpace bar and project boxes are clickable → open the detail pop-up.
+- Studies bars, BitSpace bar and project boxes are clickable → open the pop-up (project or education).
 
-### Detail pop-up (placeholder) ⬜
+### Project pop-up ✅
 
-- Fixed overlay: `--color-overlay` + `blur(4px)`; click to close.
-- Card: `width: min(1100px, 100%)`, `height: min(760px, 100vh - 48px)`, cream, radius 28, padding `clamp(28px, 5vw, 56px)`, `--shadow-modal`. Enters with a 16px rise + scale .97 → 1 (`.28s`).
-- Content now: kind pill (PROJECT / EDUCATION — mono 12 uppercase, accent outline), title (Bricolage, `--fs-modal-title`), subtitle (17px muted), then a dashed "Under construction" panel.
-- Close button: 52px circle, ink outline; hover → accent fill + rotate 90°.
-- `role="dialog"`, `aria-modal`, `aria-labelledby`; focus moves into the dialog on open and back to the trigger on close; Esc closes; **lock page scroll while open**.
+Full spec, data schema and behaviour in `docs/PROJECT_POPUP.md`. Opens from a project box or the BitSpace lane. Every block renders only when its data exists.
+
+- **Shell:** fixed overlay, `--color-overlay` + `blur(4px)`, click to close. Card `min(1100px, 100% − 48px)` × `min(840px, 100vh − 48px)`, cream, radius 28, `--shadow-modal`. Grows out of the clicked element (FLIP, `.38s`) and shrinks back on close (`.3s`); after switching project it fades and drops 12px instead. Header pieces and body fade up 10px in sequence.
+- **Header (fixed):** kind pill + experience chip + 48px close button (hover: accent fill, rotate 90°), title `--fs-popup-title`, tagline 18/1.55 ink-2, facts strip with 1–4 equal columns.
+- **Body (scrolls):** `minmax(0,1fr) 300px`, gap 48, or one column when there is no sidebar. Main: media viewer, Overview, How it works (cards, radius `--radius-tile`), Outcome (first card accent), prev/next. Sidebar (sticky): Built with, Links (first link ink border; hover accent fill), Projects at ORG with mini timeline. Nothing to show: dashed "on its way" note.
+- **Media:** 16:9 frame, radius 20, `--color-tint` background, so the pop-up never changes height. Images near the frame's shape fill it, others show whole on pale bands; `fit` and `focus` override. Counter chip `--color-media-chip`. Only the selected item is mounted. YouTube is a thumbnail until clicked, then a `youtube-nocookie` iframe.
+- **Mobile (≤700px):** full-screen sheet that slides up (`.34s`) and down (`.26s`), title 34px, one column, sidebar below and not sticky, facts 2×2, media 4:3.
+- **Access:** `role="dialog"`, `aria-modal`, `aria-labelledby`; focus moves in on open and back to the trigger (or the timeline) on close; Tab trapped; Esc and browser Back close; page scroll locked; `#project/<id>` links open it directly.
+
+### Education pop-up ⬜
+
+Placeholder in the same shell: kind pill, title, subtitle, dashed "Under construction" panel.
 
 ### Drafts (🟡 — will be redesigned)
 
